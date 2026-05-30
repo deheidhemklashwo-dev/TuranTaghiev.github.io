@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Turan T. — Digital geopolitics and strategic analysis. Research on US–China competition, platform governance, and AI as state capacity." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Turan T. — Digital Geopolitics & Strategic Analysis" />
+<meta property="og:description" content="Research on US–China competition, platform governance, and the geopolitics of AI." />
+<meta name="referrer" content="no-referrer" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://flo.uri.sh; script-src 'self' 'unsafe-inline'; frame-src https://flo.uri.sh; base-uri 'none'; form-action 'none'; frame-ancestors 'none';" />
+<title>Turan T. — Digital Geopolitics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#111315;
+  --bg-raised:#171a1d;
+  --bg-raised-2:#1c2024;
+  --text:#e7e3db;
+  --text-soft:#a7aaa6;
+  --text-mute:#74787a;
+  --line:rgba(231,227,219,0.07);
+  --line-strong:#2a2f34;
+  --accent:#b08d57;
+  --accent-soft:#cdb285;
+  --accent-dim:rgba(176,141,87,0.13);
+  --serif:"Newsreader",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --maxw:1140px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);opacity:.45;}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(17,19,21,0.80);border-bottom:1px solid var(--line-strong);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--text)}
+.brand b{color:var(--accent);font-weight:500}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--text-mute);transition:color .2s;}
+.nav-links a:hover{color:var(--text)}
+.lang{font-family:var(--mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line-strong);background:transparent;color:var(--text-mute);padding:5px 10px;border-radius:2px;cursor:pointer;transition:all .2s;}
+.lang:hover{border-color:var(--accent);color:var(--accent)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+
+/* HERO */
+.hero{padding:128px 0 100px;border-bottom:1px solid var(--line-strong)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:32px;display:flex;align-items:center;gap:14px;}
+.kicker::before{content:"";width:28px;height:1px;background:var(--accent);flex-shrink:0}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,6.8vw,5.2rem);line-height:1.0;letter-spacing:-.018em;margin-bottom:30px;max-width:15ch;}
+.hero h1 em{font-style:italic;color:var(--text);position:relative}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.07em;height:2px;background:var(--accent);opacity:.5}
+.hero .thesis{font-family:var(--serif);font-size:clamp(1.05rem,2.2vw,1.38rem);color:var(--text-soft);max-width:52ch;line-height:1.52;margin-bottom:48px;font-weight:400;}
+.actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;border-radius:2px;transition:all .2s;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{background:var(--accent);color:#100d06}
+.btn-primary:hover{background:var(--accent-soft)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text-mute)}
+.btn-ghost:hover{border-color:var(--accent-soft);color:var(--text)}
+.btn svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
+
+/* SECTION */
+section{padding:88px 0;border-bottom:1px solid var(--line-strong)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:54px}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.12em}
+.sec-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:400;letter-spacing:-.012em}
+
+/* RESEARCH AREAS */
+.areas{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line-strong);border-radius:3px;overflow:hidden}
+.area{padding:34px 32px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);transition:background .25s;}
+.area:nth-child(2n){border-right:none}
+.area:nth-child(n+3){border-bottom:none}
+.area:hover{background:var(--bg-raised)}
+.area .idx{font-family:var(--mono);font-size:10px;color:var(--text-mute);letter-spacing:.12em}
+.area h3{font-family:var(--serif);font-size:1.32rem;font-weight:500;margin:13px 0 10px}
+.area p{font-size:.91rem;color:var(--text-mute);line-height:1.56}
+
+/* WRITING */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:42px}
+.filter{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--line-strong);border-radius:2px;background:transparent;color:var(--text-mute);cursor:pointer;transition:all .2s;}
+.filter:hover{color:var(--text-soft);border-color:var(--text-mute)}
+.filter.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent-soft)}
+.feed{display:flex;flex-direction:column}
+.entry{display:grid;grid-template-columns:140px 1fr;gap:36px;padding:32px 0;border-top:1px solid var(--line-strong);}
+.entry:last-child{border-bottom:1px solid var(--line-strong)}
+.entry .meta{font-family:var(--mono);font-size:11px;color:var(--text-mute);letter-spacing:.04em}
+.entry .meta .yr{display:block;color:var(--accent);margin-bottom:5px;font-size:13px}
+.entry .meta .etype{display:block;margin-top:10px;padding-top:10px;border-top:1px solid var(--line-strong);color:var(--text-soft);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.entry h3{font-family:var(--serif);font-size:1.48rem;font-weight:400;line-height:1.17;margin-bottom:13px;transition:color .2s}
+.entry:hover h3{color:var(--accent-soft)}
+.entry p{color:var(--text-soft);font-size:.96rem;max-width:60ch;margin-bottom:16px;line-height:1.58}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--text-mute);border:1px solid var(--line-strong);padding:4px 8px;border-radius:2px;}
+.entry-link{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:14px;display:inline-flex;align-items:center;gap:6px;}
+.entry-link span{transition:transform .2s}
+.entry:hover .entry-link span{transform:translateX(4px)}
+
+/* FLOURISH EMBED */
+.flourish-wrap{margin-top:20px;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;background:var(--bg-raised);padding:4px;}
+.flourish-wrap iframe{width:100%;border:none;display:block;min-height:420px;}
+.flourish-placeholder{padding:40px 28px;text-align:center;color:var(--text-mute);font-family:var(--mono);font-size:11px;letter-spacing:.08em;}
+.flourish-placeholder span{display:block;font-size:1.5rem;margin-bottom:10px;opacity:.3}
+
+/* READING LIST */
+.reading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);border-radius:3px;overflow:hidden}
+.book{background:var(--bg);padding:26px 24px;transition:background .22s;cursor:default;}
+.book:hover{background:var(--bg-raised)}
+.book .btag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.book h4{font-family:var(--serif);font-size:1.05rem;font-weight:500;line-height:1.28;margin-bottom:6px}
+.book .bauth{font-family:var(--sans);font-size:.85rem;color:var(--text-mute);margin-bottom:10px}
+.book .bstatus{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--text-mute);display:flex;align-items:center;gap:6px;}
+.book .bstatus::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--text-mute);flex-shrink:0}
+.book.reading .bstatus{color:var(--accent-soft)}
+.book.reading .bstatus::before{background:var(--accent)}
+.book.done .bstatus::before{background:#5a8a5a;box-shadow:0 0 4px rgba(90,138,90,.4)}
+.book.done .bstatus{color:#7ab87a}
+
+/* APPROACH / ABOUT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.prose p{color:var(--text-soft);margin-bottom:18px;max-width:56ch;line-height:1.62}
+.prose p:last-child{margin-bottom:0}
+.facts{border-left:2px solid var(--accent);padding-left:28px;display:flex;flex-direction:column;gap:24px}
+.fact .label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mute);margin-bottom:5px}
+.fact .val{font-family:var(--serif);font-size:1.05rem;color:var(--text);line-height:1.4}
+
+/* CONTACT */
+.contact-sec{text-align:center;padding:110px 0}
+.contact-sec .kicker{justify-content:center}
+.contact-sec .kicker::before{display:none}
+.contact-sec h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;margin-bottom:16px;letter-spacing:-.012em}
+.contact-sec .sub{font-family:var(--sans);font-size:1rem;color:var(--text-mute);margin-bottom:36px}
+.contact-sec .actions{justify-content:center}
+
+/* FOOTER */
+footer{padding:40px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line-strong);padding-top:28px}
+.foot-left{display:flex;flex-direction:column;gap:4px}
+.foot-left .fname{font-family:var(--mono);font-size:12px;color:var(--text-soft);letter-spacing:.05em}
+.foot-left .fnote{font-family:var(--mono);font-size:10px;color:var(--text-mute);letter-spacing:.06em}
+.foot-right{display:flex;gap:16px;align-items:center}
+.foot-link{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);transition:color .2s;}
+.foot-link:hover{color:var(--accent)}
+
+/* ADMIN PANEL */
+.admin-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);overflow-y:auto;}
+.admin-overlay.open{display:flex;align-items:flex-start;justify-content:center;padding:40px 20px}
+.admin-box{background:var(--bg-raised);border:1px solid var(--line-strong);border-radius:4px;width:100%;max-width:680px;padding:36px;}
+.admin-box h2{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.admin-lock{text-align:center;padding:20px 0}
+.admin-lock p{font-family:var(--mono);font-size:12px;color:var(--text-mute);margin-bottom:16px;letter-spacing:.06em}
+.afield{margin-bottom:18px}
+.afield label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);margin-bottom:7px}
+.afield input,.afield textarea,.afield select{width:100%;background:var(--bg);border:1px solid var(--line-strong);color:var(--text);font-family:var(--sans);font-size:.95rem;padding:10px 13px;border-radius:2px;outline:none;transition:border-color .2s;}
+.afield input:focus,.afield textarea:focus,.afield select:focus{border-color:var(--accent)}
+.afield textarea{min-height:90px;resize:vertical;line-height:1.5}
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.admin-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.aout{margin-top:24px;border-top:1px solid var(--line-strong);padding-top:20px}
+.aout label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);display:block;margin-bottom:8px}
+.aout textarea{width:100%;background:var(--bg-raised-2);border:1px solid var(--line-strong);color:var(--accent-soft);font-family:var(--mono);font-size:12px;padding:14px;border-radius:2px;min-height:160px;resize:vertical;line-height:1.5}
+.admin-close{float:right;background:none;border:none;color:var(--text-mute);font-size:20px;cursor:pointer;transition:color .2s;line-height:1}
+.admin-close:hover{color:var(--text)}
+.notice{font-family:var(--mono);font-size:11px;color:#7ab87a;margin-top:10px;letter-spacing:.06em;display:none}
+.notice.show{display:block}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.hero .reveal{transition-delay:calc(var(--d,0)*110ms)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .reading-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--bg-raised);flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line-strong);transform:translateY(-130%);transition:transform .28s;}
+  .nav-links.open{transform:none}
+  .nav-links a{padding:14px 28px;width:100%}
+  .nav-toggle{display:block}
+  .lang{margin:10px 28px}
+  .areas{grid-template-columns:1fr}
+  .area{border-right:none!important}
+  .area:nth-child(n+1){border-bottom:1px solid var(--line-strong)}
+  .area:last-child{border-bottom:none}
+  .entry{grid-template-columns:1fr;gap:8px}
+  .entry .meta{display:flex;gap:14px;align-items:baseline}
+  .entry .meta .etype{border-top:none;padding-top:0;margin-top:0}
+  .split{grid-template-columns:1fr;gap:40px}
+  .reading-grid{grid-template-columns:1fr}
+  .hero{padding:80px 0 64px}
+  .arow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <button class="admin-close" id="adminClose">✕</button>
+    <h2 data-i18n="admin_title">Analysis Panel</h2>
+    <div id="adminLock" class="admin-lock">
+      <p data-i18n="admin_pw_label">Enter access password</p>
+      <div class="afield"><input type="password" id="adminPw" placeholder="••••••••" /></div>
+      <div class="admin-actions"><button class="btn btn-primary" onclick="checkPw()" data-i18n="admin_enter">Enter</button></div>
+    </div>
+    <div id="adminForm" style="display:none">
+      <div class="arow">
+        <div class="afield"><label data-i18n="af_year">Year</label><input type="text" id="af_date" placeholder="2025" /></div>
+        <div class="afield"><label data-i18n="af_type_en">Type (EN)</label>
+          <select id="af_type_en"><option>Essay</option><option>Analysis</option><option>Data Brief</option><option>Policy Brief</option><option>Commentary</option></select>
+        </div>
+      </div>
+      <div class="afield"><label data-i18n="af_type_tr">Type (TR)</label>
+        <select id="af_type_tr"><option>Makale</option><option>Analiz</option><option>Veri Notu</option><option>Politika Notu</option><option>Yorum</option></select>
+      </div>
+      <div class="afield"><label data-i18n="af_topics">Topics (comma separated)</label><input type="text" id="af_topics" placeholder="AI Governance, US–China" /></div>
+      <div class="afield"><label data-i18n="af_title_en">Title (EN)</label><input type="text" id="af_title_en" /></div>
+      <div class="afield"><label data-i18n="af_title_tr">Title (TR)</label><input type="text" id="af_title_tr" /></div>
+      <div class="afield"><label data-i18n="af_abs_en">Abstract (EN)</label><textarea id="af_abs_en"></textarea></div>
+      <div class="afield"><label data-i18n="af_abs_tr">Abstract (TR)</label><textarea id="af_abs_tr"></textarea></div>
+      <div class="afield"><label data-i18n="af_link">Link (optional)</label><input type="url" id="af_link" placeholder="https://..." /></div>
+      <div class="afield"><label data-i18n="af_flourish">Flourish embed URL (optional)</label><input type="url" id="af_flourish" placeholder="https://flo.uri.sh/..." /></div>
+      <div class="admin-actions">
+        <button class="btn btn-primary" onclick="generateEntry()" data-i18n="admin_gen">Generate entry</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('adminOverlay').classList.remove('open')" data-i18n="admin_cancel">Close</button>
+      </div>
+      <div class="aout" id="aout" style="display:none">
+        <label data-i18n="admin_result">Copy this block into the ANALYSES array in the HTML file:</label>
+        <textarea id="aoutText" readonly></textarea>
+        <div class="notice" id="copyNotice" data-i18n="admin_copied">Copied to clipboard ✓</div>
+        <div class="admin-actions" style="margin-top:14px">
+          <button class="btn btn-ghost" onclick="copyEntry()" data-i18n="admin_copy">Copy to clipboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap nav">
+    <a href="#top" class="brand">TURAN<b>.</b>T</a>
+    <button class="nav-toggle" aria-label="menu">≡</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#research" data-i18n="nav_research">Research</a>
+      <a href="#writing" data-i18n="nav_writing">Writing</a>
+      <a href="#reading" data-i18n="nav_reading">Reading</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <button class="lang" id="langBtn">TR</button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- 00 HERO -->
+  <div class="hero wrap">
+    <div class="kicker reveal" style="--d:0" data-i18n="hero_kicker">Digital Geopolitics · Strategic Analysis</div>
+    <h1 class="reveal" style="--d:1" data-i18n-html="hero_title">Power, platforms, and the <em>contest</em> over digital order.</h1>
+    <p class="thesis reveal" style="--d:2" data-i18n="hero_thesis">I study how states convert technology into leverage — tracing US–China competition, the politics of platform governance, and the rise of AI as a measure of state capacity.</p>
+    <div class="actions reveal" style="--d:3">
+      <a href="#writing" class="btn btn-primary" data-i18n="hero_cta1">Read the work</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Get in touch</a>
+      <!-- CV butonu: CV PDF dosyasını GitHub'a yükledikten sonra href'i güncelle -->
+      <a href="cv.pdf" class="btn btn-ghost" download data-i18n="hero_cv">
+        <svg viewBox="0 0 16 16"><path d="M8 12l-4-4 1.4-1.4L7 8.2V2h2v6.2l1.6-1.6L12 8l-4 4zM2 14h12v-2H2v2z"/></svg>
+        CV
+      </a>
+    </div>
+  </div>
+
+  <!-- 01 RESEARCH AREAS -->
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title" data-i18n="research_title">Research Areas</h2>
+      </div>
+      <div class="areas reveal">
+        <div class="area">
+          <span class="idx">A1</span>
+          <h3 data-i18n="area1_t">China Strategy</h3>
+          <p data-i18n="area1_d">A2/AD posture, the South China Sea, and how Beijing contests the legitimacy of Western-built frameworks.</p>
+        </div>
+        <div class="area">
+          <span class="idx">A2</span>
+          <h3 data-i18n="area2_t">Platform Governance</h3>
+          <p data-i18n="area2_d">How regulation of platforms like TikTok and Meta becomes an instrument of geopolitical, not merely security, competition.</p>
+        </div>
+        <div class="area">
+          <span class="idx">A3</span>
+          <h3 data-i18n="area3_t">AI & State Capacity</h3>
+          <p data-i18n="area3_d">AI governance as a power struggle — who sets the rules, and how legitimacy is manufactured and contested.</p>
+        </div>
+        <div class="area">
+          <span class="idx">A4</span>
+          <h3 data-i18n="area4_t">Indo-Pacific Order</h3>
+          <p data-i18n="area4_d">Regional balancing, deterrence, and the strategic positioning of middle powers between great-power blocs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 WRITING / ANALYSES -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title" data-i18n="writing_title">Selected Writing</h2>
+      </div>
+      <div class="filters reveal" id="filters"></div>
+      <div class="feed reveal" id="feed"></div>
+    </div>
+  </section>
+
+  <!-- 03 READING LIST -->
+  <section id="reading">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title" data-i18n="reading_title">Reading List</h2>
+      </div>
+      <div class="reading-grid reveal" id="bookGrid"></div>
+    </div>
+  </section>
+
+  <!-- 04 APPROACH -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title" data-i18n="about_title">Approach</h2>
+      </div>
+      <div class="split">
+        <div class="prose reveal">
+          <p data-i18n="about_p1">I work within a neorealist frame, but treat theory as a tool for strategy rather than an end in itself. The question is always practical: how does a given actor convert capability into leverage, and what does that reveal about the order being built?</p>
+          <p data-i18n="about_p2">My method is qualitative and case-driven — close reading of policy, regulation, and corporate behaviour, paired with structured data where it sharpens the argument. I write in English and Turkish, with a regional focus on East Asia and the wider Indo-Pacific.</p>
+        </div>
+        <div class="facts reveal">
+          <div class="fact"><div class="label" data-i18n="fact1_l">Focus</div><div class="val" data-i18n="fact1_v">US–China competition · Digital order</div></div>
+          <div class="fact"><div class="label" data-i18n="fact2_l">Framework</div><div class="val" data-i18n="fact2_v">Neorealism · Critical theory of governance</div></div>
+          <div class="fact"><div class="label" data-i18n="fact3_l">Method</div><div class="val" data-i18n="fact3_v">Qualitative · Case study · Data visualisation</div></div>
+          <div class="fact"><div class="label" data-i18n="fact4_l">Languages</div><div class="val" data-i18n="fact4_v">English · Turkish</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CONTACT -->
+  <section id="contact" class="contact-sec">
+    <div class="wrap">
+      <div class="kicker reveal" data-i18n="contact_kicker">Contact</div>
+      <h2 class="reveal" data-i18n="contact_title">Open to research collaboration and conversation.</h2>
+      <p class="sub reveal" data-i18n="contact_sub">IR · Digital geopolitics · Platform governance</p>
+      <div class="actions reveal">
+        <a href="https://www.linkedin.com/in/turan-t-b75a02290" target="_blank" rel="noopener noreferrer" class="btn btn-primary">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-left">
+        <span class="fname">TURAN T.</span>
+        <span class="fnote" data-i18n="foot_note">Static archive · no trackers · no forms</span>
+      </div>
+      <div class="foot-right">
+        <a href="https://www.linkedin.com/in/turan-t-b75a02290" target="_blank" rel="noopener noreferrer" class="foot-link">LinkedIn</a>
+        <span style="color:var(--line-strong)">·</span>
+        <span class="foot-link" style="cursor:pointer" onclick="openAdmin()" data-i18n="foot_admin">Panel</span>
+        <span style="color:var(--line-strong)">·</span>
+        <span class="fnote" id="footyr"></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   ANALYSES — yeni analiz eklemek için bu bloğu kopyala-doldur
+   Add new analysis: copy a { } block, fill all fields.
+   ========================================================= */
+const ANALYSES = [
+  {
+    date: "2025",
+    type: { en:"Data Brief", tr:"Veri Notu" },
+    topics: ["AI Governance","US–China"],
+    title: {
+      en:"The TikTok Ban Is Economic, Not Security",
+      tr:"TikTok Yasağı Güvenlik Değil, Ekonomi Meselesi"
+    },
+    abstract: {
+      en:"Quarterly revenue data for major US and Chinese tech firms (2020–2024) suggests the ban tracks commercial competition far more closely than any security timeline.",
+      tr:"Büyük ABD ve Çin teknoloji şirketlerinin çeyreklik gelir verileri (2020–2024), yasağın güvenlik takviminden çok ticari rekabetle örtüştüğünü gösteriyor."
+    },
+    link:"",
+    flourish:"" // Flourish embed URL — boşsa gösterilmez
+  },
+  {
+    date: "2025",
+    type: { en:"Analysis", tr:"Analiz" },
+    topics: ["China Strategy","Indo-Pacific"],
+    title: {
+      en:"A2/AD and the South China Sea",
+      tr:"A2/AD ve Güney Çin Denizi"
+    },
+    abstract: {
+      en:"A neorealist reading of how anti-access/area-denial posture reshapes deterrence calculations and the freedom-of-navigation contest in contested waters.",
+      tr:"Erişim engelleme/alan reddi duruşunun, tartışmalı sularda caydırıcılık hesaplarını ve seyrüsefer özgürlüğü mücadelesini nasıl yeniden şekillendirdiğine dair neorealist bir okuma."
+    },
+    link:"",
+    flourish:""
+  },
+  {
+    date: "2025",
+    type: { en:"Essay", tr:"Makale" },
+    topics: ["AI Governance","Platform Governance"],
+    title: {
+      en:"Whose Rules? AI Governance as a Power Struggle",
+      tr:"Kimin Kuralları? Bir Güç Mücadelesi Olarak AI Yönetişimi"
+    },
+    abstract: {
+      en:"Western frameworks normalise their own technology while framing Chinese systems as a threat; Beijing responds by contesting the legitimacy of the framework itself rather than playing inside it.",
+      tr:"Batılı çerçeveler kendi teknolojilerini normalleştirirken Çin sistemlerini tehdit olarak çerçeveliyor; Pekin ise çerçevenin içinde oynamak yerine çerçevenin meşruiyetini sorgulayarak yanıt veriyor."
+    },
+    link:"",
+    flourish:""
+  }
+];
+
+/* =========================================================
+   READING LIST — kitap/makale ekle/düzenle
+   status: "reading" | "done" | "queue"
+   ========================================================= */
+const BOOKS = [
+  { tag:"IR Theory", title:"IR Theories", author:"Ramazan Gözen (ed.)", status:"reading",
+    label:{en:"Currently reading",tr:"Okuyorum"} },
+  { tag:"Geopolitics", title:"The Code Breaker", author:"Walter Isaacson", status:"queue",
+    label:{en:"Up next",tr:"Sırada"} },
+  { tag:"Strategy", title:"On China", author:"Henry Kissinger", status:"done",
+    label:{en:"Completed",tr:"Tamamlandı"} },
+  { tag:"AI & Power", title:"The Age of Surveillance Capitalism", author:"Shoshana Zuboff", status:"queue",
+    label:{en:"Up next",tr:"Sırada"} },
+  { tag:"IR Theory", title:"Theory of International Politics", author:"Kenneth Waltz", status:"done",
+    label:{en:"Completed",tr:"Tamamlandı"} },
+  { tag:"Digital Order", title:"The Future of Power", author:"Joseph S. Nye Jr.", status:"queue",
+    label:{en:"Up next",tr:"Sırada"} }
+];
+
+/* =========================================================
+   ADMIN ŞİFRESİ — değiştirmek istersen aşağıdaki metni değiştir
+   ADMIN PASSWORD — change the string below
+   ========================================================= */
+const ADMIN_PW = "turan2025";
+
+/* =========================================================
+   TRANSLATIONS
+   ========================================================= */
+const T = {
+  en:{
+    nav_research:"Research",nav_writing:"Writing",nav_reading:"Reading",nav_about:"About",nav_contact:"Contact",
+    hero_kicker:"Digital Geopolitics · Strategic Analysis",
+    hero_title:'Power, platforms, and the <em>contest</em> over digital order.',
+    hero_thesis:"I study how states convert technology into leverage — tracing US–China competition, the politics of platform governance, and the rise of AI as a measure of state capacity.",
+    hero_cta1:"Read the work",hero_cta2:"Get in touch",hero_cv:"Download CV",
+    research_title:"Research Areas",
+    area1_t:"China Strategy",area1_d:"A2/AD posture, the South China Sea, and how Beijing contests the legitimacy of Western-built frameworks.",
+    area2_t:"Platform Governance",area2_d:"How regulation of platforms like TikTok and Meta becomes an instrument of geopolitical, not merely security, competition.",
+    area3_t:"AI & State Capacity",area3_d:"AI governance as a power struggle — who sets the rules, and how legitimacy is manufactured and contested.",
+    area4_t:"Indo-Pacific Order",area4_d:"Regional balancing, deterrence, and the strategic positioning of middle powers between great-power blocs.",
+    writing_title:"Selected Writing",
+    reading_title:"Reading List",
+    about_title:"Approach",
+    about_p1:"I work within a neorealist frame, but treat theory as a tool for strategy rather than an end in itself. The question is always practical: how does a given actor convert capability into leverage, and what does that reveal about the order being built?",
+    about_p2:"My method is qualitative and case-driven — close reading of policy, regulation, and corporate behaviour, paired with structured data where it sharpens the argument. I write in English and Turkish, with a regional focus on East Asia and the wider Indo-Pacific.",
+    fact1_l:"Focus",fact1_v:"US–China competition · Digital order",
+    fact2_l:"Framework",fact2_v:"Neorealism · Critical theory of governance",
+    fact3_l:"Method",fact3_v:"Qualitative · Case study · Data visualisation",
+    fact4_l:"Languages",fact4_v:"English · Turkish",
+    contact_kicker:"Contact",
+    contact_title:"Open to research collaboration and conversation.",
+    contact_sub:"IR · Digital geopolitics · Platform governance",
+    foot_note:"Static archive · no trackers · no forms",
+    foot_admin:"Panel",
+    filter_all:"All",read:"Read →",
+    admin_title:"Analysis Panel",admin_pw_label:"Enter access password",admin_enter:"Enter",
+    af_year:"Year",af_type_en:"Type (EN)",af_type_tr:"Type (TR)",af_topics:"Topics (comma separated)",
+    af_title_en:"Title (EN)",af_title_tr:"Title (TR)",af_abs_en:"Abstract (EN)",af_abs_tr:"Abstract (TR)",
+    af_link:"Link (optional)",af_flourish:"Flourish embed URL (optional)",
+    admin_gen:"Generate entry",admin_cancel:"Close",admin_copy:"Copy to clipboard",
+    admin_result:"Copy this block into the ANALYSES array:",admin_copied:"Copied ✓",
+    admin_wrong:"Wrong password.",flourish_label:"Data visualisation"
+  },
+  tr:{
+    nav_research:"Araştırma",nav_writing:"Yazılar",nav_reading:"Okuma",nav_about:"Hakkında",nav_contact:"İletişim",
+    hero_kicker:"Dijital Jeopolitik · Stratejik Analiz",
+    hero_title:'Güç, platformlar ve dijital düzen üzerindeki <em>mücadele</em>.',
+    hero_thesis:"Devletlerin teknolojiyi nasıl kaldıraca dönüştürdüğünü inceliyorum — ABD–Çin rekabetini, platform yönetişiminin siyasetini ve AI'nın bir devlet kapasitesi ölçütü olarak yükselişini izleyerek.",
+    hero_cta1:"Çalışmaları oku",hero_cta2:"İletişime geç",hero_cv:"CV İndir",
+    research_title:"Araştırma Alanları",
+    area1_t:"Çin Stratejisi",area1_d:"A2/AD duruşu, Güney Çin Denizi ve Pekin'in Batı yapımı çerçevelerin meşruiyetini nasıl sorguladığı.",
+    area2_t:"Platform Yönetişimi",area2_d:"TikTok ve Meta gibi platformların düzenlenmesinin yalnızca güvenlik değil, jeopolitik bir rekabet aracına nasıl dönüştüğü.",
+    area3_t:"AI ve Devlet Kapasitesi",area3_d:"Bir güç mücadelesi olarak AI yönetişimi — kuralları kim koyuyor ve meşruiyet nasıl üretilip sorgulanıyor.",
+    area4_t:"Hint-Pasifik Düzeni",area4_d:"Bölgesel dengeleme, caydırıcılık ve orta güçlerin büyük güç blokları arasındaki stratejik konumlanması.",
+    writing_title:"Seçilmiş Yazılar",
+    reading_title:"Okuma Listesi",
+    about_title:"Yaklaşım",
+    about_p1:"Neorealist bir çerçeveden çalışıyorum, ancak teoriyi bir amaç değil, strateji için bir araç olarak görüyorum. Soru her zaman pratik: bir aktör kapasiteyi nasıl kaldıraca dönüştürüyor ve bu, kurulan düzen hakkında ne söylüyor?",
+    about_p2:"Yöntemim niteliksel ve vaka temelli — politika, düzenleme ve şirket davranışının yakın okuması, argümanı keskinleştirdiği yerde yapısal veriyle birleştiriliyor. İngilizce ve Türkçe yazıyorum; bölgesel odağım Doğu Asya ve geniş Hint-Pasifik.",
+    fact1_l:"Odak",fact1_v:"ABD–Çin rekabeti · Dijital düzen",
+    fact2_l:"Çerçeve",fact2_v:"Neorealizm · Eleştirel yönetişim teorisi",
+    fact3_l:"Yöntem",fact3_v:"Niteliksel · Vaka analizi · Veri görselleştirme",
+    fact4_l:"Diller",fact4_v:"İngilizce · Türkçe",
+    contact_kicker:"İletişim",
+    contact_title:"Araştırma iş birliğine ve sohbete açığım.",
+    contact_sub:"Uİ · Dijital jeopolitik · Platform yönetişimi",
+    foot_note:"Statik arşiv · iz takibi yok · form yok",
+    foot_admin:"Panel",
+    filter_all:"Tümü",read:"Oku →",
+    admin_title:"Analiz Paneli",admin_pw_label:"Erişim şifresini girin",admin_enter:"Giriş",
+    af_year:"Yıl",af_type_en:"Tür (EN)",af_type_tr:"Tür (TR)",af_topics:"Konular (virgülle)",
+    af_title_en:"Başlık (EN)",af_title_tr:"Başlık (TR)",af_abs_en:"Özet (EN)",af_abs_tr:"Özet (TR)",
+    af_link:"Link (opsiyonel)",af_flourish:"Flourish embed URL (opsiyonel)",
+    admin_gen:"Girdi oluştur",admin_cancel:"Kapat",admin_copy:"Panoya kopyala",
+    admin_result:"Bu bloğu ANALYSES dizisine ekle:",admin_copied:"Kopyalandı ✓",
+    admin_wrong:"Yanlış şifre.",flourish_label:"Veri görselleştirme"
+  }
+};
+
+let lang="en", activeFilter="ALL", adminUnlocked=false;
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+
+function applyStatic(){
+  $$("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(T[lang][k]!=null)el.textContent=T[lang][k];});
+  $$("[data-i18n-html]").forEach(el=>{const k=el.dataset.i18nHtml;if(T[lang][k]!=null)el.innerHTML=T[lang][k];});
+  document.documentElement.lang=lang;
+}
+
+function buildFilters(){
+  const set=new Set();
+  ANALYSES.forEach(a=>a.topics.forEach(t=>set.add(t)));
+  const topics=["ALL",...set];
+  const box=$("#filters");box.innerHTML="";
+  topics.forEach(t=>{
+    const b=document.createElement("button");
+    b.className="filter"+(t===activeFilter?" active":"");
+    b.textContent=t==="ALL"?T[lang].filter_all:t;
+    b.onclick=()=>{activeFilter=t;buildFilters();renderFeed();};
+    box.appendChild(b);
+  });
+}
+
+function renderFeed(){
+  const feed=$("#feed");feed.innerHTML="";
+  ANALYSES.filter(a=>activeFilter==="ALL"||a.topics.includes(activeFilter)).forEach(a=>{
+    const el=document.createElement("article");
+    el.className="entry";
+    const tags=a.topics.map(t=>`<span class="tag">${t}</span>`).join("");
+    const link=a.link?`<a href="${a.link}" target="_blank" rel="noopener noreferrer" class="entry-link">${T[lang].read} <span></span></a>`:"";
+    const flourish=a.flourish?`<div class="flourish-wrap"><iframe src="${a.flourish}" scrolling="no" frameborder="0" allowfullscreen></iframe></div>`:"";
+    el.innerHTML=`
+      <div class="meta">
+        <span class="yr">${a.date}</span>${a.topics[0]||""}
+        ${a.type?`<span class="etype">${a.type[lang]}</span>`:""}
+      </div>
+      <div>
+        <h3>${a.title[lang]}</h3>
+        <p>${a.abstract[lang]}</p>
+        <div class="tags">${tags}</div>
+        ${link}
+        ${flourish}
+      </div>`;
+    feed.appendChild(el);
+  });
+}
+
+function renderBooks(){
+  const g=$("#bookGrid");g.innerHTML="";
+  BOOKS.forEach(b=>{
+    const d=document.createElement("div");
+    d.className=`book ${b.status}`;
+    d.innerHTML=`<div class="btag">${b.tag}</div><h4>${b.title}</h4><div class="bauth">${b.author}</div><div class="bstatus">${b.label[lang]}</div>`;
+    g.appendChild(d);
+  });
+}
+
+function setLang(l){
+  lang=l;
+  $("#langBtn").textContent=l==="en"?"TR":"EN";
+  applyStatic();buildFilters();renderFeed();renderBooks();
+}
+
+/* ADMIN */
+function openAdmin(){
+  $("#adminOverlay").classList.add("open");
+  if(!adminUnlocked){$("#adminLock").style.display="block";$("#adminForm").style.display="none";}
+}
+function checkPw(){
+  const pw=$("#adminPw").value;
+  if(pw===ADMIN_PW){
+    adminUnlocked=true;
+    $("#adminLock").style.display="none";
+    $("#adminForm").style.display="block";
+    $("#aout").style.display="none";
+  } else {
+    alert(T[lang].admin_wrong);
+    $("#adminPw").value="";
+  }
+}
+function generateEntry(){
+  const d=$("#af_date").value||"2025";
+  const ten=$("#af_type_en").value;
+  const ttr=$("#af_type_tr").value;
+  const topics=$("#af_topics").value.split(",").map(s=>s.trim()).filter(Boolean);
+  const ten_t=$("#af_title_en").value;
+  const ttr_t=$("#af_title_tr").value;
+  const ten_a=$("#af_abs_en").value;
+  const ttr_a=$("#af_abs_tr").value;
+  const link=$("#af_link").value;
+  const fl=$("#af_flourish").value;
+  const entry=`  {\n    date: "${d}",\n    type: { en:"${ten}", tr:"${ttr}" },\n    topics: [${topics.map(t=>`"${t}"`).join(",")}],\n    title: {\n      en:"${ten_t}",\n      tr:"${ttr_t}"\n    },\n    abstract: {\n      en:"${ten_a}",\n      tr:"${ttr_a}"\n    },\n    link:"${link}",\n    flourish:"${fl}"\n  },`;
+  $("#aoutText").value=entry;
+  $("#aout").style.display="block";
+  $("#copyNotice").classList.remove("show");
+}
+function copyEntry(){
+  navigator.clipboard.writeText($("#aoutText").value).then(()=>{
+    const n=$("#copyNotice");n.classList.add("show");
+    setTimeout(()=>n.classList.remove("show"),2500);
+  });
+}
+$("#adminClose").onclick=()=>$("#adminOverlay").classList.remove("open");
+$("#adminOverlay").onclick=(e)=>{if(e.target===$("#adminOverlay"))$("#adminOverlay").classList.remove("open");};
+$("#adminPw").addEventListener("keydown",e=>{if(e.key==="Enter")checkPw();});
+
+/* NAV */
+$("#langBtn").onclick=()=>setLang(lang==="en"?"tr":"en");
+$(".nav-toggle").onclick=()=>$("#navlinks").classList.toggle("open");
+$$("#navlinks a").forEach(a=>a.onclick=()=>$("#navlinks").classList.remove("open"));
+$("#footyr").textContent=new Date().getFullYear();
+
+/* REVEAL */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+},{threshold:.10});
+$$(".reveal").forEach(el=>io.observe(el));
+setTimeout(()=>$$(".hero .reveal").forEach(el=>el.classList.add("in")),60);
+
+/* INIT */
+applyStatic();buildFilters();renderFeed();renderBooks();
+</script>
+</body>
+</html>
