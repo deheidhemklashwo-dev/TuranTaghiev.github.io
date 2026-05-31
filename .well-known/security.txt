@@ -1,0 +1,3 @@
+# If you find a security issue with this site, please report it via LinkedIn.
+Contact: https://www.linkedin.com/in/turan-t-b75a02290
+Preferred-Languages: en, tr
