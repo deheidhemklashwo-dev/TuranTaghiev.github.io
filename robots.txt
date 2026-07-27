@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/sitemap.xml
