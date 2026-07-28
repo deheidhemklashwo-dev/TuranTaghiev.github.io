@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Turan Taghiev — Selected Writing</title>
+    <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/</link>
+    <description>Trust &amp; Safety, platform governance, and AI governance — field notes and analysis.</description>
+    <language>en</language>
+    <item>
+      <title>AI Governance Is Architecture, Not Policy</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=governance-is-architecture</link>
+      <guid isPermaLink="false">AI Governance Is Architecture, Not Policy</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <description>A governance document can say all the right things and still not govern anything, if none of it is enforced by how the system is actually built. Drawing on watching a behavioral risk framework evolve from written principle to structural rule, this piece looks at what separates a policy that describes what humans are supposed to do from architecture that makes it true by construction.</description>
+    </item>
+    <item>
+      <title>Screening the Screeners: What Actually Predicts a Good Moderator Hire</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=screening-the-screeners</link>
+      <guid isPermaLink="false">Screening the Screeners: What Actually Predicts a Good Moderator Hire</guid>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
+      <description>When evaluating candidates for moderation roles, the instinct is to start with what a candidate says about their own judgment. Drawing on a different approach, verified data first, secondhand accounts only to fill real gaps, this piece looks at what actually predicts whether someone is ready for authority, and why a title doesn't reset a documented history.</description>
+    </item>
+    <item>
+      <title>Same Model, Different Flags</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=same-model-different-flags</link>
+      <guid isPermaLink="false">Same Model, Different Flags</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 +0000</pubDate>
+      <description>A moderation filter tuned for English and Russian was applied by default to a Turkish community it had never been calibrated for. The clearest failure case was nationalism: the same pattern of speech read as near-racism in one channel and as patriotism in another, and the filter had only ever been taught one of those readings. On what closed the gap, and why sensitivity tuning couldn't.</description>
+    </item>
+    <item>
+      <title>Nine Languages, One Standard: What a Macro Library Actually Buys You</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=nine-languages-one-standard</link>
+      <guid isPermaLink="false">Nine Languages, One Standard: What a Macro Library Actually Buys You</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Players in uncovered regions kept asking why support didn't exist in their language. The staffing fix wasn't available on that timeline, so what got built instead was a macro library across seven additional languages, run solo for over a year. This piece is about what standardized responses actually remove from an interaction, and what they leave exactly where it belongs.</description>
+    </item>
+    <item>
+      <title>Reviewing the Reviewers: What a Ban Request Looks Like from the Other Side</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=reviewing-the-reviewers</link>
+      <guid isPermaLink="false">Reviewing the Reviewers: What a Ban Request Looks Like from the Other Side</guid>
+      <pubDate>Tue, 21 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Most moderation writing is about deciding what to do with a user. This piece is about the layer above: reviewing another moderator's ban request before it becomes final. Three unwritten criteria kept deciding the outcome, and none of them were about whether the user deserved the penalty. They were about whether the case could survive being questioned months later.</description>
+    </item>
+    <item>
+      <title>Repeat Offenders: The Violation Is the Pattern, Not the Message</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=repeat-offenders</link>
+      <guid isPermaLink="false">Repeat Offenders: The Violation Is the Pattern, Not the Message</guid>
+      <pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
+      <description>A month of hand-logged moderation data showed that most violators appear once and disappear, while a small group returns again and again with the same behavior. This piece looks at what per-incident moderation gets structurally wrong: every case can be handled correctly while the person behind five of them is handled by nothing except a moderator's memory.</description>
+    </item>
+    <item>
+      <title>Explainable Moderation: The Same Explanation Doesn't Work the Same Way Twice</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=explainable-moderation</link>
+      <guid isPermaLink="false">Explainable Moderation: The Same Explanation Doesn't Work the Same Way Twice</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Most writing about explainable moderation focuses on how much detail a rule violation notice should include. Less attention goes to tone, and to the fact that tone can't be standardized across communities without cost. Drawing on moderating the same game across Turkish, English, and Brazilian Portuguese communities, this piece treats tone as a resource allocation decision rather than a stylistic one.</description>
+    </item>
+    <item>
+      <title>Governance Reporting from the Frontline: What a Report Looks Like When No One Acts On It</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=governance-reporting-frontline</link>
+      <guid isPermaLink="false">Governance Reporting from the Frontline: What a Report Looks Like When No One Acts On It</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Most writing about governance reporting focuses on what a good report contains. Less gets said about what happens when a report is accurate, repeated, and correct, and still doesn't change anything. Drawing on four consecutive months of real moderation reports for a community I moderated without speaking its language, this piece looks at what reporting can actually force, and what it can only document.</description>
+    </item>
+    <item>
+      <title>Human-in-the-Loop: What It Actually Looks Like from a Moderation Queue</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=human-in-the-loop</link>
+      <guid isPermaLink="false">Human-in-the-Loop: What It Actually Looks Like from a Moderation Queue</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+      <description>“Human-in-the-loop” is usually presented as a safeguard: the system flags, a person decides, harm is prevented. Two and a half years inside a live moderation queue for a multiplayer game show a messier picture: context collapses into single keywords, technical false positives punish innocent messages, and review capacity itself becomes a constraint that governance design has to plan for.</description>
+    </item>
+    <item>
+      <title>Multilingual Moderation: Same Rule, Different Risk</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=multilingual-moderation</link>
+      <guid isPermaLink="false">Multilingual Moderation: Same Rule, Different Risk</guid>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+      <description>The hard part of moderating political speech across languages isn't the ruling. It's that the same enforcement lands as fair in one community and as betrayal in another, and repeated correct calls can turn a moderator into a target.</description>
+    </item>
+    <item>
+      <title>A2/AD and the South China Sea</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/a2ad-south-china-sea.html</link>
+      <guid isPermaLink="false">A2/AD and the South China Sea</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <description>A neorealist take on how anti-access and area-denial strategy changes the way deterrence works, and shapes the fight over freedom of navigation in disputed waters.</description>
+    </item>
+    <item>
+      <title>Whose Rules? AI Governance as a Power Struggle</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/whose-rules-ai-governance.html</link>
+      <guid isPermaLink="false">Whose Rules? AI Governance as a Power Struggle</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Western rules treat their own technology as normal while casting Chinese systems as a threat. Instead of playing by those rules, Beijing goes after the legitimacy of the rules themselves.</description>
+    </item>
+    <item>
+      <title>The TikTok Ban Is Economic, Not Security</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=tiktok-ban-economics</link>
+      <guid isPermaLink="false">The TikTok Ban Is Economic, Not Security</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
+      <description>The official explanation is national security. The evidence points somewhere else. Between 2020 and 2024, the ban tracked market share far more closely than any intelligence finding.</description>
+    </item>
+  </channel>
+</rss>
