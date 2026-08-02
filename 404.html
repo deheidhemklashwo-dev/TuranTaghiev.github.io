@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>Page not found — Turan Taghiev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+  href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap" />
+<style>
+  :root{
+    --bg:#141210; --bg-raised:#1a1815; --text:#e8e3d8; --text-soft:#a7aaa6;
+    --text-mute:#74787a; --accent:#b08d57; --line:#2a2f34; --line-strong:#2a2f34;
+  }
+  html[data-theme="light"]{
+    --bg:#f4efe6; --bg-raised:#faf6ee; --text:#26221b; --text-soft:#5c5749;
+    --text-mute:#8a8474; --accent:#83601f; --line:#d2c9b4; --line-strong:#d2c9b4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:Newsreader,Georgia,serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:clamp(24px,6vw,64px);
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ince kağıt dokusu — ana siteyle aynı */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.03;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative; z-index:1; max-width:560px; width:100%}
+  .kicker{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:26px;
+  }
+  h1{
+    font-size:clamp(1.6rem,4.6vw,2.3rem); line-height:1.18; font-weight:400;
+    letter-spacing:-.012em; margin-bottom:18px; text-wrap:balance;
+  }
+  h1 em{font-style:italic; color:var(--accent)}
+  p{
+    font-size:1.02rem; line-height:1.65; color:var(--text-soft);
+    max-width:52ch; margin-bottom:34px;
+  }
+  .actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+  a.btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--accent); text-decoration:none;
+    border:1px solid var(--line-strong); padding:11px 17px;
+    transition:border-color .2s;
+  }
+  a.btn:hover{border-color:var(--accent)}
+  a.btn.ghost{border-color:transparent; color:var(--text-mute)}
+  a.btn.ghost:hover{color:var(--accent); border-color:var(--line-strong)}
+  .foot{
+    margin-top:52px; padding-top:20px; border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:10px; letter-spacing:.06em; color:var(--text-mute);
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="kicker">404</div>
+    <h1>That page <em>isn't</em> here.</h1>
+    <p id="msg">The link may be broken, or the piece may have moved. Everything published is listed on the writing page.</p>
+    <div class="actions">
+      <a class="btn" href="./#writing">Selected writing</a>
+      <a class="btn ghost" href="./">Home</a>
+    </div>
+    <div class="foot">TURAN TAGHIEV — COMMUNITY OPERATIONS &amp; TRUST &amp; SAFETY</div>
+  </main>
+<script>
+  /* Ana sitedeki tema tercihini uygula, böylece 404 kopuk hissettirmez. */
+  try{
+    var t = localStorage.getItem("site-theme");
+    if(t === "light") document.documentElement.setAttribute("data-theme","light");
+  }catch(e){}
+
+  /* Eğer adres bir yazıyı işaret ediyor gibiyse (eski #read/ biçimi ya da
+     ?read= parametresi), doğrudan ana sayfadaki okuyucuya yönlendir:
+     paylaşılmış eski bağlantılar ölü uçta kalmasın. */
+  (function(){
+    var slug = "";
+    var h = location.hash || "";
+    if(h.indexOf("#read/") === 0) slug = h.slice(6);
+    if(!slug){
+      var m = location.search.match(/[?&]read=([^&]+)/);
+      if(m) slug = m[1];
+    }
+    if(!slug){
+      /* /pdfs/xxx.pdf gibi bir yol denenmiş olabilir.
+         404.html ve index.html'in kendisi slug sayılmamalı. */
+      var p = location.pathname.match(/([a-z0-9-]+)\.(?:html|pdf)$/i);
+      if(p && !/^(404|index)$/i.test(p[1])) slug = p[1];
+    }
+    if(slug){
+      var el = document.getElementById("msg");
+      if(el) el.textContent = "This link points to a piece that may have moved. Taking you to the archive.";
+      setTimeout(function(){ location.replace("./?read=" + encodeURIComponent(slug)); }, 1400);
+    }
+  })();
+</script>
+</body>
+</html>
