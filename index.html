@@ -2638,7 +2638,7 @@ function renderFeatured(){
       <div class="fc-meta"><span class="fc-type">${esc(typeLabel)}</span><span>${esc(a.date||"")}</span></div>
       <h3 class="fc-title">${esc(a.title[lang])}</h3>
       <p class="fc-abs">${a.abstract[lang]||a.abstract.en}</p>
-      <span class="fc-read">${T[lang].read||"Read →"}</span>`;
+      <span class="fc-read link-inline">${T[lang].read||"Read →"}</span>`;
     // tıklama: iç sayfa > okuyucu > dış link
     card.onclick=()=>{
       Sound.tick();
@@ -2797,11 +2797,11 @@ function renderFeed(){
     // öncelik: iç makale sayfası (page) > site-içi okuyucu (body) > dış link (link)
     let link="";
     if(a.page){
-      link=`<a class="entry-link" href="${a.page}">${T[lang].read} <span></span></a>`;
+      link=`<a class="entry-link link-inline" href="${a.page}">${T[lang].read} <span></span></a>`;
     } else if(a.body&&(a.body[lang]||a.body.en)){
-      link=`<a class="entry-link" href="?read=${slugFor(a)}" onclick="event.preventDefault();openReader(${realIndex})">${T[lang].read} <span></span></a>`;
+      link=`<a class="entry-link link-inline" href="?read=${slugFor(a)}" onclick="event.preventDefault();openReader(${realIndex})">${T[lang].read} <span></span></a>`;
     } else if(a.link){
-      link=`<a href="${a.link}" target="_blank" rel="noopener noreferrer" class="entry-link">${T[lang].read} <span></span></a>`;
+      link=`<a href="${a.link}" target="_blank" rel="noopener noreferrer" class="entry-link link-inline">${T[lang].read} <span></span></a>`;
     }
     const pdfLink=a.pdf?` <a class="pdf-link pdf-link-feed" href="${a.pdf}" target="_blank" rel="noopener" onclick="Sound.soft();event.stopPropagation()"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>PDF</a>`:"";
     const flourish=a.flourish?`<div class="flourish-wrap" data-src="${a.flourish}"><div class="flourish-loading"><div class="fl-spin"></div><div class="fl-text">${T[lang].loading||"Loading chart…"}</div></div><iframe src="${a.flourish}" scrolling="no" frameborder="0" allowfullscreen onload="this.dataset.ok='1';this.closest('.flourish-wrap').dataset.loaded='1'" onerror="flourishFail(this)"></iframe></div>`:"";
