@@ -340,7 +340,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
             <li>Commit. Wait ~1 minute, then verify on the live site.</li>
           </ol>
           <div class="pub-links">
-            <button class="btn" onclick="exportArray()">Export full array</button>
+            <button class="btn btn-ghost" onclick="exportArray()">Export full array</button>
             <a class="btn btn-ghost" href="https://github.com/deheidhemklashwo-dev/TuranTaghiev.github.io/edit/main/index.html" target="_blank" rel="noopener">Edit index.html on GitHub</a>
             <a class="btn btn-ghost" href="https://github.com/deheidhemklashwo-dev/TuranTaghiev.github.io/upload/main/pdfs" target="_blank" rel="noopener">Upload PDFs</a>
             <a class="btn btn-ghost" href="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/" target="_blank" rel="noopener">View live site</a>
@@ -4409,6 +4409,15 @@ function generateEntry(){
     $("#aout").style.display="none";
     return;
   }
+  try{
+    generateEntryInner();
+  }catch(e){
+    Sound.error();
+    $("#aout").style.display="none";
+    showValidation({errs:[{id:"af_title_en",msg:"Generate failed unexpectedly: "+e.message+" — nothing was written, this is a bug, not a validation issue"}],warns:[]});
+  }
+}
+function generateEntryInner(){
   const escQ=s=>String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\r?\n/g," ");
   const d=escQ($("#af_date").value||"2026");
   const ten=escQ($("#af_type_en").value);
