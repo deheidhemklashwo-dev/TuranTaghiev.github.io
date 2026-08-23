@@ -2516,7 +2516,14 @@ function buildFilters(){
   });
 }
 
-/* ===== Kart giriş animasyonu: renderFeed sarmalayıcı ===== */
+/* ===== Kart giriş animasyonu: renderFeed sarmalayıcı =====
+   cardIn animasyonu (500ms + en geç kart için 440ms gecikme = ~940ms tepe)
+   sekme arka plana alınır/pencere küçültülürse ortasında donabilir: tarayıcı
+   compositor'ı zamanlamayı askıya alır, animationend hiç ateşlenmez, kartlar
+   opacity'nin donduğu değerde (neredeyse görünmez) kalıcı olarak kilitli
+   kalır. Hiçbir olay beklemeden zorla bitir: 1000ms sonra cards-in kaldırılır,
+   kural artık eşleşmez, kartlar temel (animasyonsuz) opacity:1 durumuna
+   döner — donma ihtimalini kökten kapatır. */
 (function(){
   const _rf=renderFeed;
   renderFeed=function(){
@@ -2525,6 +2532,14 @@ function buildFilters(){
     f.classList.remove("cards-in");
     void f.offsetWidth; /* reflow: animasyonu yeniden tetikle */
     f.classList.add("cards-in");
+    clearTimeout(f._cardsInFallback);
+    f._cardsInFallback=setTimeout(()=>{
+      f.classList.remove("cards-in");
+      /* sınıfı kaldırmak CSS kuralını düşürür ama askıda kalmış bir
+         animasyon nesnesi (örn. duraklatılmış) kendiliğinden temizlenmeyebilir
+         — kalanları elle iptal et, opacity kesin olarak 1'e dönsün */
+      f.querySelectorAll(":scope>*").forEach(el=>el.getAnimations().forEach(a=>a.cancel()));
+    },1000);
   };
 })();
 /* ===== Başa dön butonu ===== */
