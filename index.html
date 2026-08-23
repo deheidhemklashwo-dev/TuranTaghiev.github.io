@@ -769,6 +769,48 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-08-23",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"What \"Control\" Actually Means When You Don't Own the Platform",
+      tr:"Platformun Sahibi Olmadığında \"Kontrol\" Gerçekte Ne Anlama Gelir",
+      ru:"What \"Control\" Actually Means When You Don't Own the Platform",
+      az:"What \"Control\" Actually Means When You Don't Own the Platform"
+    },
+    abstract: {
+      en:"I had real authority. I could warn, mute, ban, review evidence, and make the call. But that authority sat inside two layers I never actually controlled: an internal chain that ran more on instinct than process, and a platform boundary that stopped right at my own server. This piece looks at what actually held decisions up when either layer could quietly override them.",
+      tr:"Gerçek yetkim vardı. Uyarabilir, susturabilir, banlayabilir, kanıtı inceleyip karar verebilirdim. Ama bu yetki, gerçekte hiç kontrol etmediğim iki katmanın içinde duruyordu: süreçten çok sezgiyle işleyen bir iç zincir, ve tam olarak kendi sunucumda biten bir platform sınırı. Bu yazı, her iki katman da bir kararı sessizce geçersiz kılabildiğinde kararları gerçekte neyin ayakta tuttuğuna bakıyor.",
+      ru:"I had real authority. I could warn, mute, ban, review evidence, and make the call. But that authority sat inside two layers I never actually controlled: an internal chain that ran more on instinct than process, and a platform boundary that stopped right at my own server. This piece looks at what actually held decisions up when either layer could quietly override them.",
+      az:"I had real authority. I could warn, mute, ban, review evidence, and make the call. But that authority sat inside two layers I never actually controlled: an internal chain that ran more on instinct than process, and a platform boundary that stopped right at my own server. This piece looks at what actually held decisions up when either layer could quietly override them."
+    },
+    link: "",
+    pdf: "",
+    flourish: "",
+    body: {
+      en:`I had real authority. Warn, mute, ban, review evidence, make the call. But that authority sat inside two layers I didn't control, and neither one was the same kind of limit.
+
+The first layer was internal. The community manager I answered to led on instinct and personal rapport rather than process, which meant the standard I was actually being held to shifted depending on who was involved and how loud they got. A user with real reach in the community, someone with followers or influence, could be clearly in the wrong and still try to go over my head, framing an enforcement action as a personal grudge rather than a consequence of their own behavior. The CM's instinct in those moments leaned toward smoothing things over rather than backing the decision, which meant the actual authority I had could get quietly overridden if the wrong person complained loudly enough.
+
+What actually protected the decisions was documentation, and specifically documentation built for an audience that wasn't the person I was reporting to. I logged every real case the same way: full conversation screenshots, timestamps, user IDs, kept in the moderation channel regardless of who was involved. Not because the CM required that level of detail, but because I answered to a staff lead who worked from data and nothing else, and who the CM was genuinely careful around. When a case got contested by someone influential, I didn't argue it with the CM directly. I took it to the staff lead, and the staff lead's involvement settled it, because the CM's instinct-based authority didn't hold up against someone who worked from evidence and had more standing than either of us. That wasn't a workaround I stumbled into. It became the actual mechanism: build every case as if it might need to survive a second, more skeptical audience, because sometimes it did.
+
+The second layer was the platform itself, and this one had no internal politics to navigate around, only a hard boundary. A stolen account distributing fraud links or NSFW content wasn't something I could act on beyond our own server. I could ban the account from our space, document everything, and that was the actual ceiling. Whatever happened to that account anywhere else on Discord was entirely outside anything I had access to or influence over. Same with users posting genuinely severe harassment, where the outcome I actually wanted, real platform-level consequences, wasn't something a server-level ban could reach. Filing a report didn't guarantee the result matched the severity of what happened. My real authority ended exactly at the edge of the server, and nothing about wanting a different outcome changed that.
+
+Operating inside both layers at once shaped how I built cases before I needed to, not after. Every real incident got the same treatment: full screenshots, timestamps, user IDs, logged in the moderation channel whether or not the case looked likely to get contested. Not because every case needed that level of proof to be correct, but because I couldn't know in advance which ones would end up tested by an unpredictable CM, an influential user's pushback, or a platform boundary I'd hit and have to work around. Control, in a setup like that, was never the ability to guarantee an outcome. It was having a documented, defensible case ready before I knew whether I'd need one.`,
+      tr:`Gerçek yetkim vardı. Uyar, sustur, banla, kanıtı incele, kararı ver. Ama bu yetki, kontrol etmediğim iki katmanın içinde duruyordu, ve ikisi de aynı türden bir sınır değildi.
+
+İlk katman içseldi. Bağlı olduğum topluluk yöneticisi süreç yerine sezgi ve kişisel yakınlıkla yönetiyordu, ki bu, gerçekte tutulduğum standardın kimin dahil olduğuna ve ne kadar yüksek sesle konuştuğuna göre değiştiği anlamına geliyordu. Toplulukta gerçek erişimi olan bir kullanıcı, takipçileri ya da etkisi olan biri, açıkça haksız olabilir ve yine de başımın üstüne çıkmaya çalışabilir, bir uygulama eylemini kendi davranışının bir sonucu olarak değil kişisel bir husumet olarak çerçeveleyebilirdi. CM'in o anlardaki sezgisi, kararı desteklemek yerine işleri yumuşatmaya meyilliydi, ki bu, sahip olduğum gerçek yetkinin, yanlış kişi yeterince yüksek sesle şikayet ederse sessizce geçersiz kılınabileceği anlamına geliyordu.
+
+Kararları gerçekten koruyan şey dokümantasyondu, ve özellikle rapor verdiğim kişi olmayan bir kitle için inşa edilmiş dokümantasyon. Her gerçek vakayı aynı şekilde kaydettim: tam konuşma ekran görüntüleri, zaman damgaları, kullanıcı ID'leri, kim dahil olursa olsun moderasyon kanalında tutuldu. CM bu detay seviyesini istediği için değil, verilerden başka hiçbir şeyden hareket eden ve CM'in gerçekten çekindiği bir staff lead'e rapor verdiğim için. Etkili biri tarafından bir vaka tartışmaya açıldığında, bunu CM ile doğrudan tartışmadım. Staff lead'e götürdüm, ve staff lead'in dahil olması meseleyi çözerdi, çünkü CM'in sezgiye dayalı yetkisi, kanıttan hareket eden ve ikimizden de daha fazla nüfuza sahip birine karşı dayanamazdı. Bu, tökezleyerek bulduğum bir çözüm değildi. Gerçek mekanizma haline geldi: her vakayı, ikinci, daha şüpheci bir kitleyi atlatması gerekebilecekmiş gibi inşa et, çünkü bazen gerekiyordu.
+
+İkinci katman platformun kendisiydi, ve bunda etrafında dolaşacağım iç politika yoktu, sadece sert bir sınır vardı. Fraud linkleri ya da NSFW içerik dağıtan çalınmış bir hesap, kendi sunucumuzun ötesinde üzerinde hareket edebileceğim bir şey değildi. Hesabı kendi alanımızdan banlayabilirdim, her şeyi belgeleyebilirdim, ve gerçek tavan buydu. O hesaba Discord'un başka herhangi bir yerinde ne olacağı, erişimim ya da etkim olan her şeyin tamamen dışındaydı. Gerçekten ciddi taciz paylaşan kullanıcılarda da aynı şey, gerçekten istediğim sonucun, gerçek platform seviyesinde sonuçların, sunucu seviyesinde bir banın ulaşamayacağı bir şey olduğu yerde. Bir rapor doldurmak, sonucun olanın ciddiyetiyle eşleşeceğini garanti etmiyordu. Gerçek yetkim tam olarak sunucunun kenarında bitiyordu, ve farklı bir sonuç istemekle ilgili hiçbir şey bunu değiştirmiyordu.
+
+Her iki katmanın içinde aynı anda çalışmak, vakaları ihtiyacım olmadan önce inşa etme şeklimi şekillendirdi, sonra değil. Her gerçek olay aynı muameleyi gördü: tam ekran görüntüleri, zaman damgaları, kullanıcı ID'leri, vaka tartışmaya açılacak gibi görünsün görünmesin moderasyon kanalında kaydedildi. Her vakanın doğru olmak için o kanıt seviyesine ihtiyacı olduğu için değil, ama hangilerinin öngörülemeyen bir CM, etkili bir kullanıcının geri tepmesi, ya da çarpıp etrafından dolaşmam gereken bir platform sınırı tarafından test edileceğini önceden bilemediğim için. Böyle bir kurulumda kontrol, hiçbir zaman bir sonucu garanti etme yeteneği değildi. İhtiyacım olup olmayacağını bilmeden önce hazır, belgelenmiş, savunulabilir bir vakaya sahip olmaktı.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-08-10",
     featured: false,
     type: { en:"Essay", tr:"Makale", ru:"Эссе", az:"Məqalə" },
