@@ -1235,12 +1235,12 @@ html.dl-arriving .reader-overlay{z-index:450}
 .coach-bar .coach-x{cursor:pointer;border:none;background:none;color:inherit;opacity:.6;font-size:var(--fs-13);padding:0 2px}
 .coach-bar .coach-x:hover{opacity:1}
 /* Form doğrulama */
-.field-error{border-color:#b05050!important;box-shadow:0 0 0 1px rgba(176,80,80,.35)!important}
-.veri-box{display:none;border:1px solid #b05050;border-radius:12px;padding:12px 16px;margin:0 0 14px;font-family:var(--mono);font-size:var(--fs-11);line-height:1.8}
+.field-error{border-color:var(--err)!important;box-shadow:0 0 0 1px rgba(196,92,74,.35)!important}
+.veri-box{display:none;border:1px solid var(--err);border-radius:12px;padding:12px 16px;margin:0 0 14px;font-family:var(--mono);font-size:var(--fs-11);line-height:1.8}
 .veri-box.on{display:block}
-.veri-box .veri-title{color:#b05050;letter-spacing:.12em;text-transform:uppercase;font-size:var(--fs-10);margin-bottom:var(--sp-6)}
+.veri-box .veri-title{color:var(--err);letter-spacing:.12em;text-transform:uppercase;font-size:var(--fs-10);margin-bottom:var(--sp-6)}
 .veri-box .qa-warn{color:#b08d57}
-.veri-box .qa-bad{color:#b05050}
+.veri-box .qa-bad{color:var(--err)}
 .veri-box .veri-jump{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .veri-box .veri-jump:hover{color:var(--accent)}
 /* Home ekranı: "kaldığın yerden devam et" bloğu */
@@ -1306,7 +1306,7 @@ html.dl-arriving .reader-overlay{z-index:450}
 .pub-sec-title{font-family:var(--mono);font-size:var(--fs-10);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-10)}
 .pub-qa-box{border:1px solid var(--line-strong);border-radius:12px;padding:12px 14px;font-family:var(--mono);font-size:var(--fs-10-5);line-height:1.8;max-height:260px;overflow:auto}
 .pub-qa-box .qa-warn{color:#b08d57}
-.pub-qa-box .qa-bad{color:#b05050}
+.pub-qa-box .qa-bad{color:var(--err)}
 .pub-qa-entry{opacity:.85;margin-top:var(--sp-8)}
 .pub-qa-entry:first-child{margin-top:0}
 .pub-qa-entry b{opacity:1}
@@ -1324,11 +1324,11 @@ html.dl-arriving .reader-overlay{z-index:450}
 .ali-actions{display:flex;gap:var(--sp-6);flex-shrink:0}
 .ali-btn{font-family:var(--mono);font-size:var(--fs-10);line-height:1;padding:5px 8px;border:1px solid var(--line-strong);background:transparent;color:inherit;opacity:.7;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s,opacity .2s}
 .ali-btn:hover{border-color:var(--accent);color:var(--accent);opacity:1}
-.ali-del:hover{border-color:#b05050;color:#b05050}
+.ali-del:hover{border-color:var(--err);color:var(--err)}
 .admin-list-item.is-archived{opacity:.45}
 .ali-details{border:1px dashed var(--line-strong);border-radius:10px;padding:12px 14px;margin:6px 0 10px;font-family:var(--mono);font-size:var(--fs-10-5);line-height:1.75;opacity:.9}
 .ali-details .qa-warn{color:#b08d57}
-.ali-details .qa-bad{color:#b05050}
+.ali-details .qa-bad{color:var(--err)}
 /* PDF bağlantısı — okuyucu ve akış */
 .pdf-link{display:inline-flex;align-items:center;gap:var(--sp-6);border:1px solid var(--line-strong);border-radius:7px;
   padding:6px 12px;font-family:var(--mono);font-size:var(--fs-10);letter-spacing:.12em;text-transform:uppercase;
