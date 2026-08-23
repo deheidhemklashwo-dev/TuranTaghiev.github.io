@@ -4150,6 +4150,13 @@ function qaScanEntry(a){
   if(!a.pdf)warns.push({lvl:"warn",msg:"No PDF attached"});
   if(!(a.title&&a.title.ru))warns.push({lvl:"warn",msg:"No RU title (fallback shows EN)"});
   if(!(a.title&&a.title.az))warns.push({lvl:"warn",msg:"No AZ title (fallback shows EN)"});
+  /* RU/AZ bir EN kopyası mı — gerçek çeviri değil, unutulmuş placeholder işareti */
+  ["title","abstract","body"].forEach(f=>{
+    ["ru","az"].forEach(k=>{
+      if(a[f]&&a[f].en&&a[f][k]&&a[f][k]===a[f].en)
+        warns.push({lvl:"warn",msg:f+"."+k.toUpperCase()+" is identical to EN — looks like an unfilled placeholder, not a real translation"});
+    });
+  });
   return warns;
 }
 function toggleDetails(idx,btn){
@@ -4491,6 +4498,10 @@ function generateEntryInner(){
     :'Entry generated. <b>Now:</b> Copy to clipboard \u2192 open '+COACH_GH+' \u2192 paste right after <code>const ANALYSES = [</code> (newest first) \u2192 commit. New PDF referenced? Upload it to pdfs/ too.');
   Sound.chime();
 }
+/* panel-genelinde son \u00e7are: generateEntry()'nin kendi try/catch'i kapsamad\u0131\u011f\u0131
+   herhangi bir yerde (ba\u015fka bir handler, gelecekte eklenecek kod) bir hata
+   patlarsa konsola sessizce d\u00fc\u015fmesin, mevcut do\u011frulama kutusunda g\u00f6r\u00fcns\u00fcn. */
+window.addEventListener("error", e => showValidation({errs:[{id:"af_title_en", msg:"Unexpected error: "+e.message}], warns:[]}));
 function copyEntry(){
   Sound.tick();
   navigator.clipboard.writeText($("#aoutText").value).then(()=>{
