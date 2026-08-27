@@ -2550,9 +2550,18 @@ function buildFilters(){
     b.onclick=()=>{
       Sound.soft();
       activeFilter=t;buildFilters();
-      const feed=$("#feed");
-      feed.classList.add("swapping");
-      setTimeout(()=>{renderFeed();feed.classList.remove("swapping");},220);
+      /* .swapping (container-seviyesi opacity geçişi) kaldırıldı: .reveal.in
+         ile aynı CSS özgüllüğüne (0,2,0) sahipti, stil sayfasında .reveal.in
+         SONRA geldiği için özgüllük eşitliğinde her zaman kazanıyordu — ama
+         #feed henüz .in almamışsa (örn. kullanıcı bölüme scroll ile
+         "görülmüş" işaretlenmeden filtreye tıklarsa), swapping kaldırıldıktan
+         sonra tek uygulanabilir kural .reveal{opacity:0} kalıyordu ve
+         container kalıcı olarak görünmez donuyordu — cardIn fallback'i bunu
+         hiç kapsamıyordu çünkü yalnızca kart-seviyesindeydi. Görünüm
+         değiştirme yolu (setFeedView) zaten kanıtlanmış: yalnızca kartların
+         kendi cardIn animasyonuna güvenmek, container'ın opaklığına hiç
+         dokunmamak. Aynı desene geçildi. */
+      renderFeed();
     };
     box.appendChild(b);
   });

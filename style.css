@@ -445,9 +445,6 @@ section{padding:88px 0;border-bottom:1px solid var(--line-strong)}
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.25);transform:scale(0);animation:rippleEffect .6s ease-out;pointer-events:none}
 @keyframes rippleEffect{to{transform:scale(2.5);opacity:0}}
 
-/* filtre değişiminde feed yumuşak geçiş */
-.feed{transition:opacity .25s ease}
-.feed.swapping{opacity:0}
 
 /* analiz kartları sırayla belirir (stagger) */
 .entry{animation:entryIn .5s cubic-bezier(.2,.7,.2,1) backwards}
