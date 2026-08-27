@@ -2932,7 +2932,12 @@ function renderFeed(){
     const realIndex=ANALYSES.indexOf(a);
     const el=document.createElement("article");
     el.className="entry";
-    el.style.animationDelay=(i*70)+"ms";
+    /* satır-içi gecikme kaldırıldı: tavansızdı (i*70ms), CSS'teki
+       #feed.cards-in>*:nth-child(n+8) kuralını eziyordu (satır-içi stil
+       her zaman kazanır) ve büyük filtrelerde (25+ kart) son kartların
+       bitiş zamanını 2s'nin üzerine çıkarıp 1000ms'lik zorla-bitir
+       fallback'ini erken tetikletiyordu. CSS'in kendi (8. karttan sonra
+       .44s'de sabitlenen) gecikmesi yönetsin. */
     const tags=a.topics.map(t=>`<span class="tag">${t}</span>`).join("");
     const bodyTxt=(a.body&&(a.body[lang]||a.body.en))||"";
     const dk=a.readMins||(bodyTxt?Math.max(1,Math.round(bodyTxt.trim().split(/\s+/).length/200)):0);
