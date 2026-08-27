@@ -4708,8 +4708,21 @@ window.addEventListener("pageshow",(e)=>{ hideVeil(); });
 const io=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
 },{threshold:.10});
-$$(".reveal").forEach(el=>io.observe(el));
+const revealEls=$$(".reveal");
+revealEls.forEach(el=>io.observe(el));
 setTimeout(()=>$$(".hero .reveal").forEach(el=>el.classList.add("in")),60);
+/* garantili kurtarma (cardIn'deki 1000ms zorla-bitir ile aynı desen):
+   .in tek başına IntersectionObserver'ın en az bir kez tetiklenmesine bağlı
+   — ör. #feed observe() anında boş (renderFeed henüz doldurmamış) olduğu,
+   sekme arka planda açıldığı, ya da tarayıcı callback'i geciktirdiği
+   durumlarda hiç tetiklenmeyebilir ve eleman kalıcı olarak opacity:0 kilitli
+   kalır. Hiçbir olay beklemeden 800ms sonra hâlâ .in almamış tüm .reveal
+   elemanlarını zorla görünür yap ve gözlemden çıkar. */
+setTimeout(()=>{
+  revealEls.forEach(el=>{
+    if(!el.classList.contains("in")){el.classList.add("in");io.unobserve(el);}
+  });
+},800);
 
 /* INIT */
 applyStatic();buildFilters();renderFeatured();renderFeed();renderBooks();renderPractice();renderNow();renderTimeline();renderCaps();
