@@ -1051,6 +1051,12 @@ html[data-theme="light"] .draft-notice{color:#3a7ca5;border-color:rgba(58,124,16
    Yardımcılar çerçevesiz ve sessiz; ihtiyaç duyulduğunda orada, dikkat
    çekmek için değil. */
 .reader-actions{display:flex;align-items:center;gap:var(--sp-6);flex-wrap:wrap}
+/* Eylem hiyerarşisi (31 Temmuz kararı, tekrar doğrulandı 3 Eylül):
+   <a class="pdf-link"> = birincil (PDF), belirgin çerçeve.
+   <button class="pdf-link"> = yardımcı (Link, Cite), çerçevesiz/soluk.
+   Ayrım etiket TÜRÜNE dayanıyor, ayrı bir sınıf ismi yok — Link'i
+   <a>'ya çevirmek bu hiyerarşiyi sessizce bozar. Değiştirmeden önce
+   burayı oku. */
 .reader-actions .pdf-link{border-color:var(--line-strong)}
 .reader-actions button.pdf-link{
   border-color:transparent;color:var(--text-mute);padding-left:7px;padding-right:7px}
