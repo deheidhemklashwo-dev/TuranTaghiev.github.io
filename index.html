@@ -773,6 +773,48 @@ const ANALYSES = [
     added: "2026-09-03",
     featured: false,
     type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","AI Governance"],
+    title: {
+      en:"What AI-Assisted Moderation Actually Caught",
+      tr:"Yapay Zeka Destekli Moderasyon Gerçekte Ne Yakaladı",
+      ru:"What AI-Assisted Moderation Actually Caught",
+      az:"What AI-Assisted Moderation Actually Caught"
+    },
+    abstract: {
+      en:"The hardest violations to catch are borderline cases backed by influence, not the obvious ones. No single conversation reveals that on its own. This piece looks at how AI-assisted moderation compressed pattern recognition across timestamps, history, and platform rules, why the tool's own identity mix-ups meant the final read never left the moderator's hands, and what actually got faster because of it.",
+      tr:"En zor yakalanan ihlaller, açık olanlar değil, nüfuzla desteklenen sınırda vakalardır. Tek bir konuşma bunu kendi başına ortaya koymaz. Bu yazı, yapay zeka destekli moderasyonun zaman damgaları, geçmiş ve platform kuralları üzerinden örüntü tanımayı nasıl hızlandırdığına, aracın kendi kimlik karışıklıklarının nihai kararı neden hiçbir zaman moderatörün elinden çıkarmadığına, ve bu sayede gerçekte neyin hızlandığına bakıyor.",
+      ru:"The hardest violations to catch are borderline cases backed by influence, not the obvious ones. No single conversation reveals that on its own. This piece looks at how AI-assisted moderation compressed pattern recognition across timestamps, history, and platform rules, why the tool's own identity mix-ups meant the final read never left the moderator's hands, and what actually got faster because of it.",
+      az:"The hardest violations to catch are borderline cases backed by influence, not the obvious ones. No single conversation reveals that on its own. This piece looks at how AI-assisted moderation compressed pattern recognition across timestamps, history, and platform rules, why the tool's own identity mix-ups meant the final read never left the moderator's hands, and what actually got faster because of it."
+    },
+    link: "",
+    pdf: "",
+    flourish: "",
+    body: {
+      en:`The hardest violations to catch aren't the obvious ones. They're the borderline cases, where someone knows exactly how close to the line they can get without crossing it clearly, and knows it because they've had backing before, someone willing to argue on their behalf, someone with enough standing to turn a straightforward decision into a fight. That's the category where a longer-term pattern actually matters most, and it's also the category where a single conversation, read on its own, tells you almost nothing useful.
+
+AI-assisted moderation, in the way I actually used it, was never about handing a conversation over to a model and letting it decide anything. It was closer to feeding it everything a person could reasonably miss when they're moving fast: full timestamps, complete user history, every prior incident, the entire shape of a case rather than the one message someone happened to flag. Fed that way, it could filter out what didn't matter, the back-and-forth insults and noise that read as violations but weren't actually the substance of the case, and surface the pattern underneath faster than manually rereading everything myself would have.
+
+That's a specific kind of help, and it only worked because of what I put into it, not because of what it figured out on its own. I gave it the full context, the history, the timestamps, along with a solid grounding in the platform's actual rules, the Discord TOS, and our own server guidelines. It wasn't operating on vague instinct about what might be a violation. It was working from the same complete picture I had, just faster at compressing it. Once I was fully across a case myself, I'd bring my own read and a proposed action, and we'd essentially work out the enforcement approach together from there, rather than me asking it what to do and taking the answer at face value.
+
+That said, it wasn't flawless, and the failure mode that did show up was a specific one: occasionally mixing up user identities and histories, applying a standard penalty meant for one person's record to a case that actually belonged to someone else entirely. That's a real risk with this kind of tool, and it's exactly why the final read always stayed mine. I never treated its output as the decision. It was an input I checked against the actual case before anything went out, which is the only reason a mix-up like that never turned into an actual wrong call against the wrong person.
+
+What actually changed because of this wasn't the standard I was enforcing to. It was how fast I could get from a messy, drawn-out conflict to a defensible decision, especially in the cases most likely to turn into a fight, where speed and a documented trail mattered as much as getting the call right in the first place.`,
+      tr:`Yakalanması en zor ihlaller açık olanlar değildir. Sınırda vakalardır, birinin çizgiye ne kadar yaklaşabileceğini tam olarak bildiği, ve bunu bildiği çünkü daha önce desteği olduğu, onun adına tartışmaya istekli biri, temiz bir kararı kavgaya çevirecek kadar nüfuzu olan biri. Uzun vadeli bir örüntünün gerçekte en çok önemli olduğu kategori bu, ve tek bir konuşmanın, kendi başına okunduğunda, sana neredeyse hiçbir yararlı şey söylemediği kategori de bu.
+
+Yapay zeka destekli moderasyon, gerçekte kullandığım şekliyle, hiçbir zaman bir konuşmayı bir modele devredip ona bir şeye karar verdirmek değildi. Birinin hızlı hareket ederken makul olarak kaçırabileceği her şeyi ona beslemeye daha yakındı: tam zaman damgaları, eksiksiz kullanıcı geçmişi, önceki her olay, birinin işaretlediği tek mesaj yerine bir vakanın tüm şekli. Bu şekilde beslendiğinde, önemli olmayanı filtreleyebiliyordu, ihlal gibi okunan ama gerçekte vakanın özü olmayan karşılıklı hakaretler ve gürültü, ve altındaki örüntüyü her şeyi kendim manuel olarak yeniden okumaktan daha hızlı ortaya çıkarabiliyordu.
+
+Bu belirli bir tür yardım, ve sadece kendi başına çözdüğü için değil, ona ne koyduğum yüzünden işe yaradı. Ona tam bağlamı, geçmişi, zaman damgalarını verdim, platformun gerçek kurallarına, Discord TOS'una, ve kendi sunucu kurallarımıza sağlam bir dayanakla birlikte. Neyin ihlal olabileceğine dair belirsiz bir sezgiyle çalışmıyordu. Benim sahip olduğum aynı tam resimle çalışıyordu, sadece onu sıkıştırmakta daha hızlıydı. Bir vakaya kendim tam olarak hakim olduktan sonra, kendi okumamı ve önerilen bir eylemi getirirdim, ve oradan itibaren esasen uygulama yaklaşımını birlikte çözerdik, ona ne yapması gerektiğini sorup cevabı olduğu gibi kabul etmek yerine.
+
+Bununla birlikte, kusursuz değildi, ve ortaya çıkan hata modu belirli bir türdü: bazen kullanıcı kimliklerini ve geçmişlerini karıştırıyordu, bir kişinin kaydı için tasarlanmış standart bir cezayı gerçekte tamamen başka birine ait olan bir vakaya uyguluyordu. Bu tür bir araçla gerçek bir risk, ve nihai okumanın her zaman benim kalmasının tam sebebi bu. Çıktısını hiçbir zaman karar olarak ele almadım. Herhangi bir şey çıkmadan önce gerçek vakaya karşı kontrol ettiğim bir girdiydi, ki böyle bir karışıklığın yanlış kişiye karşı gerçek bir yanlış karara dönüşmemesinin tek sebebi bu.
+
+Bunun yüzünden gerçekte değişen şey, uyguladığım standart değildi. Dağınık, uzun süreli bir çatışmadan savunulabilir bir karara ne kadar hızlı ulaşabildiğimdi, özellikle kavgaya dönüşmesi en muhtemel vakalarda, hızın ve belgelenmiş bir izin, doğru kararı vermek kadar önemli olduğu yerlerde.`
+    }
+  },
+  {
+    date: "2026",
+    added: "2026-09-03",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
     topics: ["Trust & Safety","Community Ops"],
     title: {
       en:"What a Governance Report Doesn't Say",
