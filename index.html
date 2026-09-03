@@ -3727,11 +3727,11 @@ const TYPES = [
     use:{ en:"Evidence-driven breakdown of a case", tr:"Kanıt temelli vaka çözümlemesi", ru:"Разбор кейса на основе данных", az:"Dəlillərə əsaslanan hadisə təhlili" } },
   { en:"Essay",       tr:"Makale",         ico:"M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z",
     use:{ en:"Argument-led long-form writing", tr:"Argüman odaklı uzun metin", ru:"Длинный текст с ведущим аргументом", az:"Arqument yönümlü uzun mətn" } },
-  { en:"Data Brief",  tr:"Veri Notu",      ico:"M18 20V10M12 20V4M6 20v-6",
+  { en:"Data Brief",  tr:"Veri Notu",      ru:"Сводка данных",     az:"Data qeydi",     ico:"M18 20V10M12 20V4M6 20v-6",
     use:{ en:"Numbers first, short and sharp", tr:"Önce rakamlar; kısa ve keskin", ru:"Сначала цифры: коротко и чётко", az:"Əvvəl rəqəmlər; qısa və dəqiq" } },
-  { en:"Policy Brief",tr:"Politika Notu",  ico:"M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z",
+  { en:"Policy Brief",tr:"Politika Notu",  ru:"Обзор политики",    az:"Siyasət icmalı", ico:"M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z",
     use:{ en:"Recommendation-oriented brief", tr:"Öneri odaklı kısa not", ru:"Краткая записка с рекомендациями", az:"Tövsiyə yönümlü qısa qeyd" } },
-  { en:"Commentary",  tr:"Yorum",          ico:"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
+  { en:"Commentary",  tr:"Yorum",          ru:"Комментарий",       az:"Şərh",           ico:"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
     use:{ en:"Fast reaction to current events", tr:"Güncel gelişmeye hızlı tepki", ru:"Быстрая реакция на события", az:"Cari hadisəyə sürətli reaksiya" } },
   { en:"Field Note",  tr:"Saha Notu",      ico:"M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11",
     use:{ en:"Hands-on lesson from moderation and T&S practice", tr:"Moderasyon ve T&S pratiğinden birebir ders", ru:"Практический урок из модерации и T&S", az:"Moderasiya və T&S təcrübəsindən birbaşa dərs" } }
@@ -4652,7 +4652,13 @@ function generateEntryInner(){
     if(orig[field].az)s+=`,\n      az:${JSON.stringify(orig[field].az)}`;
     return s;
   };
-  const ruazType=(orig&&orig.type)?((orig.type.ru?`, ru:${JSON.stringify(orig.type.ru)}`:"")+(orig.type.az?`, az:${JSON.stringify(orig.type.az)}`:"")):"";
+  /* RU/AZ tür adı: önce düzenlenen mevcut girişten (elle düzeltilmiş olabilir),
+     yoksa TYPES tanımından (yeni bir tür ilk kez kullanıldığında bile otomatik
+     doğru gelsin, "elle eklemeyi unutma" riski kapansın) */
+  const typeDef=TYPES.find(x=>x.en===ten);
+  const typeRu=(orig&&orig.type&&orig.type.ru)||(typeDef&&typeDef.ru)||"";
+  const typeAz=(orig&&orig.type&&orig.type.az)||(typeDef&&typeDef.az)||"";
+  const ruazType=(typeRu?`, ru:${JSON.stringify(typeRu)}`:"")+(typeAz?`, az:${JSON.stringify(typeAz)}`:"");
   const ben=$("#af_body_en").value.trim();
   const btr=$("#af_body_tr").value.trim();
   const isDraft=$("#af_draft").checked;
