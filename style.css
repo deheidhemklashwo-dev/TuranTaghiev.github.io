@@ -1087,8 +1087,8 @@ html[data-theme="light"] .draft-notice{color:#3a7ca5;border-color:rgba(58,124,16
 /* Okuyucu sonu: yazar kimliği ve iletişim yolu.
    Yazıyı bitiren okur için tek adımlık bir devam yolu; makale sonu
    yazar künyesi editöryal bir gelenek, satış çağrısı değil. */
-.reader-author{margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
-.ra-name{font-family:var(--mono);font-size:var(--fs-10);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--sp-9)}
+.reader-author{margin-top:64px;padding-top:26px;border-top:1px solid var(--line)}
+.ra-name{font-family:var(--mono);font-size:var(--fs-10);letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute);margin-bottom:var(--sp-9)}
 .ra-bio{font-size:12.8px;line-height:1.62;color:var(--text-mute);margin:0 0 14px;max-width:62ch}
 .ra-link{display:inline-flex;align-items:center;gap:var(--sp-7);font-family:var(--mono);font-size:var(--fs-10);
   letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
