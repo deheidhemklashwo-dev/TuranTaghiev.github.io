@@ -188,6 +188,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
       <div class="admin-pane" data-pane="compose">
       <div id="editingNote" style="display:none;background:rgba(176,141,87,.12);border:1px solid rgba(176,141,87,.35);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-family:var(--mono);font-size:11px;color:var(--accent-soft);display:none">
         Editing: <span style="color:var(--text)">—</span>
+        <span id="editingSeriesNote" style="display:none;margin-top:4px;color:var(--accent-soft)"></span>
         <button onclick="clearEditing()" style="float:right;background:none;border:none;color:var(--text-mute);cursor:pointer;font-family:var(--mono);font-size:11px;text-decoration:underline">＋ New instead</button>
       </div>
       <!-- ============ COMPOSE SİHİRBAZI — 4 adım, ekrana sığan pencereler ============ -->
@@ -4351,6 +4352,7 @@ function qaScanEntry(a){
   const terms=ndaTerms();
   const all=fields.map(([n,v])=>v).join(" ").toLowerCase()+" "+["ru","az"].map(k=>["title","abstract","body"].map(f=>a[f]&&a[f][k]||"").join(" ")).join(" ").toLowerCase();
   terms.forEach(t=>{if(t&&all.includes(t.toLowerCase()))warns.push({lvl:"bad",msg:'Sensitive term detected: "'+t+'" \u2014 NDA scan FAILED'});});
+  if(a.seriesId&&!a.seriesPreserved)warns.push({lvl:"bad",msg:"This entry is part of a series \u2014 its series link is about to be lost"});
   if(!a.page&&!(a.body&&a.body.tr))warns.push({lvl:"warn",msg:"No TR body \u2014 TR readers fall back to EN"});
   if(!a.pdf)warns.push({lvl:"warn",msg:"No PDF attached"});
   if(!(a.title&&a.title.ru))warns.push({lvl:"warn",msg:"No RU title (fallback shows EN)"});
@@ -4470,6 +4472,14 @@ function loadEntry(idx){
   // düzenleme göstergesi
   const ind=$("#editingNote");
   if(ind){ ind.style.display="block"; ind.querySelector("span").textContent=a.title.en||a.title.tr||"—"; }
+  // seri üyeliği: panelde düzenlenemez, ama fark edilsin — sessizce kaybolmasın
+  const sn=$("#editingSeriesNote");
+  if(sn){
+    if(a.seriesId!=null&&a.seriesOrder!=null){
+      sn.style.display="block";
+      sn.textContent=`Part of series "${a.seriesId}" (#${a.seriesOrder}) — preserved automatically on regenerate.`;
+    } else sn.style.display="none";
+  }
   openWin("compose");
   renderTypePick();renderTopicChips();
   wizGo(1);
@@ -4485,6 +4495,7 @@ function clearEditing(){
   const dr=$("#af_draft");if(dr)dr.checked=false;
   const pa2=$("#af_publishAt"); if(pa2)pa2.value="";
   const ind=$("#editingNote");if(ind)ind.style.display="none";
+  const sn=$("#editingSeriesNote");if(sn)sn.style.display="none";
   const pv=$("#adminPreview");if(pv)pv.style.display="none";
   Sound.tick();
 }
@@ -4676,7 +4687,13 @@ function generateEntryInner(){
      publishAt yoksa added = bugün. Eski eksik de kapanır: şablon added üretmiyordu. */
   const publishBlock=pubAt?`,\n    publishAt:"${pubAt}"`:"";
   const addedLine=`,\n    added: "${pubAt||todayStr()}"`;
-  const entry=`  {\n    date: "${d}",\n    type: { en:"${ten}", tr:"${ttr}"${ruazType} },\n    topics: [${topics.map(t=>`"${t}"`).join(",")}],\n    title: {\n      en:"${ten_t}",\n      tr:"${ttr_t}"${ruaz("title")}\n    },\n    abstract: {\n      en:"${ten_a}",\n      tr:"${ttr_a}"${ruaz("abstract")}\n    },\n    link:"${link}",\n    pdf:"${pdfv}",\n    flourish:"${fl}"${bodyBlock}${draftBlock}${featuredBlock}${publishBlock}${addedLine}\n  },`;
+  /* Seri üyeliği (seriesId/seriesOrder) panelde düzenlenebilir bir alan değil —
+     yalnızca düzenlenen orijinal girişten korunur, tıpkı ruaz()'ın RU/AZ
+     çevirilerini koruması gibi. Yeni bir giriş için orig yok, bu alanlar hiç
+     üretilmez (dokunulmamış davranış). */
+  const seriesBlock=(orig&&orig.seriesId!=null&&orig.seriesOrder!=null)
+    ?`,\n    seriesId: ${JSON.stringify(orig.seriesId)},\n    seriesOrder: ${orig.seriesOrder}`:"";
+  const entry=`  {\n    date: "${d}",\n    type: { en:"${ten}", tr:"${ttr}"${ruazType} },\n    topics: [${topics.map(t=>`"${t}"`).join(",")}]${seriesBlock},\n    title: {\n      en:"${ten_t}",\n      tr:"${ttr_t}"${ruaz("title")}\n    },\n    abstract: {\n      en:"${ten_a}",\n      tr:"${ttr_a}"${ruaz("abstract")}\n    },\n    link:"${link}",\n    pdf:"${pdfv}",\n    flourish:"${fl}"${bodyBlock}${draftBlock}${featuredBlock}${publishBlock}${addedLine}\n  },`;
   $("#aoutText").value=entry;
   $("#aout").style.display="block";
   $("#copyNotice").classList.remove("show");
@@ -4698,7 +4715,9 @@ function generateEntryInner(){
              ru:(orig&&orig.title&&orig.title.ru)||"",az:(orig&&orig.title&&orig.title.az)||""},
       abstract:{en:$("#af_abs_en").value,tr:$("#af_abs_tr").value},
       body:{en:ben,tr:btr},
-      pdf:pdfv
+      pdf:pdfv,
+      seriesId:orig&&orig.seriesId,
+      seriesPreserved:!!seriesBlock
     });
     if(qa.length&&lbl){
       lbl.innerHTML=esc(lbl.textContent)+"<br>"+qa.map(w=>`<span class="qa-${w.lvl}">\u26a0 ${esc(w.msg)}</span>`).join("<br>");
