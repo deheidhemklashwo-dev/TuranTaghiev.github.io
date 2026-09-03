@@ -769,6 +769,52 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-09-03",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"The Pattern That Took Four Reports to See",
+      tr:"Görünür Olması Dört Raporu Alan Örüntü",
+      ru:"The Pattern That Took Four Reports to See",
+      az:"The Pattern That Took Four Reports to See"
+    },
+    abstract: {
+      en:"A first violation gets a standard response. A fourth one, recognized through something closer to visual memory than conscious tracking, means the standard ladder no longer fits. This piece looks at what happens when a user goes quiet between violations hoping it's been forgotten, and why skipping ahead in enforcement was never a decision made alone.",
+      tr:"İlk ihlal standart bir yanıt alır. Bilinçli takipten çok görsel hafızaya yakın bir şeyle fark edilen dördüncü ihlal ise standart merdivenin artık uymadığı anlamına gelir. Bu yazı, bir kullanıcının ihlaller arasında unutulduğunu umarak sessizleştiği anlara ve uygulamada öne atlamanın neden hiçbir zaman tek başına verilen bir karar olmadığına bakıyor.",
+      ru:"A first violation gets a standard response. A fourth one, recognized through something closer to visual memory than conscious tracking, means the standard ladder no longer fits. This piece looks at what happens when a user goes quiet between violations hoping it's been forgotten, and why skipping ahead in enforcement was never a decision made alone.",
+      az:"A first violation gets a standard response. A fourth one, recognized through something closer to visual memory than conscious tracking, means the standard ladder no longer fits. This piece looks at what happens when a user goes quiet between violations hoping it's been forgotten, and why skipping ahead in enforcement was never a decision made alone."
+    },
+    link: "",
+    pdf: "",
+    flourish: "",
+    body: {
+      en:`The first time someone gets warned, there's no history to work with yet. A first violation gets a standard response, the same one anyone else would get for the same thing, because there isn't enough behind it to justify anything else. Even a second violation from the same person often doesn't read as a pattern yet. It's still just two data points, close enough to coincidence that treating it as something more would be reaching.
+
+Somewhere around the third or fourth time, something shifts, and it's not always a conscious realization at first. It's closer to visual memory, recognizing a username before you've consciously connected it to the earlier cases. That recognition is what tells you this isn't a fresh violation anymore. It's the same person, again, and the standard step-by-step ladder, warning, then mute, then ban, was built for someone without a history. Once a real pattern exists, sticking rigidly to that ladder stops making sense, because it treats the fourth occurrence like it's still the first.
+
+There's a specific kind of user this shows up with most: someone who keeps testing the same boundary well past the point where most people would stop, often because they've built enough standing in the community, or enough comfort with how enforcement usually goes, that consequences stop feeling real to them. Sometimes the pattern isn't even continuous. A user will go quiet for a while after a warning, seemingly betting that enough time has passed for it to be forgotten, and pick the same behavior back up later assuming no one's still tracking it. That gap doesn't reset anything. If the evidence from the earlier incidents is still there, the pattern is just as real whether it played out over a week or over months with silence in between.
+
+That continuity only works because the evidence doesn't live in memory alone. Each incident gets logged with the user's Discord ID attached, so any moderator, not just the one who handled the earlier cases, can pull up the full history and see the pattern in screenshots without having to dig through raw logs first. That's what makes a gap in time irrelevant. The pattern isn't something one person has to personally remember. It's something anyone on the team can verify the moment the ID comes up again.
+
+Deciding to skip ahead in the ladder isn't something to do alone, and I never treated it that way. The real question wasn't just what to do next, it was how to make that decision defensible if someone questioned why the response suddenly looked different from the previous times. Before acting on a pattern like that, I'd bring it to my lead first, not as a formality but because a second read on it mattered. Sometimes that meant we decided together. Other times, depending on the case, I'd leave enough room for them to notice the pattern on their own and step in with their own read on it, before I acted. Either way, the decision wasn't resting on one person's judgment call alone. That mattered less for covering myself and more because splitting where the judgment came from actually reduced the chance of getting it wrong.
+
+What this comes down to is that a pattern isn't something you can act on with the same confidence as a single incident, even once you're sure you're seeing one. The evidence is real, but it took several reports, sometimes spread across a gap the user was counting on to work in their favor, to become visible. Treating that decision as something to build with someone else, rather than something to act on alone the moment recognition hits, is what actually made a departure from standard enforcement something you could stand behind afterward.`,
+      tr:`Birisi ilk kez uyarıldığında, üzerinde çalışılacak bir geçmiş yoktur. İlk ihlal standart bir yanıt alır, aynı şeyi yapan herkesin alacağı yanıt, çünkü başka bir şeyi haklı çıkaracak kadar arkasında bir şey yoktur. Aynı kişiden gelen ikinci bir ihlal bile genelde henüz bir örüntü gibi okunmaz. Hâlâ sadece iki veri noktası, bunu daha fazlası olarak ele almanın zorlama olacağı kadar tesadüfe yakın.
+
+Üçüncü ya da dördüncü civarında bir şey değişir, ve bu her zaman bilinçli bir farkındalık değildir. Görsel hafızaya daha yakındır, bir kullanıcı adını, önceki vakalarla bilinçli olarak bağlantı kurmadan önce tanımak. Bu tanıma, bunun artık taze bir ihlal olmadığını söyleyen şeydir. Aynı kişi, tekrar, ve standart adım adım merdiven, uyarı, sonra susturma, sonra ban, geçmişi olmayan biri için inşa edilmişti. Gerçek bir örüntü var olduğunda, o merdivene sıkı sıkıya bağlı kalmak mantıklı olmaktan çıkar, çünkü dördüncü olayı sanki hâlâ ilkiymiş gibi ele alır.
+
+Bunun en çok göründüğü belirli bir kullanıcı türü var: çoğu insanın durduğu noktanın çok ötesinde aynı sınırı test etmeye devam eden biri, genelde toplulukta yeterince itibar kazandığı ya da uygulamanın genelde nasıl işlediğine yeterince alıştığı için, sonuçlar onlar için gerçek hissetmemeye başlar. Bazen örüntü sürekli bile değildir. Bir kullanıcı, bir uyarıdan sonra bir süre sessizleşir, sanki unutulacak kadar zaman geçtiğine bahse girerek, ve sonra kimsenin hâlâ takip etmediğini varsayarak aynı davranışa geri döner. Bu boşluk hiçbir şeyi sıfırlamaz. Önceki olayların kanıtı hâlâ oradaysa, örüntü, bir hafta boyunca mı yoksa aralarında sessizlik olan aylar boyunca mı yaşandığından bağımsız olarak aynı derecede gerçektir.
+
+Bu süreklilik sadece kanıtın hafızada değil başka bir yerde de yaşaması sayesinde işe yarar. Her olay, kullanıcının Discord ID'siyle birlikte kaydedilir, böylece sadece önceki vakaları ele alan kişi değil, herhangi bir moderatör, tam geçmişi çıkarıp örüntüyü ekran görüntülerinde görebilir, önce ham kayıtları eşelemek zorunda kalmadan. Zamandaki bir boşluğu alakasız kılan şey budur. Örüntü, bir kişinin kişisel olarak hatırlaması gereken bir şey değildir. ID tekrar ortaya çıktığı anda ekipteki herkesin doğrulayabileceği bir şeydir.
+
+Merdivende öne atlamaya karar vermek tek başına yapılacak bir şey değildi, ve ben bunu hiçbir zaman öyle ele almadım. Gerçek soru sadece sırada ne yapılacağı değildi, birisi yanıtın neden önceki seferlerden aniden farklı göründüğünü sorgularsa bu kararı nasıl savunulabilir kılacağıydı. Böyle bir örüntüye göre hareket etmeden önce, önce yöneticime götürürdüm, bir formalite olarak değil, ikinci bir okumanın önemli olduğu için. Bazen bu birlikte karar verdiğimiz anlamına gelirdi. Diğer zamanlarda, vakaya bağlı olarak, örüntüyü kendi başına fark etmesi ve ben hareket etmeden önce kendi okumasıyla müdahale etmesi için yeterli alan bırakırdım. Her iki durumda da, karar tek bir kişinin yargısına dayanmıyordu. Bu, kendimi korumak için değil, yargının nereden geldiğini bölmenin gerçekte yanlış yapma ihtimalini azaltması yüzünden önemliydi.
+
+Bunun vardığı yer şu: bir örüntü, gördüğünden emin olsan bile, tek bir olayla aynı güvenle üzerine hareket edebileceğin bir şey değildir. Kanıt gerçektir, ama görünür olması birkaç raporu, bazen kullanıcının lehine işlemesini umduğu bir boşluğa yayılmış olarak, aldı. Bu kararı tek başına, tanıma anında hareket edilecek bir şey olarak değil, başka biriyle birlikte inşa edilecek bir şey olarak ele almak, standart uygulamadan sapmayı sonradan arkasında durabileceğin bir şeye çeviren şeydi.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-08-27",
     featured: false,
     type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
