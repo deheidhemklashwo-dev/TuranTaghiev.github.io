@@ -770,6 +770,52 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-09-17",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"What a Poll Actually Changes (and What It Doesn't)",
+      tr:"Bir Anket Gerçekte Neyi Değiştirir (ve Neyi Değiştirmez)",
+      ru:"What a Poll Actually Changes (and What It Doesn't)",
+      az:"What a Poll Actually Changes (and What It Doesn't)"
+    },
+    abstract: {
+      en:"Most users in a conflict never say a word about it, but they still notice. This piece looks at a case where a poll was used to reach that silent majority, and what actually changed afterward wasn't a policy rewrite. It was something smaller: who ended up with room to make decisions.",
+      tr:"Bir çatışmada çoğu kullanıcı hiçbir şey söylemez, ama yine de fark ederler. Bu yazı, sessiz çoğunluğa ulaşmak için bir anketin kullanıldığı bir vakaya bakıyor, ve sonrasında gerçekte değişen şey bir politika değişikliği değildi. Daha küçük bir şeydi: kimin karar alma alanına sahip olduğu.",
+      ru:"Most users in a conflict never say a word about it, but they still notice. This piece looks at a case where a poll was used to reach that silent majority, and what actually changed afterward wasn't a policy rewrite. It was something smaller: who ended up with room to make decisions.",
+      az:"Most users in a conflict never say a word about it, but they still notice. This piece looks at a case where a poll was used to reach that silent majority, and what actually changed afterward wasn't a policy rewrite. It was something smaller: who ended up with room to make decisions."
+    },
+    link: "",
+    pdf: "",
+    flourish: "",
+    body: {
+      en:`A conflict rarely stays contained to the people directly involved in it. Even when the toxic behavior comes from a small, active group, it reaches users who never say a word about it. Those users still notice. They just don't leave a trace you can point to.
+
+That's the part that's easy to miss when you're only reading reports and reactions from the loudest people in the room. The first thing worth doing, before anything else, is identifying the actual source: who started the situation, how it got shaped and reused as it spread, and how far it actually traveled versus how far it feels like it traveled. Misinformation moves faster than most people expect, which is exactly why staying calm and hearing the full story matters more than reacting to the loudest version of it.
+
+But the harder problem is the silence. Most users never talk, never report, never comment on what's happening. They're not disengaged, they're just there to play, not to get involved in server politics. You can't manually ask each of them what they think. What you can do is build something that reaches them without asking them to step forward individually, a poll, a survey, some low-effort way to register an opinion without writing a paragraph about it.
+
+I ran into this directly. I co-led a Turkish server alongside an owner who wasn't especially active and didn't engage with the community the way I did. When rule-breakers showed up, his instinct was to ban immediately, no warning, no mute, nothing in between. Users started calling him unreachable. Complaints built up over time, not from one incident but from a pattern, until it reached a point where we needed something more concrete than a growing pile of individual complaints. We ran a poll: which community manager do you trust more. Ninety to a hundred users picked me.
+
+What actually changed afterward wasn't a policy shift. He didn't rewrite how he handled bans. What changed was smaller and, in hindsight, more useful: he softened on the immediate-ban habit and stepped back from day-to-day decisions. The role-based permission structure I'd already built for the team was handed over to run under my oversight. The data didn't force a rule change. It reallocated who actually had room to make decisions.
+
+That's probably the honest lesson here. A poll doesn't rewrite someone's approach to moderation. It measures what a large, mostly silent group already believes, and sometimes that's enough to shift where the actual authority sits, even when nobody agrees to change the policy on paper.`,
+      tr:`Bir çatışma nadiren sadece doğrudan içinde olan insanlarla sınırlı kalır. Zehirli davranış küçük, aktif bir gruptan gelse bile, hiçbir şey söylemeyen kullanıcılara da ulaşır. Bu kullanıcılar yine de fark eder. Sadece işaret edebileceğin bir iz bırakmazlar.
+
+Bu, sadece odadaki en yüksek sesli insanların rapor ve tepkilerini okuduğunda kaçırması kolay olan kısım. Her şeyden önce yapılması gereken şey, kaynağı gerçekten tespit etmek: durumu kim başlattı, yayılırken nasıl şekillendirilip yeniden kullanıldı, ve gerçekte ne kadar yayıldığı ile ne kadar yayılmış hissettirdiği arasındaki fark. Yanlış bilgi çoğu insanın beklediğinden daha hızlı hareket eder, tam da bu yüzden sakin kalıp tüm hikayeyi dinlemek, en yüksek sesli versiyona tepki vermekten daha önemlidir.
+
+Ama daha zor sorun sessizlik. Çoğu kullanıcı hiç konuşmaz, hiç rapor etmez, olan bitene hiç yorum yapmaz. İlgisiz değiller, sadece oynamaya geldiler, sunucu politikasına karışmaya değil. Her birine ayrı ayrı ne düşündüklerini elle soramazsın. Yapabileceğin şey, onlara adım atmalarını istemeden ulaşacak bir şey inşa etmek, bir anket, bir survey, bir paragraf yazmadan bir görüş kaydetmenin düşük çabalı bir yolu.
+
+Bunu doğrudan yaşadım. Benim kadar toplulukla ilgilenmeyen, özellikle aktif olmayan bir sahiple birlikte Türkçe bir sunucuyu co-lead ettim. Kural ihlal edenler ortaya çıktığında, onun içgüdüsü hemen ban atmaktı, uyarı yok, mute yok, arada hiçbir şey yok. Kullanıcılar onu "ulaşılamaz" diye çağırmaya başladı. Şikayetler zamanla birikti, tek bir olaydan değil bir örüntüden, ta ki büyüyen bireysel şikayet yığınından daha somut bir şeye ihtiyaç duyduğumuz bir noktaya ulaşana kadar. Bir anket yaptık: hangi community manager'a daha çok güveniyorsun. Doksan-yüz kullanıcı beni seçti.
+
+Sonrasında gerçekte değişen şey bir politika değişikliği değildi. Ban atma şeklini yeniden yazmadı. Değişen şey daha küçüktü ve geriye dönüp bakınca daha faydalıydı: anlık ban alışkanlığında yumuşadı ve günlük kararlardan geri çekildi. Ekip için zaten kurduğum rol-bazlı yetki yapısı, benim denetimimde çalışmak üzere devredildi. Veri bir kural değişikliğini zorlamadı. Kimin gerçekten karar alma alanına sahip olduğunu yeniden dağıttı.
+
+Buradaki dürüst ders muhtemelen bu. Bir anket, birinin moderasyon yaklaşımını yeniden yazmaz. Büyük, çoğunlukla sessiz bir grubun zaten neye inandığını ölçer, ve bazen bu, kağıt üzerinde politikayı değiştirmeyi kimse kabul etmese bile, gerçek yetkinin nerede durduğunu değiştirmeye yetiyor.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-09-03",
     featured: false,
     type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
