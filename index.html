@@ -2789,10 +2789,18 @@ function formatHeroKicker(){
   hk.innerHTML=parts.map(p=>`<span>${esc(p)}</span>`).join("");
 }
 
+/* Çip sırası sabit. Önceden sıra "ilk-görülme"ydi (ANALYSES üzerinde iterasyon),
+   yani en yeni girişin konu sırası tüm çubuğu yeniden diziyordu: AI Governance
+   bir yazıda 3., bir sonrakinde 4. sıraya düştü. Sabit liste, katalog büyüdükçe
+   çubuğun yerinde kalmasını garanti eder. Listede olmayan yeni bir konu sessizce
+   kaybolmasın diye sona, kendi ilk-görülme sırasıyla eklenir. */
+const TOPIC_ORDER=["Trust & Safety","Community Ops","AI Governance","Digital Geopolitics","China Strategy"];
 function buildFilters(){
   const set=new Set();
   ANALYSES.forEach(a=>a.topics.forEach(t=>set.add(t)));
-  const topics=["ALL",...set];
+  const sirali=TOPIC_ORDER.filter(t=>set.has(t));
+  const listeDisi=[...set].filter(t=>!TOPIC_ORDER.includes(t));
+  const topics=["ALL",...sirali,...listeDisi];
   const box=$("#filters");box.innerHTML="";
   box.setAttribute("role","radiogroup");
   box.setAttribute("aria-label","Filter by topic");
