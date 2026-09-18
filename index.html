@@ -770,6 +770,53 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-09-25",
+    publishAt: "2026-09-25",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"The Same Word, Three Meanings, One Filter",
+      tr:"Aynı Kelime, Üç Anlam, Tek Filtre",
+      ru:"The Same Word, Three Meanings, One Filter",
+      az:"The Same Word, Three Meanings, One Filter"
+    },
+    abstract: {
+      en:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix.",
+      tr:"Beş dilde kurulan bir blacklist, fark edilmesi kolay kaçırılan bir sorunla karşılaşır: aynı kelime her yerde aynı anlama gelmez, bazen tam tersini ifade eder. Bu yazı, yazarın kendi kendine fark ettiği iki dil-arası vakaya ve doğru yanıtın neden anında bir düzeltme değil, daha yakından incelenmek üzere bir not olduğuna bakıyor.",
+      ru:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix.",
+      az:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix."
+    },
+    link: "",
+    pdf: "",
+    flourish: "",
+    body: {
+      en:`A blacklist built across five languages runs into a problem that's easy to miss until it actually happens: the same word doesn't mean the same thing everywhere. Not close. Sometimes it means the opposite.
+
+Take the word "mal." In Turkish, it's a slang insult, roughly "idiot" or "moron." In Portuguese and Spanish, it's a completely ordinary word, meaning "bad" or, in another common sense, "goods" or "property." A filter built with Turkish in mind flags it as an insult. Applied without adjustment to a Portuguese or Spanish-speaking user, it flags a sentence that's saying nothing more than "this item is bad quality."
+
+Another example: "bunda." In Turkish, "bunda bir iş var" is an ordinary phrase meaning something like "there's something going on here," completely neutral. In Portuguese, the same string reads as harassment, close to slang or an insult depending on context. Same characters, same blacklist entry if you're not careful, two entirely different risk levels depending on which language the person typing it actually speaks.
+
+I found both of these myself, while going through cases, not because a user complained or because a message got flagged and someone pushed back. Nobody had to tell me. It surfaced from just sitting with the data long enough to notice a pattern didn't hold across languages the way I'd assumed it would when I first built the entry.
+
+What I didn't do was add a fix to the files right away. I took a note instead. Both of these sit in a gray zone, and gray zones are exactly the kind of thing that punishes a fast, confident change more than it rewards one. Adding a hard exception before I fully understood how the word actually gets used across contexts risked trading one blind spot for another, just a differently shaped one. So the decision was to flag it for closer, more careful review rather than resolve it on the spot.
+
+No system covers every case, and building one across five languages doesn't change that; if anything it multiplies the number of places something like this can hide. That's not an argument against building the system. It's the reason a human has to keep sitting behind it, reading the cases a filter can't actually tell apart on its own.`,
+      tr:`Beş dilde kurulan bir blacklist, gerçekleşene kadar fark edilmesi kolay kaçırılan bir sorunla karşılaşır: aynı kelime her yerde aynı anlama gelmez. Yakın bile değil. Bazen tam tersini ifade eder.
+
+"Mal" kelimesini ele alalım. Türkçe'de argo bir hakaret, kabaca "aptal" ya da "salak" anlamında. Portekizce ve İspanyolca'da tamamen sıradan bir kelime, "kötü" anlamına geliyor, ya da başka bir yaygın anlamda "eşya" ya da "mal mülk." Türkçe düşünülerek kurulmuş bir filtre, bunu hakaret olarak işaretler. Ayarlama yapılmadan Portekizce ya da İspanyolca konuşan bir kullanıcıya uygulanınca, "bu ürün kötü kalite" demekten başka bir şey söylemeyen bir cümleyi işaretliyor.
+
+Başka bir örnek: "bunda." Türkçe'de "bunda bir iş var" sıradan bir ifade, "burada bir şeyler dönüyor" gibi bir şey, tamamen nötr. Portekizce'de aynı dizi, bağlama bağlı olarak argo ya da hakarete yakın, taciz gibi okunuyor. Aynı karakterler, dikkatli olunmazsa aynı blacklist kaydı, ama kişinin gerçekte hangi dili konuştuğuna bağlı olarak tamamen farklı iki risk seviyesi.
+
+İkisini de vakaları incelerken kendim buldum, bir kullanıcı şikayet ettiği ya da bir mesaj işaretlenip biri itiraz ettiği için değil. Kimsenin bana söylemesi gerekmedi. Bir örüntünün, ilk kaydı oluşturduğumda varsaydığım şekilde dillerin genelinde geçerli olmadığını fark edecek kadar uzun süre veriyle oturmaktan ortaya çıktı.
+
+Hemen yapmadığım şey, dosyalara bir düzeltme eklemekti. Bunun yerine bir not aldım. İkisi de gri bir bölgede duruyor, ve gri bölgeler tam da hızlı, kendinden emin bir değişikliği ödüllendirmek yerine cezalandıran türden şeyler. Kelimenin farklı bağlamlarda gerçekte nasıl kullanıldığını tam anlamadan sert bir istisna eklemek, bir kör noktayı başka, farklı şekilli bir kör noktayla değiştirme riski taşıyordu. Bu yüzden karar, olay yerinde çözmek yerine daha yakından, daha dikkatli bir inceleme için işaretlemekti.
+
+Hiçbir sistem her vakayı kapsamaz, ve beş dilde bir tane inşa etmek bunu değiştirmiyor; eğer bir şey yaparsa, böyle bir şeyin gizlenebileceği yer sayısını çoğaltıyor. Bu, sistemi inşa etmeye karşı bir argüman değil. Bir insanın arkasında oturmaya devam etmesi gerekmesinin sebebi bu, bir filtrenin kendi başına gerçekten ayırt edemediği vakaları okumak için.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-09-17",
     featured: false,
     type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
@@ -3498,9 +3545,12 @@ function openEntryFor(a,i){
   if(a.body&&(a.body[lang]||a.body.en)){ openReader(i); return true; }
   return false;
 }
+/* Yalnızca yayındaki girişler: publishAt'i gelmemiş (ya da taslak/arşiv)
+   bir yazı ?read= / #read/ derin bağlantısıyla vaktinden önce açılmasın.
+   Üç çağıranın da (ilk yükleme, hashchange, popstate) tek kapısı burası. */
 function findBySlug(slug){
   const n=normSlug(slug);
-  return ANALYSES.find(a=>slugFor(a)===n)||null;
+  return ANALYSES.find(a=>isLive(a)&&slugFor(a)===n)||null;
 }
 const CANONICAL_SITE="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/";
 /* Önerilen atıf: PDF'lerdeki biçimle birebir aynı, böylece hangi sürümden
