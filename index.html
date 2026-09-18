@@ -778,17 +778,17 @@ const ANALYSES = [
     title: {
       en:"The Same Word, Three Meanings, One Filter",
       tr:"Aynı Kelime, Üç Anlam, Tek Filtre",
-      ru:"The Same Word, Three Meanings, One Filter",
-      az:"The Same Word, Three Meanings, One Filter"
+      ru:"Одно слово, три значения, один фильтр",
+      az:"Eyni söz, üç məna, bir filtr"
     },
     abstract: {
       en:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix.",
       tr:"Beş dilde kurulan bir blacklist, fark edilmesi kolay kaçırılan bir sorunla karşılaşır: aynı kelime her yerde aynı anlama gelmez, bazen tam tersini ifade eder. Bu yazı, yazarın kendi kendine fark ettiği iki dil-arası vakaya ve doğru yanıtın neden anında bir düzeltme değil, daha yakından incelenmek üzere bir not olduğuna bakıyor.",
-      ru:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix.",
-      az:"A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix."
+      ru:"Чёрный список, построенный на пяти языках, упирается в проблему, которую легко упустить: одно и то же слово значит не одно и то же везде, а иногда и противоположное. Эта статья о двух межъязыковых случаях, которые автор заметил сам, и о том, почему правильным ответом была заметка для более внимательного разбора, а не немедленное исправление.",
+      az:"Beş dildə qurulmuş qara siyahı gözdən qaçırmaq asan olan bir problemlə üzləşir: eyni söz hər yerdə eyni mənanı vermir, bəzən isə tam əksini bildirir. Bu yazı, müəllifin özünün fərq etdiyi iki dillərarası hala və düzgün cavabın niyə dərhal düzəliş deyil, daha diqqətli baxış üçün bir qeyd olduğuna baxır."
     },
     link: "",
-    pdf: "",
+    pdf: "pdfs/same-word-three-meanings.pdf",
     flourish: "",
     body: {
       en:`A blacklist built across five languages runs into a problem that's easy to miss until it actually happens: the same word doesn't mean the same thing everywhere. Not close. Sometimes it means the opposite.
@@ -812,7 +812,29 @@ Başka bir örnek: "bunda." Türkçe'de "bunda bir iş var" sıradan bir ifade, 
 
 Hemen yapmadığım şey, dosyalara bir düzeltme eklemekti. Bunun yerine bir not aldım. İkisi de gri bir bölgede duruyor, ve gri bölgeler tam da hızlı, kendinden emin bir değişikliği ödüllendirmek yerine cezalandıran türden şeyler. Kelimenin farklı bağlamlarda gerçekte nasıl kullanıldığını tam anlamadan sert bir istisna eklemek, bir kör noktayı başka, farklı şekilli bir kör noktayla değiştirme riski taşıyordu. Bu yüzden karar, olay yerinde çözmek yerine daha yakından, daha dikkatli bir inceleme için işaretlemekti.
 
-Hiçbir sistem her vakayı kapsamaz, ve beş dilde bir tane inşa etmek bunu değiştirmiyor; eğer bir şey yaparsa, böyle bir şeyin gizlenebileceği yer sayısını çoğaltıyor. Bu, sistemi inşa etmeye karşı bir argüman değil. Bir insanın arkasında oturmaya devam etmesi gerekmesinin sebebi bu, bir filtrenin kendi başına gerçekten ayırt edemediği vakaları okumak için.`
+Hiçbir sistem her vakayı kapsamaz, ve beş dilde bir tane inşa etmek bunu değiştirmiyor; eğer bir şey yaparsa, böyle bir şeyin gizlenebileceği yer sayısını çoğaltıyor. Bu, sistemi inşa etmeye karşı bir argüman değil. Bir insanın arkasında oturmaya devam etmesi gerekmesinin sebebi bu, bir filtrenin kendi başına gerçekten ayırt edemediği vakaları okumak için.`,
+      ru:`Чёрный список, построенный на пяти языках, упирается в проблему, которую легко упустить, пока она действительно не случится: одно и то же слово значит не одно и то же везде. Даже не близко. Иногда оно значит противоположное.
+
+Возьмём слово «mal». В турецком это сленговое оскорбление, примерно «идиот» или «дебил». В португальском и испанском это совершенно обычное слово, означающее «плохо», а в другом распространённом смысле «товары» или «имущество». Фильтр, построенный с оглядкой на турецкий, помечает его как оскорбление. Применённый без поправок к пользователю, говорящему по-португальски или по-испански, он помечает фразу, которая говорит не больше чем «этот товар плохого качества».
+
+Другой пример: «bunda». В турецком «bunda bir iş var» это обычное выражение, что-то вроде «здесь что-то происходит», совершенно нейтральное. В португальском та же строка читается как домогательство, близко к сленгу или оскорблению в зависимости от контекста. Те же символы, та же запись в чёрном списке, если не быть внимательным, и два совершенно разных уровня риска в зависимости от того, на каком языке на самом деле говорит тот, кто это пишет.
+
+Оба случая я нашёл сам, разбирая дела, а не потому, что пользователь пожаловался или сообщение пометили и кто-то возразил. Никому не пришлось мне об этом говорить. Это всплыло просто оттого, что я достаточно долго сидел с данными, чтобы заметить: закономерность не держится между языками так, как я предполагал, когда впервые создавал запись.
+
+Чего я не сделал, так это не внёс исправление в файлы сразу. Вместо этого я сделал заметку. Оба случая лежат в серой зоне, а серые зоны как раз из тех вещей, которые скорее наказывают быстрое уверенное изменение, чем вознаграждают его. Добавить жёсткое исключение, не поняв до конца, как слово на самом деле используется в разных контекстах, значило рискнуть обменять одно слепое пятно на другое, просто иной формы. Поэтому решение было пометить это для более пристального и внимательного разбора, а не решать на месте.
+
+Ни одна система не покрывает все случаи, и построение её на пяти языках этого не меняет; если что и меняет, так это умножает число мест, где может спрятаться нечто подобное. Это не довод против того, чтобы строить систему. Это причина, по которой за ней должен продолжать сидеть человек, читая случаи, которые фильтр сам по себе различить не может.`,
+      az:`Beş dildə qurulmuş qara siyahı, həqiqətən baş verənə qədər gözdən qaçırmaq asan olan bir problemlə üzləşir: eyni söz hər yerdə eyni mənanı vermir. Yaxın da deyil. Bəzən tam əksini bildirir.
+
+"Mal" sözünü götürək. Türk dilində bu, jarqon təhqirdir, təxminən "axmaq" və ya "gic" mənasında. Portuqal və ispan dillərində isə tamamilə adi sözdür, "pis" deməkdir, başqa geniş yayılmış mənada isə "mal" və ya "əmlak". Türk dili nəzərə alınaraq qurulmuş filtr onu təhqir kimi işarələyir. Heç bir düzəliş edilmədən portuqal və ya ispan dilində danışan istifadəçiyə tətbiq olunanda, "bu məhsul keyfiyyətsizdir" deməkdən başqa heç nə demədiyi cümləni işarələyir.
+
+Başqa bir nümunə: "bunda". Türk dilində "bunda bir iş var" adi ifadədir, "burada nəsə baş verir" kimi bir şey, tamamilə neytral. Portuqal dilində isə eyni sətir kontekstdən asılı olaraq jarqona və ya təhqirə yaxın, təqib kimi oxunur. Eyni simvollar, diqqətli olmasan eyni qara siyahı qeydi, amma yazan adamın əslində hansı dildə danışmasından asılı olaraq tamamilə fərqli iki risk səviyyəsi.
+
+Hər ikisini işlərə baxarkən özüm tapdım, bir istifadəçi şikayət etdiyi və ya bir mesaj işarələnib kimsə etiraz etdiyi üçün yox. Heç kimin mənə deməsi lazım olmadı. Bu, sadəcə məlumatla kifayət qədər uzun oturduğumdan ortaya çıxdı: bir nümunənin, qeydi ilk dəfə qurarkən düşündüyüm kimi dillər arasında keçərli olmadığını fərq etdim.
+
+Etmədiyim şey isə fayllara dərhal düzəliş əlavə etmək oldu. Bunun yerinə bir qeyd götürdüm. Hər ikisi boz zonadadır, boz zonalar isə sürətli, özündən əmin dəyişikliyi mükafatlandırmaqdan çox cəzalandıran şeylərdir. Sözün müxtəlif kontekstlərdə əslində necə işləndiyini tam başa düşmədən sərt bir istisna əlavə etmək, bir kor nöqtəni başqa, fərqli formalı bir kor nöqtə ilə dəyişmək riski daşıyırdı. Buna görə də qərar onu yerindəcə həll etmək yox, daha yaxından, daha diqqətli baxış üçün işarələmək oldu.
+
+Heç bir sistem bütün halları əhatə etmir, beş dildə sistem qurmaq da bunu dəyişmir; əksinə, belə bir şeyin gizlənə biləcəyi yerlərin sayını artırır. Bu, sistemi qurmağın əleyhinə arqument deyil. Bu, bir insanın onun arxasında oturmağa davam etməsinin səbəbidir: filtrin özünün ayırd edə bilmədiyi halları oxumaq üçün.`
     }
   },
   {
