@@ -12,11 +12,9 @@ Source code for a personal portfolio and writing site. It's a single static page
 
 ## Feed and sitemap
 
-`feed.xml` and `sitemap.xml` are generated from the `ANALYSES` array in `index.html`:
+`feed.xml` and `sitemap.xml` are generated from the `ANALYSES` array in `index.html` by `tools/build-feeds.js`. Only live entries are included (not draft, not archived, `publishAt` reached). Nothing needs to run locally:
 
-```
-node tools/build-feeds.js          # rewrite both files
-node tools/build-feeds.js --check  # exit 1 if they are out of date
-```
+- **Feed & sitemap update** runs daily at 00:15 UTC. If the files change (for example a scheduled entry's day has come), it pushes them to `bot/update-feeds` and opens a PR against `main`. Merging that PR is the only manual step. It never commits to `main`.
+- **Feed & sitemap check** runs on PRs and fails only on a real mismatch (entries changed but the files weren't regenerated). A scheduled entry whose day has come but isn't in the feed yet is not a failure.
 
-Only live entries are included (not draft, not archived, `publishAt` reached). The `Feed & sitemap check` workflow runs the check on every PR and once a day, so a scheduled entry going live shows up as a failed run until the files are regenerated. The workflow never commits.
+Both can also be run by hand from the Actions tab (the update job takes an optional date).

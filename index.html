@@ -337,7 +337,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
             <li><b>Export full array</b>. It opens in Compose output, ready to copy.</li>
             <li>Open index.html on GitHub, select everything from <code>const ANALYSES = [</code> to its closing <code>];</code> and paste over it.</li>
             <li>If any entry references a new PDF, upload it to the <code>pdfs/</code> folder.</li>
-            <li>If the entry list changed, regenerate <code>feed.xml</code> and <code>sitemap.xml</code> with <code>node tools/build-feeds.js</code> and commit both. A GitHub check fails the PR if they are out of date, and a daily run flags the day a scheduled entry goes live.</li>
+            <li>Leave <code>feed.xml</code> and <code>sitemap.xml</code> alone: a daily GitHub Action regenerates them and opens a PR when the entry list changes. Merge that PR when it appears.</li>
             <li>Commit. Wait ~1 minute, then verify on the live site.</li>
           </ol>
           <div class="pub-links">

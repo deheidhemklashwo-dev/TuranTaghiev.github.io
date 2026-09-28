@@ -1,9 +1,14 @@
 /* feed.xml ve sitemap.xml üreteci. Tek kaynak: index.html'deki ANALYSES dizisi.
 
+   Elle çalıştırmak gerekmez: GitHub Actions çalıştırır.
+     .github/workflows/feeds-update.yml → her gün yeniden üretir, değişiklik varsa PR açar
+     .github/workflows/feeds-check.yml  → PR'larda --check
+
    Kullanım (repo kökünden):
      node tools/build-feeds.js           → iki dosyayı yeniden yazar
-     node tools/build-feeds.js --check   → dosyalar güncel değilse çıkış kodu 1 (CI bunu kullanır)
-     node tools/build-feeds.js --date=2026-10-02   → "bugün"ü sabitle (zamanlanmış yazı testi)
+     node tools/build-feeds.js --check   → yalnızca gerçek tutarsızlıkta çıkış kodu 1
+                                           (yayın günü gelmiş ama eklenmemiş zamanlanmış yazı tutarsızlık sayılmaz)
+     node tools/build-feeds.js --date=2026-10-02   → "bugün"ü sabitle (FEEDS_DATE ortam değişkeni de olur)
 
    Kurallar sitedeki davranışla aynı:
    - Yalnızca yayındaki yazılar: draft/archived değil, publishAt'i gelmiş (isLive).
@@ -90,7 +95,29 @@ ${urls.join("\n")}
     return new Function("return ("+html.slice(start,start+e.index)+"\n]);")();
   }
 
-  const api={build,extractAnalyses,slugFor,isLive};
+  /* "Gerçek tutarsızlık" mı, yoksa yalnızca yayın günü geldi mi?
+     Dosyalar ANALYSES'in bugünkü ya da yayın günü gelmiş bir zamanlanmış yazıdan bir gün
+     önceki haliyle birebir eşleşiyorsa tutarlıdır: aradaki fark yalnızca takvimdir ve onu
+     günlük bot kapatır. Hiçbir tarihle eşleşmiyorsa içerik değişmiş ama dosyalar üretilmemiştir. */
+  function dayBefore(iso){
+    const [y,m,d]=iso.split("-").map(Number);
+    return new Date(Date.UTC(y,m-1,d-1)).toISOString().slice(0,10);
+  }
+  function check(ANALYSES,today,current){
+    const dates=[today].concat(
+      [...new Set(ANALYSES.filter(a=>a.publishAt&&a.publishAt<=today).map(a=>dayBefore(a.publishAt)))].sort().reverse()
+    );
+    let stale=["feed.xml","sitemap.xml"];
+    for(const d of dates){
+      const o=build(ANALYSES,d);
+      const s=[["feed.xml",o.feed],["sitemap.xml",o.sitemap]].filter(([f,v])=>current[f]!==v).map(([f])=>f);
+      if(!s.length)return {ok:true,date:d,stale:[]};
+      if(d===today)stale=s;
+    }
+    return {ok:false,date:null,stale};
+  }
+
+  const api={build,check,extractAnalyses,slugFor,isLive};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   else root.buildFeeds=api;
 
@@ -98,21 +125,21 @@ ${urls.join("\n")}
     const fs=require("fs"),path=require("path");
     const repo=path.resolve(__dirname,"..");
     const arg=k=>{const m=process.argv.find(x=>x.startsWith("--"+k));return m?(m.split("=")[1]||true):null;};
-    const today=arg("date")||new Date().toISOString().slice(0,10);
+    const today=arg("date")||process.env.FEEDS_DATE||new Date().toISOString().slice(0,10);
     const html=fs.readFileSync(path.join(repo,"index.html"),"utf8");
-    const out=build(extractAnalyses(html),today);
+    const A=extractAnalyses(html);
+    const out=build(A,today);
     const files={"feed.xml":out.feed,"sitemap.xml":out.sitemap};
     if(arg("check")){
-      const stale=Object.keys(files).filter(f=>{
-        let cur="";try{cur=fs.readFileSync(path.join(repo,f),"utf8").replace(/\r\n/g,"\n");}catch(e){}
-        return cur!==files[f];
-      });
-      if(stale.length){
-        console.error(`Güncel değil (bugün=${today}, yayındaki yazı=${out.count}): ${stale.join(", ")}`);
-        console.error("Düzeltmek için: node tools/build-feeds.js  → çıkan değişikliği PR ile gönder.");
+      const read=f=>{try{return fs.readFileSync(path.join(repo,f),"utf8").replace(/\r\n/g,"\n");}catch(e){return "";}};
+      const r=check(A,today,{"feed.xml":read("feed.xml"),"sitemap.xml":read("sitemap.xml")});
+      if(!r.ok){
+        console.error(`Tutarsız (bugün=${today}): ${r.stale.join(", ")} ANALYSES ile eşleşmiyor.`);
+        console.error("Bu PR'da yazı eklendi/değişti ama feed/sitemap yeniden üretilmedi.");
         process.exit(1);
       }
-      console.log(`feed.xml ve sitemap.xml güncel (bugün=${today}, yayındaki yazı=${out.count}).`);
+      if(r.date===today)console.log(`feed.xml ve sitemap.xml güncel (bugün=${today}, yayındaki yazı=${out.count}).`);
+      else console.log(`Tutarlı; yalnızca ${r.date} itibarıyla (yayın günü gelen zamanlanmış yazı henüz eklenmedi, günlük bot PR'ı bunu yapar).`);
     } else {
       for(const f in files)fs.writeFileSync(path.join(repo,f),files[f]);
       console.log(`Yazıldı: feed.xml, sitemap.xml (bugün=${today}, yayındaki yazı=${out.count}).`);

@@ -1,0 +1,22 @@
+# PR denetimi: feed.xml / sitemap.xml, PR'daki index.html (ANALYSES) ile tutarlı mı?
+# Yalnızca gerçek tutarsızlıkta kırmızı olur. Zamanlanmış bir yazının yayın günü gelmiş
+# ama henüz eklenmemiş olması tutarsızlık sayılmaz; onu feeds-update.yml kapatır.
+name: Feed & sitemap check
+
+on:
+  pull_request:
+    paths: ["index.html", "feed.xml", "sitemap.xml", "tools/build-feeds.js"]
+
+# Yalnızca kodu okur: checkout için contents:read yeterli.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node tools/build-feeds.js --check
