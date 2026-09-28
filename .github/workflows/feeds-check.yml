@@ -4,6 +4,8 @@
 name: Feed & sitemap check
 
 on:
+  push:
+    branches: [test/feeds-bot-sim]   # YALNIZCA TEST DALI
   pull_request:
     paths: ["index.html", "feed.xml", "sitemap.xml", "tools/build-feeds.js"]
 
@@ -20,3 +22,10 @@ jobs:
         with:
           node-version: 20
       - run: node tools/build-feeds.js --check
+      - name: "TEST: publish day arrived, files not regenerated -> must pass"
+        run: node tools/build-feeds.js --check --date=2026-10-02
+      - name: "TEST: hand-edited feed -> must fail"
+        run: |
+          sed -i 's/Same Model/Sme Model/' feed.xml
+          if node tools/build-feeds.js --check; then echo "HATA: bozuk feed geçti"; exit 1; else echo "Beklendiği gibi başarısız."; fi
+          git checkout -- feed.xml

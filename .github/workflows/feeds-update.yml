@@ -5,6 +5,8 @@
 name: Feed & sitemap update
 
 on:
+  push:
+    branches: [test/feeds-bot-sim]   # YALNIZCA TEST DALI
   schedule:
     - cron: "15 0 * * *"   # her gün 00:15 UTC (Bakü 04:15)
   workflow_dispatch:
@@ -29,9 +31,9 @@ jobs:
   update:
     runs-on: ubuntu-latest
     env:
-      BOT_BRANCH: bot/update-feeds
+      BOT_BRANCH: bot/update-feeds-sim
       BASE_BRANCH: ${{ github.ref_name }}
-      FEEDS_DATE: ${{ inputs.date }}
+      FEEDS_DATE: ${{ inputs.date || '2026-10-02' }}   # TEST: yayın günü simülasyonu
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
