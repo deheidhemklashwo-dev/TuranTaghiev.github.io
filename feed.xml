@@ -6,6 +6,62 @@
     <description>Field notes and analysis on content moderation, community operations, and platform governance.</description>
     <language>en</language>
     <item>
+      <title>The Same Word, Three Meanings, One Filter</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=same-word-three-meanings</link>
+      <guid isPermaLink="false">The Same Word, Three Meanings, One Filter</guid>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+      <description>A blacklist built across five languages runs into a problem that's easy to miss: the same word doesn't mean the same thing everywhere, sometimes the opposite. This piece looks at two cross-language cases the author caught himself, and why the right response was a note for closer review, not an immediate fix.</description>
+    </item>
+    <item>
+      <title>What a Poll Actually Changes (and What It Doesn't)</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=poll-actually-changes</link>
+      <guid isPermaLink="false">What a Poll Actually Changes (and What It Doesn't)</guid>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Most users in a conflict never say a word about it, but they still notice. This piece looks at a case where a poll was used to reach that silent majority, and what actually changed afterward wasn't a policy rewrite. It was something smaller: who ended up with room to make decisions.</description>
+    </item>
+    <item>
+      <title>What AI-Assisted Moderation Actually Caught</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=ai-assisted-moderation-caught</link>
+      <guid isPermaLink="false">What AI-Assisted Moderation Actually Caught</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The hardest violations to catch are borderline cases backed by influence, not the obvious ones. No single conversation reveals that on its own. This piece looks at how AI-assisted moderation compressed pattern recognition across timestamps, history, and platform rules, why the tool's own identity mix-ups meant the final read never left the moderator's hands, and what actually got faster because of it.</description>
+    </item>
+    <item>
+      <title>What a Governance Report Doesn't Say</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=governance-report-doesnt-say</link>
+      <guid isPermaLink="false">What a Governance Report Doesn't Say</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
+      <description>A structural proposal gets written once, in full. After that, repeating the same case in every monthly report stops adding information and starts reading like noise. This piece looks at what happens in the space between full repetition and total silence, and why a report's absences are usually an editorial judgment, not concealment.</description>
+    </item>
+    <item>
+      <title>The Pattern That Took Four Reports to See</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=pattern-four-reports</link>
+      <guid isPermaLink="false">The Pattern That Took Four Reports to See</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate>
+      <description>A first violation gets a standard response. A fourth one, recognized through something closer to visual memory than conscious tracking, means the standard ladder no longer fits. This piece looks at what happens when a user goes quiet between violations hoping it's been forgotten, and why skipping ahead in enforcement was never a decision made alone.</description>
+    </item>
+    <item>
+      <title>The Complaint That Wasn't About the Rule</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=complaint-not-about-rule</link>
+      <guid isPermaLink="false">The Complaint That Wasn't About the Rule</guid>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 +0000</pubDate>
+      <description>A rule can be applied correctly, and a complaint about it can still be legitimate, just not about the rule itself. Drawing on how pattern history, tone, and process shape whether enforcement feels fair, this piece looks at what a &quot;this isn't fair&quot; complaint is usually actually pointing at, and why a moderation team can't relitigate every case just because someone's unhappy.</description>
+    </item>
+    <item>
+      <title>What &quot;Control&quot; Actually Means When You Don't Own the Platform</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=what-control-means</link>
+      <guid isPermaLink="false">What &quot;Control&quot; Actually Means When You Don't Own the Platform</guid>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 +0000</pubDate>
+      <description>I had real authority. I could warn, mute, ban, review evidence, and make the call. But that authority sat inside two layers I never actually controlled: an internal chain that ran more on instinct than process, and a platform boundary that stopped right at my own server. This piece looks at what actually held decisions up when either layer could quietly override them.</description>
+    </item>
+    <item>
+      <title>Choosing Discord Wasn't the Choice, It Was the Result</title>
+      <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=choosing-discord-result</link>
+      <guid isPermaLink="false">Choosing Discord Wasn't the Choice, It Was the Result</guid>
+      <pubDate>Mon, 10 Aug 2026 00:00:00 +0000</pubDate>
+      <description>The platform was never chosen off a checklist. A regional manager reached out, and Discord was already where the community lived. Drawing on what actually made that fit work, this piece looks at the role hierarchy's hidden incentive structure, and the manual habit that had to fill a real gap in the platform's own logging.</description>
+    </item>
+    <item>
       <title>Transparency Isn't Free: What More Openness Actually Costs a Moderation Team</title>
       <link>https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/?read=transparency-isnt-free</link>
       <guid isPermaLink="false">Transparency Isn't Free: What More Openness Actually Costs a Moderation Team</guid>

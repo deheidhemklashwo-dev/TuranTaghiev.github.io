@@ -337,7 +337,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
             <li><b>Export full array</b>. It opens in Compose output, ready to copy.</li>
             <li>Open index.html on GitHub, select everything from <code>const ANALYSES = [</code> to its closing <code>];</code> and paste over it.</li>
             <li>If any entry references a new PDF, upload it to the <code>pdfs/</code> folder.</li>
-            <li>If the entry list changed, regenerate <code>feed.xml</code> and <code>sitemap.xml</code> (ask Claude to do this whenever entries are added, removed, or reordered) and upload both to the repo root.</li>
+            <li>Leave <code>feed.xml</code> and <code>sitemap.xml</code> alone: a daily GitHub Action regenerates them and opens a PR when the entry list changes. Merge that PR when it appears.</li>
             <li>Commit. Wait ~1 minute, then verify on the live site.</li>
           </ol>
           <div class="pub-links">
@@ -374,10 +374,10 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
         <div class="set-group">
           <div class="set-row">
             <div class="set-label">
-              <span class="set-name" data-i18n="set_sound">Interface sound</span>
+              <span class="set-name" id="setSoundName" data-i18n="set_sound">Interface sound</span>
               <span class="set-sub" data-i18n="set_sound_d">Soft clicks and chimes on interaction</span>
             </div>
-            <button class="set-switch" role="switch" id="setSound" role="switch" aria-checked="true" onclick="toggleSetSound()"><span class="knob"></span></button>
+            <button class="set-switch" role="switch" id="setSound" aria-labelledby="setSoundName" aria-checked="true" onclick="toggleSetSound()"><span class="knob"></span></button>
           </div>
           <div class="set-row">
             <div class="set-label">
@@ -3613,14 +3613,37 @@ function injectArticleSchema(a){
     datePublished:a.added||a.date,
     inLanguage:lang,
     author:{"@type":"Person",name:"Turan Taghiev"},
-    keywords:(a.topics||[]).join(", ")
+    keywords:(a.topics||[]).join(", "),
+    url:CANONICAL_SITE+"?read="+slugFor(a),
+    mainEntityOfPage:CANONICAL_SITE+"?read="+slugFor(a)
   });
+  setArticleMeta(a);
+}
+/* okuyucu açıkken başlık / açıklama / canonical yazıya ait olsun: JS çalıştıran tarayıcılar
+   (Googlebot dahil) ?read=slug adresini ana sayfanın kopyası saymasın. Kapanınca geri alınır. */
+const SITE_META={
+  title:document.title,
+  desc:(document.querySelector('meta[name="description"]')||{}).content||"",
+  canonical:(document.querySelector('link[rel="canonical"]')||{}).href||""
+};
+function setArticleMeta(a){
+  document.title=(a.title[lang]||a.title.en)+" — Turan Taghiev";
+  const d=document.querySelector('meta[name="description"]');
+  if(d&&a.abstract)d.setAttribute("content",a.abstract[lang]||a.abstract.en||SITE_META.desc);
+  const c=document.querySelector('link[rel="canonical"]');
+  if(c)c.setAttribute("href",CANONICAL_SITE+"?read="+slugFor(a));
+}
+function restoreSiteMeta(){
+  document.title=SITE_META.title;
+  const d=document.querySelector('meta[name="description"]'); if(d)d.setAttribute("content",SITE_META.desc);
+  const c=document.querySelector('link[rel="canonical"]'); if(c&&SITE_META.canonical)c.setAttribute("href",SITE_META.canonical);
 }
 let readerHashPop=false; /* kapanma geri-tuşundan mı geldi */
 function closeReader(){
   const _mainEl=document.querySelector("main");
   if(_mainEl)_mainEl.removeAttribute("aria-hidden");
   const tag=document.getElementById("articleSchema"); if(tag)tag.remove();
+  restoreSiteMeta();
   if(!readerHashPop&&location.hash.indexOf("#read/")===0){ try{ history.pushState(null,"","#writing"); }catch(e){} }
   const ov=$("#readerOverlay");
   ov.classList.remove("veiled"); // zemini fade-out yap
