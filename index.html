@@ -3288,7 +3288,7 @@ function renderFeatured(){
     card.onclick=()=>{
       Sound.tick();
       if(a.page){ navigateTo(a.page); }
-      else if(a.body&&a.body[lang]){ openReader(realIdx); }
+      else if(a.body&&(a.body[lang]||a.body.en)){ openReader(realIdx); }
       else if(a.link){ /* dış link onay modalını tetikle */ pendingURL=a.link;$("#leaveDest").textContent=a.link;$("#leaveOverlay").classList.add("open"); }
       else { location.href="#writing"; }
     };
@@ -3600,7 +3600,7 @@ function openRelated(idx){
   const a=ANALYSES[idx];
   Sound.tick();
   if(a.page){ navigateTo(a.page); }
-  else if(a.body&&a.body[lang]){ openReader(idx); }
+  else if(a.body&&(a.body[lang]||a.body.en)){ openReader(idx); }
   else { closeReader(); location.href="#writing"; }
 }
 function injectArticleSchema(a){
