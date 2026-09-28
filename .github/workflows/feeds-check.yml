@@ -17,10 +17,10 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
       - run: node tools/build-feeds.js --check
       - name: "TEST: publish day arrived, files not regenerated -> must pass"
         run: node tools/build-feeds.js --check --date=2026-10-02
