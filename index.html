@@ -770,6 +770,83 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-10-02",
+    publishAt: "2026-10-02",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"Watching Is Not Proving",
+      tr:"İzlemek Kanıtlamak Değildir",
+      ru:"Наблюдать не значит доказать",
+      az:"İzləmək sübut etmək deyil"
+    },
+    abstract: {
+      en:"Ban evasion is easy to describe and hard to prove. This piece looks at one case where identity could not be confirmed from logs alone, and why the decision came from several separate sources agreeing rather than from any single signal.",
+      tr:"Ban kaçırmak anlatması kolay, kanıtlaması zor bir şeydir. Bu yazı, kimliğin yalnızca kayıtlardan doğrulanamadığı bir vakaya ve kararın neden tek bir sinyalden değil, birbirinden ayrı birkaç kaynağın uyuşmasından çıktığına bakıyor.",
+      ru:"Обход бана легко описать и трудно доказать. Эта статья разбирает случай, в котором личность нельзя было подтвердить по одним лишь логам, и объясняет, почему решение выросло из совпадения нескольких отдельных источников, а не из какого-то одного сигнала.",
+      az:"Ban keçidini təsvir etmək asan, sübut etmək çətindir. Bu yazı, şəxsiyyətin yalnız jurnal qeydləri ilə təsdiqlənə bilmədiyi bir hala baxır və qərarın niyə hər hansı tək bir siqnaldan deyil, bir-birindən ayrı bir neçə mənbənin üst-üstə düşməsindən doğduğunu izah edir."
+    },
+    link: "",
+    pdf: "pdfs/watching-is-not-proving.pdf",
+    flourish: "",
+    body: {
+      en:`Ban evasion looks simple from the outside. Someone gets banned, comes back under a different account, and you catch them. In practice, the catching is the part you can rarely prove.
+
+I'm writing this from memory, so I'm leaving out details I can't confirm. What I do remember is how the case built up.
+
+A user had been banned. Later, someone joined from a different account, and something about how that person talked about the earlier events didn't sit right. People who get banned rarely tell those around them the real reason. They tend to tell a version where they were right, and the details get too specific or start to bend. That alone proves nothing. I treated it as a reason to keep looking, not as a conclusion.
+
+So we watched. Some of the helpers spoke about the banned user directly. These weren't people who had joined recently. They were players who had been in the community for years, and several of them knew him well enough to speak with confidence, including one or two of the most senior moderators. I didn't know him myself, but the people around me did. A few complaints came in as well. So we asked around: people who knew him, and people who simply didn't like him. That second group matters, and it's also a risk. Someone with a grudge is not a neutral source. That is a reason to weigh what they say carefully, not to ignore it.
+
+Only after those pieces pointed the same direction did we act. We put together the evidence, including the account ID and many photos, and banned the account for ban evasion.
+
+Do I know it was the same person? I can say the sources agreed, and that the people who knew him best were among them. These sources all came from the same community, so I wouldn't call them independent in a strict sense. I can't say I proved it from data. The logs alone would never have gotten us there.
+
+That's the line I try to hold. A signal is a reason to look closer, not a reason to decide. The ban came from several separate sources agreeing, not from any one of them.`,
+      tr:`Ban kaçırma dışarıdan basit görünür. Biri banlanır, farklı bir hesapla geri döner ve siz onu yakalarsınız. Pratikte ise yakalamak, çoğu zaman kanıtlayamadığınız kısımdır.
+
+Bunu hafızamdan yazıyorum, o yüzden doğrulayamadığım ayrıntıları dışarıda bırakıyorum. Hatırladığım şey, vakanın nasıl biriktiğidir.
+
+Bir kullanıcı banlanmıştı. Sonra farklı bir hesaptan biri katıldı ve bu kişinin önceki olaylardan bahsediş biçimi bana tuhaf geldi. Banlanan insanlar çevrelerine gerçek sebebi nadiren anlatır. Genellikle kendilerinin haklı olduğu bir versiyon anlatırlar ve ayrıntılar fazla spesifik olur ya da çarpıtılmaya başlar. Bu tek başına hiçbir şeyi kanıtlamaz. Bunu bir sonuç olarak değil, bakmaya devam etmek için bir sebep olarak gördüm.
+
+Biz de izledik. Yardımcılardan bazıları banlı kullanıcıdan doğrudan bahsetti. Bunlar yeni katılmış kişiler değildi. Yıllardır toplulukta olan oyunculardı ve birçoğu onu güvenle konuşabilecek kadar iyi tanıyordu, ekibin üst düzey bir ya da iki moderatörü de dahil. Ben onu şahsen tanımıyordum ama etrafımdaki insanlar tanıyordu. Birkaç şikayet de geldi. Bu yüzden çevreye sorduk: onu tanıyan insanlara ve onu sadece sevmeyen insanlara. İkinci grup önemlidir ve aynı zamanda risklidir. Kini olan biri tarafsız bir kaynak değildir. Bu, söylediklerini dikkatle tartmak için bir sebeptir, görmezden gelmek için değil.
+
+Ancak bu parçalar aynı yönü gösterdikten sonra harekete geçtik. Hesap ID'si ve çok sayıda fotoğraf dahil kanıtları bir araya getirdik ve hesabı ban kaçırma gerekçesiyle banladık.
+
+Aynı kişi olduğunu biliyor muyum? Kaynakların aynı fikirde olduğunu ve onu en iyi tanıyanların da aralarında olduğunu söyleyebilirim. Bu kaynakların hepsi aynı topluluktan geliyordu, o yüzden bunlara sıkı anlamda bağımsız demem. Veriden kanıtladığımı söyleyemem. Sadece kayıtlar bizi oraya asla götürmezdi.
+
+Tuttuğum çizgi bu. Bir sinyal daha yakından bakmak için bir sebeptir, karar vermek için değil. Ban, tek bir kaynaktan değil, birbirinden ayrı birkaç kaynağın uyuşmasından çıktı.`,
+      ru:`Со стороны обход бана выглядит просто. Человека банят, он возвращается под другим аккаунтом, и вы его ловите. На практике же именно поимку вы чаще всего не можете доказать.
+
+Я пишу это по памяти, поэтому опускаю детали, которые не могу подтвердить. Что я помню точно, так это то, как складывалось дело.
+
+Одного пользователя забанили. Позже с другого аккаунта зашёл человек, и то, как он говорил о прежних событиях, показалось мне странным. Забаненные редко рассказывают окружающим настоящую причину. Обычно они рассказывают версию, в которой были правы, а детали становятся слишком конкретными или начинают искажаться. Само по себе это ничего не доказывает. Я воспринял это как повод продолжать присматриваться, а не как вывод.
+
+Поэтому мы стали наблюдать. Некоторые из хелперов говорили о забаненном пользователе напрямую. Это были не те, кто пришёл недавно. Это были игроки, проведшие в сообществе годы, и несколько из них знали его достаточно хорошо, чтобы говорить уверенно, включая одного или двух самых старших модераторов. Сам я его не знал, но люди вокруг меня знали. Пришло и несколько жалоб. Поэтому мы расспросили окружающих: и тех, кто его знал, и тех, кто просто его не любил. Вторая группа важна, и она же представляет риск. Человек с обидой — не нейтральный источник. Это повод взвешивать его слова осторожно, а не игнорировать их.
+
+И только после того, как все эти части указали в одну сторону, мы начали действовать. Мы собрали доказательства, включая ID аккаунта и множество фотографий, и забанили аккаунт за обход бана.
+
+Знаю ли я, что это был тот же человек? Я могу сказать, что источники сходились и что среди них были люди, знавшие его лучше всех. Все эти источники были из одного и того же сообщества, поэтому в строгом смысле независимыми я бы их не назвал. Не могу сказать, что доказал это по данным. Одни логи никогда бы нас туда не привели.
+
+Вот граница, которую я стараюсь удерживать. Сигнал — это повод посмотреть внимательнее, а не повод решать. Бан вырос из совпадения нескольких отдельных источников, а не из какого-то одного из них.`,
+      az:`Kənardan baxanda ban keçidi sadə görünür. Kimsə banlanır, başqa hesabla geri qayıdır, siz də onu tutursunuz. Praktikada isə tutmaq, çox vaxt sübut edə bilmədiyiniz hissədir.
+
+Bunu yaddaşımdan yazıram, ona görə də təsdiqləyə bilmədiyim detalları kənarda saxlayıram. Dəqiq xatırladığım şey isə işin necə formalaşdığıdır.
+
+Bir istifadəçi banlanmışdı. Sonra başqa bir hesabdan biri qoşuldu və həmin adamın əvvəlki hadisələrdən danışma tərzi mənə qəribə gəldi. Banlananlar ətrafındakılara əsl səbəbi nadir hallarda danışır. Adətən özlərinin haqlı olduğu bir versiya danışırlar, detallar isə həddən artıq konkretləşir və ya təhrif olunmağa başlayır. Bu, öz-özlüyündə heç nəyi sübut etmir. Mən bunu nəticə kimi yox, baxmağa davam etmək üçün bir səbəb kimi qəbul etdim.
+
+Ona görə də izlədik. Helperlərdən bəziləri banlanmış istifadəçidən birbaşa danışdı. Bunlar yeni qoşulmuş adamlar deyildi. İcmada illərlə olmuş oyunçular idi və onlardan bir neçəsi onun haqqında əminliklə danışa biləcək qədər yaxşı tanıyırdı, ən yüksək vəzifəli moderatorlardan bir-ikisi də daxil olmaqla. Mən özüm onu tanımırdım, amma ətrafımdakılar tanıyırdı. Bir neçə şikayət də gəldi. Buna görə ətrafdakılardan soruşduq: onu tanıyanlardan və sadəcə onu sevməyənlərdən. İkinci qrup önəmlidir və eyni zamanda risklidir. Kin saxlayan adam neytral mənbə deyil. Bu, onun dediklərini diqqətlə çəkib-ölçmək üçün bir səbəbdir, gözardı etmək üçün yox.
+
+Yalnız bu parçalar eyni istiqaməti göstərdikdən sonra hərəkətə keçdik. Hesab ID-si və çoxlu şəkil də daxil olmaqla sübutları bir yerə topladıq və hesabı ban keçidinə görə banladıq.
+
+Eyni adam olduğunu bilirəmmi? Mənbələrin üst-üstə düşdüyünü və onu ən yaxşı tanıyanların da onların arasında olduğunu deyə bilərəm. Bu mənbələrin hamısı eyni icmadan idi, ona görə də onlara ciddi mənada müstəqil deməzdim. Bunu məlumatdan sübut etdiyimi deyə bilmərəm. Təkcə jurnal qeydləri bizi ora heç vaxt aparmazdı.
+
+Tutmağa çalışdığım xətt budur. Siqnal daha yaxından baxmaq üçün bir səbəbdir, qərar vermək üçün yox. Ban tək bir mənbədən yox, bir-birindən ayrı bir neçə mənbənin üst-üstə düşməsindən doğdu.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-09-25",
     publishAt: "2026-09-25",
     featured: false,
