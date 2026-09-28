@@ -59,7 +59,12 @@ jobs:
           if [ -n "$OPEN" ]; then
             echo "Açık PR #$OPEN güncellendi."
           else
-            gh pr create --head "$BOT_BRANCH" --base "$BASE_BRANCH" \
+            # hata olursa metni annotation olarak yaz (log'a giriş yapmadan görülebilsin)
+            if ! OUT=$(gh pr create --head "$BOT_BRANCH" --base "$BASE_BRANCH" \
               --title "Update feed.xml and sitemap.xml ($TODAY)" \
-              --body "Otomatik: \`tools/build-feeds.js\` $TODAY tarihi için yeniden üretti (yayın günü gelen zamanlanmış yazılar dahil). Yalnızca feed.xml ve sitemap.xml değişir. İncele ve merge et."
+              --body "Otomatik: \`tools/build-feeds.js\` $TODAY tarihi için yeniden üretti (yayın günü gelen zamanlanmış yazılar dahil). Yalnızca feed.xml ve sitemap.xml değişir. İncele ve merge et." 2>&1); then
+              echo "::error title=gh pr create::$(printf '%s' "$OUT" | tr '\n' ' ' | cut -c1-900)"
+              exit 1
+            fi
+            echo "$OUT"
           fi

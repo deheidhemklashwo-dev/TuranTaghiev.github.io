@@ -1,11 +1,13 @@
 # PR denetimi: feed.xml / sitemap.xml, PR'daki index.html (ANALYSES) ile tutarlı mı?
-# Yalnızca gerçek tutarsızlıkta kırmızı olur. Zamanlanmış bir yazının yayın günü gelmiş
-# ama henüz eklenmemiş olması tutarsızlık sayılmaz; onu feeds-update.yml kapatır.
+# Yalnızca bu dosyalara ya da üretece elle dokunan PR'larda çalışır. Yazı PR'ları (yalnızca
+# index.html) burada denetlenmez: feed'i onlar için günlük bot (feeds-update.yml) üretir.
+# Yalnızca gerçek tutarsızlıkta kırmızı olur; yayın günü gelmiş ama henüz eklenmemiş
+# zamanlanmış bir yazı tutarsızlık sayılmaz.
 name: Feed & sitemap check
 
 on:
   pull_request:
-    paths: ["index.html", "feed.xml", "sitemap.xml", "tools/build-feeds.js"]
+    paths: ["feed.xml", "sitemap.xml", "tools/build-feeds.js"]
 
 # Yalnızca kodu okur: checkout için contents:read yeterli.
 permissions:
