@@ -1,0 +1,29 @@
+# feed.xml / sitemap.xml, index.html'deki ANALYSES ile senkron mu?
+# Bu iş akışı hiçbir şeyi commit etmez, yalnızca denetler (main'e doğrudan push yok, her değişiklik PR ile).
+# - PR'da: yazı eklendi/değişti ama feed güncellenmediyse PR kırmızı olur.
+# - Her gün: zamanlanmış (publishAt) bir yazı yayına girdiği gün feed'de yoksa çalışma başarısız olur
+#   ve GitHub repo sahibine e-posta gönderir → `node tools/build-feeds.js` çalıştırıp PR aç.
+name: Feed & sitemap check
+
+on:
+  pull_request:
+    paths: ["index.html", "feed.xml", "sitemap.xml", "tools/build-feeds.js"]
+  push:
+    branches: [main]
+    paths: ["index.html", "feed.xml", "sitemap.xml", "tools/build-feeds.js"]
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node tools/build-feeds.js --check

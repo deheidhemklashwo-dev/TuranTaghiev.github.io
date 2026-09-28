@@ -1,3 +1,5 @@
 # If you find a security issue with this site, please report it via LinkedIn.
 Contact: https://www.linkedin.com/in/turan-t-b75a02290
+Expires: 2027-09-28T00:00:00.000Z
 Preferred-Languages: en, tr
+Canonical: https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/.well-known/security.txt
