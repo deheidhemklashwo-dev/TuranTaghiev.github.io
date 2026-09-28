@@ -57,11 +57,16 @@ jobs:
           git add feed.xml sitemap.xml
           git commit -m "Update feed.xml and sitemap.xml for $TODAY"
           git push --force origin "$BOT_BRANCH"
-          OPEN=$(gh pr list --head "$BOT_BRANCH" --base "$BASE_BRANCH" --state open --json number --jq '.[0].number')
-          if [ -n "$OPEN" ]; then
+          # TEST TEŞHİSİ: hata metnini herkese açık annotation olarak yaz
+          diag(){ echo "::error title=$1::$(printf '%s' "$2" | tr '\n' ' ' | cut -c1-900)"; }
+          if ! OUT=$(gh pr list --head "$BOT_BRANCH" --base "$BASE_BRANCH" --state open --json number --jq '.[0].number' 2>&1); then diag "gh pr list" "$OUT"; exit 1; fi
+          OPEN="$OUT"
+          echo "::notice title=gh pr list::[$OPEN]"
+          if [ -n "$OPEN" ] && [ "$OPEN" != "null" ]; then
             echo "Açık PR #$OPEN güncellendi."
           else
-            gh pr create --head "$BOT_BRANCH" --base "$BASE_BRANCH" \
+            if ! OUT=$(gh pr create --head "$BOT_BRANCH" --base "$BASE_BRANCH" \
               --title "Update feed.xml and sitemap.xml ($TODAY)" \
-              --body "Otomatik: \`tools/build-feeds.js\` $TODAY tarihi için yeniden üretti (yayın günü gelen zamanlanmış yazılar dahil). Yalnızca feed.xml ve sitemap.xml değişir. İncele ve merge et."
+              --body "Otomatik: tools/build-feeds.js $TODAY tarihi için yeniden üretti." 2>&1); then diag "gh pr create" "$OUT"; exit 1; fi
+            echo "::notice title=gh pr create::$OUT"
           fi
