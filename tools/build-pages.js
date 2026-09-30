@@ -36,7 +36,7 @@
   function smartType(s){
     if(s==null)return "";
     return String(s)
-      .replace(/(^|[\s([{—–-])"/g, "$1“")
+      .replace(/(^|[\s([{\u2014\u2013-])"/g, "$1“")
       .replace(/"/g, "”")
       .replace(/(\w)'(\w)/g, "$1’$2")
       .replace(/(^|[\s([{])'/g, "$1‘")
@@ -122,7 +122,7 @@
     L.push('<head>');
     L.push('<meta charset="UTF-8" />');
     L.push('<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />');
-    L.push('<title>'+esc(title)+' — Turan Taghiev</title>');
+    L.push('<title>'+esc(title)+' | Turan Taghiev</title>');
     L.push('<meta name="description" content="'+esc(abstract)+'" />');
     L.push('<link rel="canonical" href="'+esc(url)+'" />');
     L.push('<meta property="og:type" content="article" />');
@@ -132,7 +132,7 @@
     L.push('<meta property="og:description" content="'+esc(abstract)+'" />');
     L.push('<meta property="og:url" content="'+esc(url)+'" />');
     L.push('<meta property="og:image" content="'+OG_IMAGE+'" />');
-    L.push('<meta property="og:image:alt" content="Turan Taghiev — field notes and analysis on content moderation and platform governance" />');
+    L.push('<meta property="og:image:alt" content="Turan Taghiev: field notes and analysis on content moderation and platform governance" />');
     L.push('<meta property="og:image:width" content="1200" />');
     L.push('<meta property="og:image:height" content="630" />');
     if(a.added)L.push('<meta property="article:published_time" content="'+esc(a.added)+'" />');
@@ -247,6 +247,27 @@
     return L.join("\n")+"\n";
   }
 
+  /* writing/ dizinine çıplak gidilince (ör. adres çubuğunda kırpılmış bağlantı) GitHub Pages
+     siteyi 404 ile karşılar. Bu küçük sayfa oradan yazı listesine götürür. İndekslenmez. */
+  function buildIndex(){
+    const L=[];
+    L.push('<!DOCTYPE html>');
+    L.push('<html lang="en">');
+    L.push('<head>');
+    L.push('<meta charset="UTF-8" />');
+    L.push('<meta name="viewport" content="width=device-width, initial-scale=1.0" />');
+    L.push('<title>Writing | Turan Taghiev</title>');
+    L.push('<meta name="robots" content="noindex, follow" />');
+    L.push('<meta http-equiv="refresh" content="0; url=../index.html#writing" />');
+    L.push('<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; script-src \'unsafe-inline\'; style-src \'unsafe-inline\'" />');
+    L.push('<style>body{background:#111315;color:#a7aaa6;font:16px/1.6 Georgia,serif;padding:2rem}a{color:#b08d57}</style>');
+    L.push('<script>location.replace("../index.html#writing");</script>');
+    L.push('</head>');
+    L.push('<body><p><a href="../index.html#writing">Go to the writing index</a></p></body>');
+    L.push('</html>');
+    return L.join("\n")+"\n";
+  }
+
   function buildAll(A,today){
     const files={}, skipped=[], seen={};
     A.forEach((a,idx)=>{
@@ -258,10 +279,12 @@
         return;
       }
       if(!SLUG_RE.test(slug))throw new Error("Geçersiz slug: "+JSON.stringify(slug));
+      if(slug==="index")throw new Error("Ayrılmış slug: index (writing/index.html yönlendirme sayfasıdır)");
       if(seen[slug])throw new Error("Yinelenen slug: "+slug);
       seen[slug]=true;
       files[pagePath(a)]=buildPage(A,idx,today);
     });
+    files[OUT_DIR+"/index.html"]=buildIndex();
     return {files,skipped};
   }
 
@@ -306,6 +329,7 @@
     const dir=path.join(repo,OUT_DIR);
     const existing=fs.existsSync(dir)?fs.readdirSync(dir).filter(f=>/^[a-z0-9][a-z0-9-]*\.html$/.test(f)):[];
     const wanted=Object.keys(out.files).map(p=>path.basename(p));
+    const nPages=wanted.filter(f=>f!=="index.html").length;
     const stale=existing.filter(f=>!wanted.includes(f));
     if(arg("check")){
       const problems=[];
@@ -320,12 +344,12 @@
         problems.forEach(x=>console.error("  "+x));
         process.exit(1);
       }
-      console.log(`${wanted.length} sayfa güncel (bugün=${today}); NDA taraması: ${wanted.length}/${wanted.length} temiz.`);
+      console.log(`${nPages} yazı sayfası + index.html güncel (bugün=${today}); NDA taraması: ${wanted.length}/${wanted.length} dosya temiz.`);
     } else {
       fs.mkdirSync(dir,{recursive:true});
       Object.keys(out.files).forEach(p=>fs.writeFileSync(path.join(repo,p),out.files[p]));
       stale.forEach(f=>fs.unlinkSync(path.join(dir,f)));
-      console.log(`Yazıldı: ${wanted.length} sayfa, silinen: ${stale.length}, atlanan: ${out.skipped.length} (bugün=${today}); NDA taraması: ${wanted.length}/${wanted.length} temiz.`);
+      console.log(`Yazıldı: ${nPages} yazı sayfası + index.html, silinen: ${stale.length}, atlanan: ${out.skipped.length} (bugün=${today}); NDA taraması: ${wanted.length}/${wanted.length} dosya temiz.`);
       out.skipped.forEach(s=>console.log(`  atlandı: ${s.slug} (${s.reason})`));
     }
   }

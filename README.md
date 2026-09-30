@@ -27,3 +27,4 @@ Every live entry with an English body gets a static page at `writing/<slug>.html
 - **Build article pages** runs on PRs that touch `index.html`, regenerates `writing/` and commits the result to the PR's own branch. The daily update job does the same for entries whose day has come.
 - Any page containing a term from `NDA_B64` fails the build and nothing is written.
 - Entries with a `page:` field keep their hand-written page and are skipped.
+- `writing/index.html` is a generated redirect to the writing list, because GitHub Pages answers a bare directory URL with a 404. It is `noindex`.
