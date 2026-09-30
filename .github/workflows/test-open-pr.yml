@@ -1,0 +1,19 @@
+name: TEST open PR
+on:
+  push:
+    branches: [test/pr-head]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Open a PR as github-actions[bot]
+        run: |
+          if ! OUT=$(gh pr create --repo "$GITHUB_REPOSITORY" --base test/pages-autofix --head test/pr-head --title "TEST pages-build pull_request path" --body "test only, do not merge" 2>&1); then
+            echo "::error title=gh pr create::$(printf '%s' "$OUT" | tr '\n' ' ' | cut -c1-500)"; exit 1
+          fi
+          echo "::notice title=PR::$OUT"
