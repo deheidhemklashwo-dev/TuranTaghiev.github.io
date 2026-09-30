@@ -71,8 +71,8 @@
     <h1>That page <em>isn't</em> here.</h1>
     <p id="msg">The link may be broken, or the piece may have moved. Everything published is listed on the writing page.</p>
     <div class="actions">
-      <a class="btn" href="./#writing">Selected writing</a>
-      <a class="btn ghost" href="./">Home</a>
+      <a class="btn" href="/TuranTaghiev.github.io/#writing">Selected writing</a>
+      <a class="btn ghost" href="/TuranTaghiev.github.io/">Home</a>
     </div>
     <div class="foot">TURAN TAGHIEV — COMMUNITY OPERATIONS &amp; TRUST &amp; SAFETY</div>
   </main>
@@ -103,7 +103,7 @@
     if(slug){
       var el = document.getElementById("msg");
       if(el) el.textContent = "This link points to a piece that may have moved. Taking you to the archive.";
-      setTimeout(function(){ location.replace("./?read=" + encodeURIComponent(slug)); }, 1400);
+      setTimeout(function(){ location.replace("/TuranTaghiev.github.io/?read=" + encodeURIComponent(slug)); }, 1400);
     }
   })();
 </script>

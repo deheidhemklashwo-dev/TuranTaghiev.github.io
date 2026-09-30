@@ -3671,7 +3671,7 @@ const SITE_META={
   canonical:(document.querySelector('link[rel="canonical"]')||{}).href||""
 };
 function setArticleMeta(a){
-  document.title=(a.title[lang]||a.title.en)+" — Turan Taghiev";
+  document.title=(a.title[lang]||a.title.en)+" | Turan Taghiev";
   const d=document.querySelector('meta[name="description"]');
   if(d&&a.abstract)d.setAttribute("content",a.abstract[lang]||a.abstract.en||SITE_META.desc);
   const c=document.querySelector('link[rel="canonical"]');
