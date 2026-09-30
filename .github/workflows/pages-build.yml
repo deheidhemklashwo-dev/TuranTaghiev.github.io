@@ -7,6 +7,8 @@
 name: Build article pages
 
 on:
+  push:   # YALNIZCA TEST DALI
+    branches: [test/pages-autofix]
   pull_request:
     paths: ["index.html", "tools/build-pages.js", "tools/build-feeds.js", "assets/article.css", "writing/**"]
 
@@ -19,15 +21,15 @@ permissions:
   contents: write
 
 concurrency:
-  group: pages-build-${{ github.head_ref }}
+  group: pages-build-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
   build:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     env:
-      HEAD_REF: ${{ github.head_ref }}
+      HEAD_REF: ${{ github.head_ref || github.ref_name }}
       DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
     steps:
       - name: Refuse to write to the default branch
@@ -38,7 +40,7 @@ jobs:
           fi
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v5
         with:
           node-version: 22
@@ -55,3 +57,15 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Regenerate article pages"
           git push origin "HEAD:refs/heads/$HEAD_REF"
+      - name: "TEST report (real Node)"
+        if: always()
+        run: |
+          set +e
+          echo "::notice title=T0 node::$(node --version) $(git rev-parse --short HEAD)"
+          echo "::notice title=T1 pages present::$(ls writing | wc -l) files; watching page today: $(test -f writing/watching-is-not-proving.html && echo YES || echo no)"
+          node tools/build-pages.js --check > /tmp/chk.txt 2>&1; RC=$?
+          echo "::notice title=T2 check after autofix::rc=$RC $(tr '\n' ' ' < /tmp/chk.txt | cut -c1-260)"
+          node tools/build-pages.js --date=2026-10-02 > /tmp/sim.txt 2>&1
+          echo "::notice title=T3 simulate 2026-10-02::files=$(ls writing | wc -l) watching page: $(test -f writing/watching-is-not-proving.html && echo YES || echo no) changed: $(git status --porcelain writing | sed 's/^ *//' | tr '\n' ';' | cut -c1-200)"
+          git checkout -- writing; git clean -fdq writing
+          echo "::notice title=T4 restored::$(git status --porcelain writing | wc -l) pending changes"
