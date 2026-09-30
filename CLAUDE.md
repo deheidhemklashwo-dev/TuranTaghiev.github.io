@@ -28,3 +28,7 @@ Tek adım bunların yarısını kaçırır, ikisi ayrı yapılmalı.
 **Sınır:** bu kontrol anadil düzeyinde bir okumanın yerini tutmaz, yalnızca anlamı bozan yaygın hataları yakalar.
 
 **Şeffaflık:** çeviri Claude'a aitse (kullanıcı vermediyse), bu PR açıklamasında açıkça belirtilir.
+
+## Üretilen dosyalar (writing/)
+
+`writing/*.html` dosyaları `tools/build-pages.js` ile üretilir ve **elle düzenlenmez**; bir sonraki üretimde ezilirler. Bir sayfayı değiştirmek için `tools/build-pages.js` ya da `assets/article.css` düzenlenir. Yeni yazı eklerken sayfayı ayrıca yazmaya gerek yoktur: PR açılınca iş akışı sayfayı PR dalına ekler (zamanlanmış yazılarda yayın günü günlük bot ekler).

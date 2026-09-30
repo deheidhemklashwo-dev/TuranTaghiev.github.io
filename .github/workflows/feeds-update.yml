@@ -1,7 +1,7 @@
-# Günlük feed/sitemap güncelleyici.
-# feed.xml ve sitemap.xml'i yeniden üretir; değişiklik varsa bot/update-feeds dalına yazar ve
-# o daldan PR açar (ya da açık PR'ı günceller). main'e hiçbir zaman doğrudan commit atmaz;
-# senin işin yalnızca PR'ı merge etmek.
+# Günlük güncelleyici: feed.xml, sitemap.xml ve writing/ makale sayfaları.
+# Üçünü yeniden üretir; değişiklik varsa bot/update-feeds dalına yazar ve o daldan PR açar
+# (ya da açık PR'ı günceller). main'e hiçbir zaman doğrudan commit atmaz; senin işin yalnızca
+# PR'ı merge etmek. Zamanlanmış (publishAt) bir yazının sayfası yayın günü burada oluşur.
 name: Feed & sitemap update
 
 on:
@@ -32,6 +32,7 @@ jobs:
       BOT_BRANCH: bot/update-feeds
       BASE_BRANCH: ${{ github.ref_name }}
       FEEDS_DATE: ${{ inputs.date }}
+      PAGES_DATE: ${{ inputs.date }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v5
@@ -39,12 +40,16 @@ jobs:
         with:
           node-version: 22
 
-      - name: Regenerate feed.xml and sitemap.xml
-        run: node tools/build-feeds.js
+      - name: Regenerate feed, sitemap and article pages
+        run: |
+          node tools/build-feeds.js
+          node tools/build-pages.js
 
       - name: Open or update the PR if anything changed
         run: |
-          if git diff --quiet -- feed.xml sitemap.xml; then
+          mkdir -p writing
+          git add -A -- feed.xml sitemap.xml writing
+          if git diff --cached --quiet; then
             echo "Değişiklik yok, PR açılmadı."
             exit 0
           fi
@@ -52,8 +57,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$BOT_BRANCH"
-          git add feed.xml sitemap.xml
-          git commit -m "Update feed.xml and sitemap.xml for $TODAY"
+          git commit -m "Update feed, sitemap and article pages for $TODAY"
           git push --force origin "$BOT_BRANCH"
           OPEN=$(gh pr list --head "$BOT_BRANCH" --base "$BASE_BRANCH" --state open --json number --jq '.[0].number')
           if [ -n "$OPEN" ]; then
@@ -61,8 +65,8 @@ jobs:
           else
             # hata olursa metni annotation olarak yaz (log'a giriş yapmadan görülebilsin)
             if ! OUT=$(gh pr create --head "$BOT_BRANCH" --base "$BASE_BRANCH" \
-              --title "Update feed.xml and sitemap.xml ($TODAY)" \
-              --body "Otomatik: \`tools/build-feeds.js\` $TODAY tarihi için yeniden üretti (yayın günü gelen zamanlanmış yazılar dahil). Yalnızca feed.xml ve sitemap.xml değişir. İncele ve merge et." 2>&1); then
+              --title "Update feed, sitemap and article pages ($TODAY)" \
+              --body "Otomatik: \`tools/build-feeds.js\` ve \`tools/build-pages.js\` $TODAY tarihi için yeniden üretti (yayın günü gelen zamanlanmış yazılar dahil). Yalnızca feed.xml, sitemap.xml ve writing/ değişir. İncele ve merge et." 2>&1); then
               echo "::error title=gh pr create::$(printf '%s' "$OUT" | tr '\n' ' ' | cut -c1-900)"
               exit 1
             fi
