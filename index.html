@@ -3694,6 +3694,20 @@ function openReader(idx){
     renderRelated(idx);
   },350);
 }
+/* İlgili yazı eşitlik bozucusunun tohumu: yazının dizideki yerine değil, slug'ına bağlıdır.
+   Eskiden dizideki sıra numarası kullanılıyordu; başa yeni bir giriş eklenince tüm numaralar
+   kayıyor ve ilgisiz bütün yazıların listesi değişiyordu. Bu tablo, o günkü (2026-10-03)
+   değerleri slug'a bağlayarak dondurur: mevcut listeler aynı kalır. Tabloda olmayan (yeni)
+   yazıların tohumu slug'dan türetilir. tools/build-pages.js bu tabloyu buradan okur.
+   Tabloya elle giriş eklemek gerekmez; mevcut satırları değiştirmek listeleri değiştirir. */
+const REL_SEED={"giveaway-rule-wrong-thing":0,"watching-is-not-proving":1,"same-word-three-meanings":2,"poll-actually-changes":3,"ai-assisted-moderation-caught":4,"governance-report-doesnt-say":5,"pattern-four-reports":6,"complaint-not-about-rule":7,"what-control-means":8,"choosing-discord-result":9,"transparency-isnt-free":10,"safety-by-design":11,"regional-investment":12,"what-happens-after-an-appeal":13,"handing-off-a-case":14,"when-to-stop-trusting":15,"evidence-retention":16,"onboarding-a-moderator":17,"what-moderation-data-tells-you":18,"governance-is-architecture":19,"screening-the-screeners":20,"same-model-different-flags":21,"nine-languages-one-standard":22,"reviewing-the-reviewers":23,"repeat-offenders":24,"explainable-moderation":25,"governance-reporting-frontline":26,"human-in-the-loop":27,"multilingual-moderation":28,"tiktok-ban-economics":29,"a2ad-south-china-sea":30,"whose-rules-ai-governance":31};
+function relSeed(a){
+  const s=slugFor(a);
+  if(Object.prototype.hasOwnProperty.call(REL_SEED,s))return REL_SEED[s];
+  let h=0;
+  for(let k=0;k<s.length;k++)h=(h*31+s.charCodeAt(k))%9973;
+  return h;
+}
 /* ilgili analizler — ortak konuya sahip diğerleri */
 function renderRelated(idx){
   const box=$("#readerRelated");if(!box)return;
@@ -3720,11 +3734,14 @@ function renderRelated(idx){
       /* Dokuz saha notu aynı iki konuyu paylaştığı için puanlar sık sık eşitleniyor;
          eşitlikte hep aynı yazılar kazanınca katalogun bir kısmı okuyucudan hiç
          görünmüyordu. Kaynak yazıya göre değişen belirlenimci bir kaydırma,
-         eşit derecede ilgili adaylar arasında dönüşümlü seçim yapar. */
-      const kaydirma=(i+idx*5)%13;
+         eşit derecede ilgili adaylar arasında dönüşümlü seçim yapar.
+         Tohum slug'a bağlıdır (relSeed), dizideki yere değil. */
+      const kaydirma=(relSeed(a)+relSeed(cur)*5)%13;
       return {a,i,puan:ortak*100+ayniTur*8+kaydirma};
     })
-    .sort((x,y)=>y.puan-x.puan)
+    /* eşit puanda da dizideki yer değil tohum belirler (sonra slug), böylece sıralama
+       girişin dizide nereye eklendiğinden tamamen bağımsızdır */
+    .sort((x,y)=>(y.puan-x.puan)||(relSeed(x.a)-relSeed(y.a))||(slugFor(x.a)<slugFor(y.a)?-1:1))
     .slice(0,seriesNext?2:3)
     .map(x=>x.a);
   const finalList=seriesNext?[seriesNext,...related]:related;
