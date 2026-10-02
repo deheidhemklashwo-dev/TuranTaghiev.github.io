@@ -770,6 +770,101 @@ try{
 const ANALYSES = [
   {
     date: "2026",
+    added: "2026-10-09",
+    publishAt: "2026-10-09",
+    featured: false,
+    type: { en:"Field Note", tr:"Saha Notu", ru:"Полевая заметка", az:"Sahə qeydi" },
+    topics: ["Trust & Safety","Community Ops"],
+    title: {
+      en:"The Giveaway Rule That Counted the Wrong Thing",
+      tr:"Yanlış Şeyi Sayan Çekiliş Kuralı",
+      ru:"Правило розыгрыша, которое считало не то",
+      az:"Yanlış şeyi sayan çəkiliş qaydası"
+    },
+    abstract: {
+      en:"Rewards attract whatever a rule can measure. This piece looks at a Discord giveaway rule that counted joins rather than real members, what moderators could and could not verify, and why consequences and community attention probably mattered as much as the rule itself.",
+      tr:"Ödüller, bir kuralın ölçebildiği şeyi çeker. Bu yazı, gerçek üyeleri değil sunucuya girişleri sayan bir Discord çekiliş kuralına, moderatörlerin neyi doğrulayıp neyi doğrulayamadığına ve sonuçların ve topluluğun dikkatinin muhtemelen kuralın kendisi kadar önemli olduğuna bakıyor.",
+      ru:"Награды притягивают то, что правило способно измерить. Эта статья разбирает правило розыгрыша в Discord, которое считало присоединения к серверу, а не настоящих участников, показывает, что модераторы могли проверить и чего не могли, и объясняет, почему последствия и внимание сообщества, вероятно, значили не меньше самого правила.",
+      az:"Mükafatlar qaydanın ölçə bildiyi şeyi cəlb edir. Bu yazı, real üzvləri deyil, serverə qoşulmaları sayan bir Discord çəkiliş qaydasına, moderatorların nəyi yoxlaya bildiyinə və nəyi yoxlaya bilmədiyinə, nəticələrin və icmanın diqqətinin isə niyə, ehtimal ki, qaydanın özü qədər əhəmiyyətli olduğuna baxır."
+    },
+    link: "",
+    pdf: "pdfs/giveaway-rule-wrong-thing.pdf",
+    flourish: "",
+    body: {
+      en:`The rule was simple. To enter, a member had to invite a few friends to the server, and those friends had to actually join. It sounds fair, and it measured something we could see: who invited whom, and who joined.
+
+What it could not measure was whether those people were real. Some members met the condition and then their invited friends left right away. Others added their own alternate accounts to reach the number. We reviewed entries, but we were mostly checking whether the condition had been met. If the answer was yes, the rule had no complaint.
+
+We did try to look closer. The first thing we checked was how old the account was. If it was new, the decision was easy: we banned it or skipped that winner. If it wasn't new but something still felt off, we looked at other details alongside the conditions. None of it gave certainty. We were community moderators, not Discord staff, so our tools were limited, and an older account could still be an alternate.
+
+Our bar for banning was high. If we suspected someone of gaming the system, we had to be completely sure before acting, and we considered each case carefully. We did not apply one fixed rule to everyone. The length of the ban depended on the person's history and activity in the server, and it could be very long or permanent. Every ban came with a link to object, and responses varied. Some people never accepted the reason. Others apologized and admitted what they had done.
+
+That high bar has a cost. Anything we were not sure about, we could not act on, so I can't tell you how many of the entries that passed were real. We reviewed everything and still could not be sure.
+
+Some of what we missed, the community caught. Giveaways are competitive, and members who badly wanted the prize would challenge anyone they thought was cheating. They worked like a second verification layer, a human one, and they often noticed things we could not see.
+
+This had a downside. Members sometimes accused people who had not cheated. That happened, and we always looked into those cases.
+
+Beyond the bans, we changed the rule itself. We made the giveaway run longer, and an invited member had to stay in the server for a few days before the results and a few days after. For genuine new members, this was generally not a burden. We ran giveaways and small events often and enforced the conditions the same way each time. I believe that made most members careful about breaking them. I can't prove it. Not seeing attempts is not the same as nobody trying, and some may have gotten through unnoticed.
+
+What I took from this: a reward attracts whatever the rule can measure. A rule that only sees a click gets clicks, and a rule that sees a stay is harder to fake. But I don't think the rule did the work alone. Consequences people believed in, and members who watched each other, probably mattered just as much.`,
+      tr:`Ödüller insanları çeker, ve her zaman istediğiniz insanları değil. Bunu yönettiğim Discord topluluklarında çekilişler yaparken öğrendim.
+
+Kural basitti. Çekilişe katılmak için bir üyenin sunucuya birkaç arkadaşını davet etmesi, davet edilenlerin de gerçekten katılması gerekiyordu. Adil görünüyor ve görebildiğimiz bir şeyi ölçüyordu: kim kimi davet etti, kim katıldı.
+
+Ölçemediği şey, bu insanların gerçek olup olmadığıydı. Bazı üyeler şartı yerine getirdi, sonra davet ettikleri arkadaşlar hemen sunucudan çıktı. Bazıları sayıya ulaşmak için kendi alternatif hesaplarını ekledi. Girişleri inceliyorduk, ama çoğunlukla şartın yerine getirilip getirilmediğine bakıyorduk. Cevap evetse, kuralın itirazı yoktu.
+
+Daha yakından bakmaya da çalıştık. İlk baktığımız şey hesabın ne kadar eski olduğuydu. Hesap yeniyse karar kolaydı: banlıyor ya da o kazananı atlıyorduk. Yeni değilse ama yine de bir şey yanlış geliyorsa, şartların yanında başka ayrıntılara da bakıyorduk. Hiçbiri kesinlik vermedi. Biz topluluk moderatörüydük, Discord yetkilisi değil, araçlarımız sınırlıydı ve eski bir hesap da alternatif olabilirdi.
+
+Ban eşiğimiz yüksekti. Birinin sistemi oyuna getirdiğinden şüphelenirsek, harekete geçmeden önce tamamen emin olmamız gerekiyordu ve her vakayı dikkatle değerlendiriyorduk. Herkese tek bir kural uygulamıyorduk. Banın süresi kişinin sunucudaki geçmişine ve aktifliğine göre değişiyordu, çok uzun süreli de olabiliyordu, kalıcı da. Her banla birlikte itiraz bağlantısı verilirdi ve tepkiler farklıydı. Bazıları sebebi hiç kabul etmedi. Bazıları özür dileyip yaptıklarını kabul etti.
+
+Bu yüksek eşiğin bir bedeli var. Emin olmadığımız hiçbir şeye müdahale edemiyorduk, bu yüzden geçen girişlerin kaçının gerçek olduğunu söyleyemem. Her şeyi inceledik ve yine de emin olamadık.
+
+Kaçırdıklarımızın bir kısmını topluluk yakaladı. Çekilişler rekabetçidir ve ödülü çok isteyen üyeler hile yaptığını düşündükleri herkese itiraz ederdi. İkinci bir doğrulama katmanı gibi çalışıyorlardı, insan eliyle, ve bizim göremediğimiz şeyleri sık sık fark ediyorlardı.
+
+Bunun bir olumsuz yanı da vardı. Üyeler bazen hile yapmamış insanları suçluyordu. Bu oldu, ve biz bu vakalarla her zaman ilgilendik.
+
+Banların yanında kuralın kendisini de değiştirdik. Çekilişlerin süresini uzattık ve davet edilen üyenin sonuçlardan önce birkaç gün, sonra da birkaç gün sunucuda kalması gerekti. Gerçek yeni üyeler için bu genellikle bir yük değildi. Çekilişleri ve küçük etkinlikleri sık yapıyorduk ve şartları her seferinde aynı şekilde uyguluyorduk. Bunun çoğu üyeyi şartları bozma konusunda dikkatli yaptığına inanıyorum. Bunu kanıtlayamam. Hile denemesi görmemek, kimsenin denememesi demek değil, bazıları fark edilmeden geçmiş olabilir.
+
+Bundan çıkardığım şey: bir ödül, kuralın ölçebildiği şeyi çeker. Sadece bir tıklamayı gören kural tıklama alır, kalışı gören bir kuralı taklit etmek daha zordur. Ama kuralın işi tek başına yaptığını sanmıyorum. İnsanların inandığı sonuçlar ve birbirini izleyen üyeler muhtemelen en az o kadar önemliydi.`,
+      ru:`Правило было простым. Чтобы попасть в розыгрыш, участник должен был пригласить на сервер нескольких друзей, и эти друзья должны были действительно присоединиться. Звучит справедливо, и правило измеряло то, что мы могли видеть: кто кого пригласил и кто присоединился.
+
+Чего оно измерить не могло, так это того, настоящие ли эти люди. Некоторые участники выполняли условие, а потом приглашённые ими друзья сразу уходили. Другие добавляли собственные альтернативные аккаунты, чтобы набрать нужное число. Мы проверяли заявки, но в основном смотрели, выполнено ли условие. Если да, у правила претензий не было.
+
+Мы всё же пытались смотреть внимательнее. Первым делом мы проверяли возраст аккаунта. Если аккаунт был новым, решение было простым: мы банили его или не засчитывали этого победителя. Если же он не был новым, но что-то всё равно казалось странным, мы смотрели на другие детали наряду с условиями. Ничто из этого не давало уверенности. Мы были модераторами сообщества, а не сотрудниками Discord, поэтому наши инструменты были ограничены, а старый аккаунт всё равно мог оказаться альтернативным.
+
+Планка для бана у нас была высокой. Если мы подозревали кого-то в обмане системы, то, прежде чем действовать, должны были быть полностью уверены, и каждый случай мы рассматривали внимательно. Мы не применяли ко всем одно жёсткое правило. Срок бана зависел от истории человека и его активности на сервере и мог быть очень долгим или бессрочным. К каждому бану прилагалась ссылка для обжалования, и реакции были разными. Одни так и не согласились с причиной. Другие извинялись и признавались в том, что сделали.
+
+У этой высокой планки есть цена. Там, где мы не были уверены, мы действовать не могли, поэтому я не могу сказать, сколько заявок из прошедших проверку были настоящими. Мы проверяли всё и всё равно не могли быть уверены.
+
+Часть того, что мы упускали, ловило сообщество. Розыгрыши вызывают соперничество, и участники, которым очень хотелось получить приз, выступали против каждого, кого подозревали в нечестной игре. Они работали как второй уровень проверки, человеческий, и часто замечали то, чего мы видеть не могли.
+
+У этого была и обратная сторона. Иногда участники обвиняли тех, кто не жульничал. Такое случалось, и мы всегда разбирались в этих случаях.
+
+Помимо банов, мы изменили само правило. Мы сделали розыгрыш длиннее, и приглашённый участник должен был оставаться на сервере несколько дней до объявления результатов и несколько дней после. Для настоящих новых участников это, как правило, не было обузой. Мы часто проводили розыгрыши и небольшие мероприятия и каждый раз применяли условия одинаково. Думаю, благодаря этому большинство участников остерегалось их нарушать. Доказать этого я не могу. То, что мы не видели попыток, ещё не значит, что никто не пытался, и кто-то мог пройти незамеченным.
+
+Вот что я из этого вынес: награда притягивает то, что правило способно измерить. Правило, которое видит только клик, получает клики, а правило, которое видит, остался ли человек, обмануть труднее. Но я не думаю, что правило сделало всю работу само. Последствия, в которые люди верили, и участники, следившие друг за другом, вероятно, значили не меньше.`,
+      az:`Qayda sadə idi. İştirak etmək üçün üzv serverə bir neçə dostunu dəvət etməli, həmin dostlar da həqiqətən qoşulmalı idi. Ədalətli səslənir və görə bildiyimiz bir şeyi ölçürdü: kim kimi dəvət etdi, kim qoşuldu.
+
+Ölçə bilmədiyi şey bu insanların real olub-olmaması idi. Bəzi üzvlər şərti yerinə yetirdi, sonra dəvət etdikləri dostlar dərhal serverdən çıxdı. Bəziləri lazımi saya çatmaq üçün öz alternativ hesablarını əlavə etdi. Girişləri yoxlayırdıq, amma əsasən şərtin yerinə yetirilib-yetirilmədiyinə baxırdıq. Cavab bəli idisə, qaydanın etirazı yox idi.
+
+Daha yaxından baxmağa da çalışdıq. İlk yoxladığımız şey hesabın nə qədər köhnə olması idi. Hesab yeni idisə, qərar asan idi: onu banlayır, ya da həmin qalibi saymırdıq. Hesab yeni deyildisə, amma yenə də nəsə şübhəli görünürdüsə, şərtlərlə yanaşı başqa detallara da baxırdıq. Bunların heç biri əminlik vermirdi. Biz icma moderatorları idik, Discord əməkdaşları deyil, buna görə alətlərimiz məhdud idi və köhnə hesab da alternativ ola bilərdi.
+
+Ban üçün həddimiz yüksək idi. Kiminsə sistemi aldatdığından şübhələnirdiksə, hərəkətə keçməzdən əvvəl tam əmin olmalı idik və hər halı diqqətlə nəzərdən keçirirdik. Hamıya tək bir sabit qayda tətbiq etmirdik. Banın müddəti həmin şəxsin serverdəki keçmişindən və aktivliyindən asılı idi, çox uzun da ola bilərdi, daimi də. Hər banla birlikdə etiraz üçün keçid verilirdi və reaksiyalar müxtəlif idi. Bəziləri səbəbi heç vaxt qəbul etmədi. Bəziləri üzr istədi və etdiklərini etiraf etdi.
+
+Bu yüksək həddin bir bədəli var. Əmin olmadığımız heç bir şeyə müdaxilə edə bilmirdik, ona görə yoxlamadan keçən girişlərin neçəsinin real olduğunu deyə bilmərəm. Hər şeyi yoxladıq və yenə də əmin ola bilmədik.
+
+Gözdən qaçırdıqlarımızın bir hissəsini icma tutdu. Çəkilişlər rəqabətlidir və mükafatı çox istəyən üzvlər fırıldaq etdiyini düşündükləri hər kəsə etiraz edirdilər. Onlar ikinci bir yoxlama qatı kimi işləyirdilər, insan qatı kimi, və bizim görə bilmədiyimiz şeyləri tez-tez fərq edirdilər.
+
+Bunun mənfi tərəfi də var idi. Üzvlər bəzən fırıldaq etməmiş insanları ittiham edirdilər. Bu baş verdi və biz həmin hallara həmişə baxdıq.
+
+Banlardan əlavə, qaydanın özünü də dəyişdik. Çəkilişin müddətini uzatdıq və dəvət edilən üzv nəticələrdən bir neçə gün əvvəl və bir neçə gün sonra serverdə qalmalı idi. Həqiqi yeni üzvlər üçün bu, adətən, yük deyildi. Çəkilişləri və kiçik tədbirləri tez-tez keçirirdik və şərtləri hər dəfə eyni cür tətbiq edirdik. İnanıram ki, bu, üzvlərin çoxunu şərtləri pozmaqda ehtiyatlı etdi. Bunu sübut edə bilmərəm. Cəhd görməmək heç kimin cəhd etməməsi demək deyil və bəziləri fərq edilmədən keçmiş ola bilər.
+
+Bundan çıxardığım nəticə budur: mükafat qaydanın ölçə bildiyi şeyi cəlb edir. Yalnız bir kliki görən qayda klik alır, qalmağı görən qaydanı isə aldatmaq daha çətindir. Amma qaydanın bu işi təkbaşına gördüyünü düşünmürəm. İnsanların inandığı nəticələr və bir-birini izləyən üzvlər, ehtimal ki, ən azı o qədər əhəmiyyətli idi.`
+    }
+  },
+  {
+    date: "2026",
     added: "2026-10-02",
     publishAt: "2026-10-02",
     featured: false,
