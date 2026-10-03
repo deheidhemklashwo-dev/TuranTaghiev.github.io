@@ -73,8 +73,25 @@
     return JSON.stringify(obj,null,2).replace(/</g,"\\u003c");
   }
 
+  /* Eşitlik bozucu tohum: index.html'deki relSeed ile birebir aynı. Yazının dizideki yerine değil
+     slug'ına bağlıdır; böylece başa yeni giriş eklemek ilgisiz sayfaların listesini değiştirmez.
+     seeds = index.html'deki REL_SEED tablosu (mevcut yazıların dondurulmuş değerleri). */
+  function relSeed(a,seeds){
+    const s=slugFor(a);
+    if(Object.prototype.hasOwnProperty.call(seeds,s))return seeds[s];
+    let h=0;
+    for(let k=0;k<s.length;k++)h=(h*31+s.charCodeAt(k))%9973;
+    return h;
+  }
+  function extractRelSeed(html){
+    const m=/\nconst REL_SEED=(\{[^}]*\});/.exec(html);
+    if(!m)throw new Error("REL_SEED bulunamadı");
+    return JSON.parse(m[1]);
+  }
+
   /* renderRelated'ın (index.html) birebir portu: seri sırasındaki sonraki + konu yakınlığı */
-  function relatedFor(A,idx,today){
+  function relatedFor(A,idx,today,seeds){
+    if(!seeds)throw new Error("relatedFor: REL_SEED tablosu verilmedi");
     const cur=A[idx];
     let seriesNext=null;
     if(cur.seriesId!=null&&cur.seriesOrder!=null){
@@ -86,10 +103,10 @@
       .map(({a,i})=>{
         const ortak=a.topics.filter(t=>cur.topics.includes(t)).length;
         const ayniTur=(a.type&&cur.type&&a.type.en===cur.type.en)?1:0;
-        const kaydirma=(i+idx*5)%13;
+        const kaydirma=(relSeed(a,seeds)+relSeed(cur,seeds)*5)%13;
         return {a,i,puan:ortak*100+ayniTur*8+kaydirma};
       })
-      .sort((x,y)=>y.puan-x.puan)
+      .sort((x,y)=>(y.puan-x.puan)||(relSeed(x.a,seeds)-relSeed(y.a,seeds))||(slugFor(x.a)<slugFor(y.a)?-1:1))
       .slice(0,seriesNext?2:3)
       .map(x=>x.a);
     return seriesNext?[seriesNext,...related]:related;
@@ -100,14 +117,14 @@
     return "../index.html#read/"+slugFor(b);
   }
 
-  function buildPage(A,idx,today){
+  function buildPage(A,idx,today,seeds){
     const a=A[idx], slug=slugFor(a), url=pageUrl(a);
     const title=a.title.en, abstract=(a.abstract&&a.abstract.en)||"";
     const type=(a.type&&a.type.en)||"";
     const topics=a.topics||[];
     const mins=readMins(a);
     const langs=["tr","ru","az"].filter(k=>a.body[k]&&a.body[k].trim());
-    const rel=relatedFor(A,idx,today);
+    const rel=relatedFor(A,idx,today,seeds);
     const ld={
       "@context":"https://schema.org","@type":"Article",
       headline:title, description:abstract, datePublished:a.added||a.date, inLanguage:"en",
@@ -268,7 +285,7 @@
     return L.join("\n")+"\n";
   }
 
-  function buildAll(A,today){
+  function buildAll(A,today,seeds){
     const files={}, skipped=[], seen={};
     A.forEach((a,idx)=>{
       const slug=slugFor(a);
@@ -282,7 +299,7 @@
       if(slug==="index")throw new Error("Ayrılmış slug: index (writing/index.html yönlendirme sayfasıdır)");
       if(seen[slug])throw new Error("Yinelenen slug: "+slug);
       seen[slug]=true;
-      files[pagePath(a)]=buildPage(A,idx,today);
+      files[pagePath(a)]=buildPage(A,idx,today,seeds);
     });
     files[OUT_DIR+"/index.html"]=buildIndex();
     return {files,skipped};
@@ -308,7 +325,7 @@
   }
 
   const feeds=(typeof module!=="undefined"&&module.exports&&typeof require!=="undefined")?require("./build-feeds.js"):root.buildFeeds;
-  const api={buildAll,buildPage,relatedFor,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
+  const api={buildAll,buildPage,relatedFor,relSeed,extractRelSeed,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   else root.buildPages=api;
 
@@ -319,7 +336,7 @@
     const today=arg("date")||process.env.PAGES_DATE||new Date().toISOString().slice(0,10);
     const html=fs.readFileSync(path.join(repo,"index.html"),"utf8");
     const A=feeds.extractAnalyses(html);
-    const out=buildAll(A,today);
+    const out=buildAll(A,today,extractRelSeed(html));
     const bad=scanNda(out.files,extractNdaTerms(html));
     if(bad.length){
       console.error("NDA taraması BAŞARISIZ, hiçbir dosya yazılmadı:");
