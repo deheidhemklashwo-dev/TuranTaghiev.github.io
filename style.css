@@ -708,6 +708,9 @@ footer{padding:40px 0}
 .tl-year{font-family:var(--mono);font-size:var(--fs-12);color:var(--accent);letter-spacing:.06em;flex:0 0 44px}
 .tl-text{font-family:var(--serif);font-size:1.02rem;color:var(--text-soft);line-height:1.55}
 .tl-text b{color:var(--text);font-weight:500}
+/* zaman çizelgesi satırı bağlantıysa: metin rengi aynı kalır, ince alt çizgi bağlantı olduğunu gösterir */
+.tl-text a{border-bottom:1px solid var(--line-strong);transition:color .2s,border-color .2s}
+.tl-text a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 @media(max-width:680px){
   .tl-block{margin-top:44px;padding-top:30px}
   .tl-item{gap:var(--sp-16);padding:10px 0}
