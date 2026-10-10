@@ -16,6 +16,10 @@ Every content or code change goes through branch → PR → user approval → me
 - Verify with a pixel-diff + noise-floor comparison (headless Chrome screenshots, `System.Drawing` byte-diff via PowerShell) before calling a change done. Separate expected reflow/visual changes from unexplained ones.
 - If a direct push to `main` is discovered (i.e., `main` has commits Claude didn't make), don't silently overwrite it — diff it against local work, report what's there, and reconcile before proceeding.
 
+## main korumalıdır
+
+`main` korumalıdır. Branch'i push et ve dur, PR'ı kullanıcı GitHub'da açıp merge eder. Push reddedilirse atlatmaya çalışma, kullanıcıya bildir.
+
 ## Çeviri doğrulama (RU/AZ, ve gelecekte eklenebilecek diğer diller)
 
 Bir entry için RU/AZ (ya da başka bir dil) çevirisi Claude tarafından üretildiğinde, iki ayrı doğrulama adımı zorunludur:
