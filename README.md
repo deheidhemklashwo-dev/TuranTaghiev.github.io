@@ -10,6 +10,10 @@ Turan Taghiev writes on trust & safety, platform governance, and AI governance, 
 
 Source code for a personal portfolio and writing site. It's a single static page (`index.html` + `style.css`), no build step, published via GitHub Pages.
 
+## Branch protection
+
+`main` is protected. Push the branch and stop; the repository owner opens the PR on GitHub and merges it there. If a push is rejected, do not try to work around it, report it to the owner.
+
 ## Feed and sitemap
 
 `feed.xml` and `sitemap.xml` are generated from the `ANALYSES` array in `index.html` by `tools/build-feeds.js`. Only live entries are included (not draft, not archived, `publishAt` reached). Nothing needs to run locally:
