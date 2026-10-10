@@ -1190,6 +1190,9 @@ html.dl-arriving body::before{
 html.dl-arriving body::after{
   content:"TURAN TAGHIEV"; position:fixed; z-index:401;
   top:50%; left:50%; transform:translate(-50%,-50%);
+  /* body::after aynı zamanda kâğıt dokusudur (inset:0 + doku görseli). Bunlar sıfırlanmazsa
+     yazı ortalanmaz ve doku ekranın yarısı boyutunda gri bir kutu olarak görünür. */
+  right:auto; bottom:auto; background-image:none;
   font-family:var(--mono); font-size:var(--fs-11); letter-spacing:.35em; text-indent:.35em;
   color:var(--accent);
   opacity:.9;
@@ -1199,7 +1202,7 @@ html.dl-arriving body::after{
 @keyframes dlBreath{0%,100%{opacity:.45}50%{opacity:.95}}
 /* perde kalkarken: opaklık sıfıra, tıklamaları engelleme */
 html.dl-leaving body::before{opacity:0; pointer-events:none}
-html.dl-leaving body::after{opacity:0}
+html.dl-leaving body::after{opacity:0; animation:none} /* çalışan dlBreath animasyonu opacity:0'ı eziyordu */
 /* varış sırasında arka plan animasyonlarını tamamen sustur (donma/karışım kaynağı) */
 html.dl-arriving .cards-in>*{animation:none!important}
 html.dl-arriving [class*="reveal"]{transition:none!important}
