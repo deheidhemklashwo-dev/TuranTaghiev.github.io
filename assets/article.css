@@ -70,7 +70,7 @@ html[data-theme-pref="system"] .theme-toggle .ti-system{display:block}
 .body p:last-child{margin-bottom:0}
 .body p:first-of-type::first-letter{font-size:3.2em;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--accent);font-weight:500}
 /* yapay zekâ kullanımı notu: gövdenin altında tek satır, ana sayfadaki #ai-note bölümüne gider */
-.ai-note{margin-top:34px;font-size:13px;line-height:1.62;color:var(--text-soft)}
+.ai-note{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12.8px;line-height:1.62;color:var(--text-mute);font-weight:400}
 .ai-note a{border-bottom:1px solid var(--line-strong);transition:color .2s,border-color .2s}
 .ai-note a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 

@@ -975,10 +975,11 @@ html[data-theme="light"] .draft-notice{color:#3a7ca5;border-color:rgba(58,124,16
 .dn-clear:hover{opacity:1}
 
 /* ===== YAPAY ZEKÂ KULLANIMI NOTU: Hakkında'daki blok + okuyucuda gövdenin altındaki tek satır =====
-   Küçük ikincil metin; --text-mute bu puntoda yeterli kontrast vermediği için --text-soft. */
+   İkisi de sitenin mevcut ikincil metin stilini kullanır (.ra-bio ile aynı: 12.8px, --text-mute).
+   Satır gövdeden boşluk ve ince çizgiyle ayrılır (.reader-author ile aynı çizgi); bağlantı .tl-text a ile aynı. */
 .ai-block{margin-top:64px;border-top:1px solid var(--line-strong);padding-top:40px;scroll-margin-top:84px}
-.ai-text{font-size:var(--fs-13);line-height:1.62;color:var(--text-soft);margin:0;max-width:70ch}
-.reader-ainote{margin:34px 0 0;font-family:var(--sans);font-size:var(--fs-13);line-height:1.62;color:var(--text-soft)}
+.ai-text{font-size:12.8px;line-height:1.62;color:var(--text-mute);margin:0;max-width:62ch}
+.reader-ainote{margin:44px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:12.8px;line-height:1.62;color:var(--text-mute);font-weight:400}
 .reader-ainote a{border-bottom:1px solid var(--line-strong);transition:color .2s,border-color .2s}
 .reader-ainote a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 @media(max-width:680px){.ai-block{margin-top:44px;padding-top:30px}}
