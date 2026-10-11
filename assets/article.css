@@ -69,6 +69,10 @@ html[data-theme-pref="system"] .theme-toggle .ti-system{display:block}
 .body p{margin-bottom:1.5rem;text-wrap:pretty}
 .body p:last-child{margin-bottom:0}
 .body p:first-of-type::first-letter{font-size:3.2em;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--accent);font-weight:500}
+/* yapay zekâ kullanımı notu: gövdenin altında tek satır, ana sayfadaki #ai-note bölümüne gider */
+.ai-note{margin-top:34px;font-size:13px;line-height:1.62;color:var(--text-soft)}
+.ai-note a{border-bottom:1px solid var(--line-strong);transition:color .2s,border-color .2s}
+.ai-note a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
 /* ilgili yazılar: gerçek bağlantılar (okuyucudaki rr-item ile aynı görünüm) */
 .related{margin-top:56px;padding-top:30px;border-top:1px solid var(--line-strong)}

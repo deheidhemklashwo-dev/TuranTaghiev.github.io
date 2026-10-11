@@ -26,6 +26,13 @@
   const OUT_DIR="writing";
   const OG_IMAGE=SITE+"og-image.png";
   const LINKEDIN="https://www.linkedin.com/in/turan-t-b75a02290";
+  /* Yapay zekâ kullanımı notu: her sayfada gövdenin altında tek satır, ana sayfadaki #ai-note bölümüne bağlı.
+     Metin index.html'deki T.en.ai_line ile aynıdır; birini değiştiren diğerini de değiştirir.
+     Bu satır NDA listesindeki bir terimi bilerek içerir. scanNda yalnızca AI_NOTE_HTML'in birebir kendisini
+     (sayfa başına en fazla bir kez) taramadan düşer; liste değişmez, gövdede geçen aynı terim yine yakalanır.
+     Gövde esc() ile kaçışlandığı için bu ham HTML satırı bir yazının içinde oluşamaz. */
+  const AI_NOTE="Based on my own work experience. English is not my first language; I use Claude to help draft and edit.";
+  const AI_NOTE_HTML='  <p class="ai-note"><a href="../index.html#ai-note">'+AI_NOTE+'</a></p>';
   const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const BIO="Writes on trust & safety, community operations, and platform governance, drawing on direct moderation and technical-support experience across multiple language communities.";
   const LANG_NAMES={tr:"Türkçe",ru:"Русский",az:"Azərbaycanca"};
@@ -205,6 +212,7 @@
     L.push('  <div class="body">');
     paragraphs(a).forEach(p=>L.push('    <p>'+p+'</p>'));
     L.push('  </div>');
+    L.push(AI_NOTE_HTML);
     if(rel.length){
       L.push('  <nav class="related" aria-label="Related analysis">');
       L.push('    <div class="rr-label">Related analysis</div>');
@@ -318,14 +326,14 @@
   function scanNda(files,terms){
     const bad=[];
     Object.keys(files).forEach(p=>{
-      const low=files[p].toLowerCase();
+      const low=files[p].replace(AI_NOTE_HTML,"").toLowerCase();
       terms.forEach(t=>{ if(low.includes(t.toLowerCase()))bad.push({file:p,term:t}); });
     });
     return bad;
   }
 
   const feeds=(typeof module!=="undefined"&&module.exports&&typeof require!=="undefined")?require("./build-feeds.js"):root.buildFeeds;
-  const api={buildAll,buildPage,relatedFor,relSeed,extractRelSeed,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
+  const api={buildAll,buildPage,AI_NOTE,AI_NOTE_HTML,relatedFor,relSeed,extractRelSeed,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   else root.buildPages=api;
 
