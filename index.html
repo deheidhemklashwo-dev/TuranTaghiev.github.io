@@ -437,6 +437,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
     <div class="reader-actions" id="readerActions"></div>
     <div class="cite-box" id="citeBox"></div>
     <div class="reader-body" id="readerBody"></div>
+    <p class="reader-ainote"><a href="#ai-note" data-i18n="ai_line">Based on my own work experience. English is not my first language; I use Claude to help draft and edit.</a></p>
     <div class="reader-tags" id="readerTags"></div>
     <div class="reader-related" id="readerRelated"></div>
     <div class="reader-author" id="readerAuthor">
@@ -673,6 +674,11 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
           <p>In his Technical Support role, Turan handled customer inquiries, bug reports, and other support cases with professionalism and care. He followed established procedures consistently, exercised good judgment, and approached his work with a strong sense of responsibility. He also took initiative beyond his core responsibilities by preparing governance and community health reports for our Brazilian team, highlighting moderation trends, recurring issues, and key metrics that helped regional community managers identify problems early and make informed decisions.</p>
           <p>Throughout the time we worked together, I found Turan to be dependable, receptive to coaching, and someone I could trust to carry out his responsibilities to a high standard. It has been rewarding to see his growth from a community moderator into a trusted member of our Technical Support team. I appreciate Turan's contributions and would confidently recommend him to any organization looking for a dedicated, coachable, and reliable professional. I have no doubt he will continue to grow and make a meaningful impact wherever he goes, and I wish him every success in the next chapter of his career.</p>
         </div>
+      </div>
+      <!-- YAPAY ZEKÂ KULLANIMI. Okuyucudaki ve writing/ sayfalarındaki tek satır buraya (#ai-note) bağlanır. -->
+      <div class="ai-block reveal" id="ai-note">
+        <h3 class="tl-title" data-i18n="ai_title">How I work with AI</h3>
+        <p class="ai-text" data-i18n="ai_text">The experiences, cases and ideas in these field notes are my own, drawn from my community moderation and Trust &amp; Safety work. English is not my first language (around B2), so I use Claude to help draft and edit the English. I also used Claude Code to build and maintain this site and to generate the PDFs. I check every factual claim before I publish. The Russian and Azerbaijani versions are Claude's translations and have not had a native-speaker review.</p>
       </div>
     </div>
   </section>
@@ -2941,6 +2947,9 @@ window.addEventListener("online",()=>{
 const T = {
   en:{
     start_label:"Start here",start_note:"New to this site? These four pieces are a good entry point across the main themes.",
+    ai_title:"How I work with AI",
+    ai_text:"The experiences, cases and ideas in these field notes are my own, drawn from my community moderation and Trust & Safety work. English is not my first language (around B2), so I use Claude to help draft and edit the English. I also used Claude Code to build and maintain this site and to generate the PDFs. I check every factual claim before I publish. The Russian and Azerbaijani versions are Claude's translations and have not had a native-speaker review.",
+    ai_line:"Based on my own work experience. English is not my first language; I use Claude to help draft and edit.",
     reader_bio:"Writes on trust & safety, community operations, and platform governance, drawing on direct moderation and technical-support experience across multiple language communities.",reader_connect:"Get in touch",
     method_label:"Note on sources",method_text:"These pieces draw on direct operational experience. The employer and product are withheld under a confidentiality agreement, and operational figures appear as rounded bands rather than exact counts, following standard statistical disclosure practice. Nothing here identifies a user, a colleague, or an internal system by name.",method_text_geo:"The pieces on A2/AD, the TikTok ban, and \"Whose Rules? AI Governance as a Power Struggle\" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework — only the ones where that mechanism was clearest.",
     collect_lead:"Prefer to read offline?",collect_sub:"Every piece in one document, with a contents page.",collect_btn:"Collected writing",
@@ -2991,6 +3000,9 @@ const T = {
   },
   tr:{
     start_label:"Buradan başla",start_note:"Siteye yeni mi geldin? Bu dört yazı, ana temalar genelinde iyi bir giriş noktası.",
+    ai_title:"Yapay zekâyla nasıl çalışıyorum",
+    ai_text:"Bu saha notlarındaki deneyimler, vakalar ve fikirler topluluk moderasyonu ve Trust & Safety çalışmalarımdan gelir ve bana aittir. İngilizce ana dilim değil (yaklaşık B2), bu yüzden İngilizce metni taslaklamak ve düzenlemek için Claude'dan yardım alıyorum. Siteyi kurmak ve sürdürmek, ayrıca PDF'leri üretmek için Claude Code'u kullandım. Yayından önce her olgusal iddiayı kontrol ediyorum. Rusça ve Azerice sürümler Claude'un çevirisidir; ana dili konuşan biri tarafından gözden geçirilmedi.",
+    ai_line:"Kendi iş deneyimime dayanır. İngilizce ana dilim değil; taslak ve düzenleme için Claude'dan yardım alıyorum.",
     reader_bio:"Güven ve güvenlik, topluluk operasyonları ve platform yönetişimi üzerine yazıyor; birden fazla dil topluluğunda doğrudan moderasyon ve teknik destek deneyiminden yola çıkarak.",reader_connect:"İletişime geç",
     method_label:"Kaynaklar üzerine not",method_text:"Bu yazılar doğrudan operasyonel deneyime dayanır. İşveren ve ürün adı bir gizlilik anlaşması gereği paylaşılmamaktadır; operasyonel rakamlar, standart istatistiksel ifşa pratiğine uygun olarak kesin sayılar yerine yuvarlanmış aralıklar hâlinde verilir. Burada hiçbir kullanıcı, meslektaş veya iç sistem adıyla tanımlanmamaktadır.",method_text_geo:"A2/AD, TikTok yasağı ve \"Kimin Kuralları? Bir Güç Mücadelesi Olarak AI Yönetişimi\" başlıklı yazı neorealist bir çerçeve kullanır, çünkü her birinde asıl soru bir devletin ya da devlete yakın bir aktörün göreli güç dengesindeki değişime nasıl tepki verdiğidir — bir kurumun ya da normun kendi başına ne kadar iyi işlediği değil. Bölgedeki her vakayı ya da rakip çerçeveyi taramaz; yalnızca bu mekanizmanın en net göründüğü örnekleri izler.",
     collect_lead:"Çevrimdışı okumayı mı tercih edersiniz?",collect_sub:"Bütün yazılar tek belgede, içindekiler sayfasıyla.",collect_btn:"Toplu yazılar",
@@ -3041,6 +3053,9 @@ const T = {
   },
   ru:{
     start_label:"Начните отсюда",start_note:"Впервые здесь? Эти четыре текста — хорошая отправная точка по основным темам.",
+    ai_title:"Как я работаю с ИИ",
+    ai_text:"Опыт, случаи и идеи в этих полевых заметках мои собственные: они взяты из моей работы в модерации сообществ и в сфере Trust & Safety. Английский для меня не родной язык (уровень примерно B2), поэтому я использую Claude, чтобы составлять черновики английского текста и редактировать его. С помощью Claude Code я также сделал этот сайт, поддерживаю его и генерирую PDF-файлы. Перед публикацией я проверяю каждое фактическое утверждение. Русскую и азербайджанскую версии перевёл Claude; носитель языка их не проверял.",
+    ai_line:"Основано на моём собственном опыте работы. Английский для меня не родной язык; черновик и редактуру я делаю с помощью Claude.",
     reader_bio:"Пишет о доверии и безопасности, операциях сообществ и управлении платформами, опираясь на прямой опыт модерации и техподдержки в нескольких языковых сообществах.",reader_connect:"Связаться",
     method_label:"О источниках",method_text:"Эти тексты основаны на непосредственном операционном опыте. Работодатель и продукт не называются в соответствии с соглашением о конфиденциальности, а операционные показатели приводятся округлёнными диапазонами, а не точными значениями, согласно стандартной практике статистического раскрытия. Ни один пользователь, коллега или внутренняя система здесь не названы.",method_text_geo:"Материалы об A2/AD, запрете TikTok и «Чьи правила? Управление ИИ как борьба за власть» используют неореалистическую оптику, потому что в каждом случае ключевой вопрос — как государство или связанный с государством актор реагирует на сдвиг в соотношении сил, а не насколько хорошо тот или иной институт или норма работают сами по себе. Здесь не рассматриваются все случаи региона или конкурирующие подходы — только те, где этот механизм был наиболее очевиден.",
     collect_lead:"Предпочитаете читать офлайн?",collect_sub:"Все тексты в одном документе с оглавлением.",collect_btn:"Собрание текстов",
@@ -3091,6 +3106,9 @@ const T = {
   },
   az:{
     start_label:"Buradan başla",start_note:"Sayta yenisiniz? Bu dörd yazı əsas mövzular üzrə yaxşı giriş nöqtəsidir.",
+    ai_title:"Süni intellektlə necə işləyirəm",
+    ai_text:"Bu sahə qeydlərindəki təcrübələr, hadisələr və fikirlər icma moderasiyası və Trust & Safety sahəsindəki işimdən gəlir və mənə məxsusdur. İngilis dili ana dilim deyil (səviyyəm təxminən B2), ona görə də ingiliscə mətnin qaralamasını hazırlamaq və onu redaktə etmək üçün Claude-dan kömək alıram. Saytı qurmaq və işlək saxlamaq, həmçinin PDF-ləri yaratmaq üçün Claude Code-dan istifadə etmişəm. Dərc etməzdən əvvəl hər bir faktiki iddianı yoxlayıram. Rus və Azərbaycan dillərindəki versiyalar Claude-un tərcüməsidir; onları ana dili bu dillər olan şəxs yoxlamayıb.",
+    ai_line:"Öz iş təcrübəmə əsaslanır. İngilis dili ana dilim deyil; qaralama və redaktə üçün Claude-dan kömək alıram.",
     reader_bio:"Etibar və təhlükəsizlik, icma əməliyyatları və platforma idarəçiliyi haqqında yazır; bir neçə dil icmasında birbaşa moderasiya və texniki dəstək təcrübəsinə əsaslanaraq.",reader_connect:"Əlaqə saxla",
     method_label:"Mənbələr haqqında qeyd",method_text:"Bu yazılar birbaşa əməliyyat təcrübəsinə əsaslanır. İşəgötürən və məhsul adı məxfilik razılaşmasına görə açıqlanmır; əməliyyat rəqəmləri standart statistik açıqlama praktikasına uyğun olaraq dəqiq saylar əvəzinə yuvarlaqlaşdırılmış aralıqlarla verilir. Burada heç bir istifadəçi, həmkar və ya daxili sistem adı ilə göstərilmir.",method_text_geo:"A2/AD, TikTok qadağası və \"Kimin Qaydaları? Hakimiyyət Mübarizəsi Kimi Süni İntellekt İdarəçiliyi\" adlı yazı neorealist optikadan istifadə edir, çünki hər birində əsas sual dövlətin və ya dövlətə yaxın aktorun nisbi güc balansındakı dəyişikliyə necə reaksiya verdiyidir — hər hansı bir institutun və ya normanın öz-özlüyündə nə qədər yaxşı işlədiyi deyil. Bölgədəki bütün halları və ya rəqib çərçivələri əhatə etmir — yalnız bu mexanizmin ən aydın göründüyü nümunələri izləyir.",
     collect_lead:"Oflayn oxumağa üstünlük verirsiniz?",collect_sub:"Bütün yazılar bir sənəddə, mündəricat səhifəsi ilə.",collect_btn:"Toplu yazılar",
@@ -3917,6 +3935,13 @@ window.addEventListener("hashchange",()=>{
     readerHashPop=true; closeReader(); readerHashPop=false;
   }
 });
+/* #ai-note: yazı sayfalarındaki tek satırlık not buraya bağlanır. Listeler ve yazı tipleri yüklenince üstteki
+   içerik uzar, tarayıcının ilk çapa kaydırması yanlış yerde kalır (başlık üst çubuğun altına giriyordu).
+   Yükleme ve yazı tipleri bitince bir kez daha hizalanır; adres bu arada değiştiyse dokunulmaz. */
+if(location.hash==="#ai-note"){
+  const hizala=()=>{ const el=document.getElementById("ai-note"); if(el&&location.hash==="#ai-note")el.scrollIntoView({behavior:"auto"}); };
+  window.addEventListener("load",()=>{ hizala(); if(document.fonts&&document.fonts.ready)document.fonts.ready.then(hizala); });
+}
 /* sayfa doğrudan #read/... ile açıldıysa ilgili yazıyı aç
    (tek seferlik zamanlayıcı yerine dayanıklı deneme: yavaş yükleme/render koşullarında da açılır) */
 (function(){

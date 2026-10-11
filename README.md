@@ -29,6 +29,6 @@ Every live entry with an English body gets a static page at `writing/<slug>.html
 
 - Entries with a future `publishAt`, drafts and archived entries get no page (an archived entry's page is deleted).
 - **Build article pages** runs on PRs that touch `index.html`, regenerates `writing/` and commits the result to the PR's own branch. The daily update job does the same for entries whose day has come.
-- Any page containing a term from `NDA_B64` fails the build and nothing is written.
+- Any page containing a term from `NDA_B64` fails the build and nothing is written. The one exception is the fixed AI-use line under each article body (`AI_NOTE_HTML` in `tools/build-pages.js`): that exact line is left out of the scan, the term list itself is unchanged, and the same term anywhere else on a page still fails the build.
 - Entries with a `page:` field keep their hand-written page and are skipped.
 - `writing/index.html` is a generated redirect to the writing list, because GitHub Pages answers a bare directory URL with a 404. It is `noindex`.
