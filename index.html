@@ -9,19 +9,19 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="description" content="Turan Taghiev — Field notes and analysis on content moderation, community operations, and platform governance, written from direct operational experience." />
+<meta name="description" content="Turan Taghiev | Field notes and analysis on content moderation, community operations, and platform governance, written from direct operational experience." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/" />
 <meta property="og:site_name" content="Turan Taghiev" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Turan Taghiev — Community Operations & Trust & Safety" />
+<meta property="og:title" content="Turan Taghiev | Community Operations & Trust & Safety" />
 <meta property="og:description" content="Field notes and analysis on content moderation, community operations, and platform governance, written from direct operational experience." />
 <meta property="og:image" content="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/og-image.png" />
 <meta property="og:image:alt" content="Turan Taghiev — field notes and analysis on content moderation and platform governance" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Turan Taghiev — Community Operations &amp; Trust &amp; Safety" />
+<meta name="twitter:title" content="Turan Taghiev | Community Operations &amp; Trust &amp; Safety" />
 <meta name="twitter:description" content="Field notes and analysis on content moderation, community operations, and platform governance, written from direct operational experience." />
 <meta name="twitter:image" content="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/og-image.png" />
 
@@ -37,7 +37,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()" />
 <!-- ============================================================ -->
 
-<title>Turan Taghiev — Community Operations & Trust & Safety</title>
+<title>Turan Taghiev | Community Operations & Trust & Safety</title>
 <meta name="author" content="Turan Taghiev" />
 <meta name="theme-color" content="#111315" />
 <meta name="color-scheme" content="dark light" />
@@ -429,7 +429,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 <!-- READER OVERLAY (tam analiz) -->
 <div class="reader-overlay" id="readerOverlay" role="dialog" aria-modal="true" aria-labelledby="readerTitle" tabindex="-1">
   <div class="reader-progress" id="readerProgress"></div>
-  <button class="reader-close" id="readerClose">✕</button>
+  <button class="reader-close" id="readerClose" aria-label="Close" data-i18n-aria="aria_close">✕</button>
   <div class="reader-box" id="readerScroll">
     <div class="reader-meta" id="readerMeta"></div>
     <h1 id="readerTitle"></h1>
@@ -457,7 +457,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 <header>
   <nav class="wrap nav">
     <a href="#top" class="brand">TURAN<b>.</b>TAGHIEV</a>
-    <button class="nav-toggle" aria-label="menu">≡</button>
+    <button class="nav-toggle" aria-label="Menu" data-i18n-aria="aria_menu" aria-expanded="false" aria-controls="navlinks">≡</button>
     <div class="nav-links" id="navlinks">
       <a href="#now" data-i18n="nav_now">Now</a>
       <a href="#research" data-i18n="nav_research">Research</a>
@@ -472,7 +472,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
         <svg class="ti ti-system" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg>
       </button>
       <div class="lang-switch" id="langSwitch">
-        <button class="lang" id="langBtn"><span class="lang-flag" id="curFlag">🇬🇧</span><span id="curCode">EN</span><span class="lang-caret">▾</span></button>
+        <button class="lang" id="langBtn" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu"><span id="curCode">EN</span><span class="lang-caret">▾</span></button>
         <div class="lang-menu" id="langMenu">
           <button class="lang-opt" data-lang="en"><span class="lang-flag">🇬🇧</span>English</button>
           <button class="lang-opt" data-lang="az"><span class="lang-flag">🇦🇿</span>Azərbaycan</button>
@@ -576,7 +576,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
       </div>
       <div class="search-bar reveal">
         <svg class="search-icon" viewBox="0 0 16 16"><path d="M11.7 10.3a6 6 0 1 0-1.4 1.4l3 3 1.4-1.4-3-3zM3 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"/></svg>
-        <input type="text" id="searchInput" data-i18n-ph="search_ph" placeholder="Search titles, topics, abstracts…" autocomplete="off" />
+        <input type="text" id="searchInput" data-i18n-ph="search_ph" data-i18n-aria="search_ph" aria-label="Search titles, topics, abstracts…" placeholder="Search titles, topics, abstracts…" autocomplete="off" />
         <button class="search-clear" id="searchClear" aria-label="clear">✕</button>
       </div>
       <div class="start-here reveal" id="startHere">
@@ -723,7 +723,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
         <span style="color:var(--line-strong)">·</span>
         <a href="feed.xml" class="foot-link" title="RSS feed">RSS</a>
         <span style="color:var(--line-strong)">·</span>
-        <span class="foot-link" id="soundToggle" style="cursor:pointer" title="Sound on/off">♪ Sound</span>
+        <button type="button" class="foot-link" id="soundToggle" title="Sound on/off">♪ Sound</button>
         <span style="color:var(--line-strong)">·</span>
         <span class="fnote" id="footyr"></span>
       </div>
@@ -2950,6 +2950,7 @@ const T = {
     ai_title:"How I work with AI",
     ai_text:"The experiences, cases and ideas in these field notes are my own, drawn from my community moderation and Trust & Safety work. English is not my first language (around B2), so I use Claude to help draft and edit the English. I also used Claude Code to build and maintain this site and to generate the PDFs. I check every factual claim before I publish. The Russian and Azerbaijani versions are Claude's translations and have not had a native-speaker review.",
     ai_line:"Based on my own work experience. English is not my first language; I use Claude to help draft and edit.",
+    aria_close:"Close",aria_menu:"Menu",aria_lang:"Language",
     reader_bio:"Writes on trust & safety, community operations, and platform governance, drawing on direct moderation and technical-support experience across multiple language communities.",reader_connect:"Get in touch",
     method_label:"Note on sources",method_text:"These pieces draw on direct operational experience. The employer and product are withheld under a confidentiality agreement, and operational figures appear as rounded bands rather than exact counts, following standard statistical disclosure practice. Nothing here identifies a user, a colleague, or an internal system by name.",method_text_geo:"The pieces on A2/AD, the TikTok ban, and \"Whose Rules? AI Governance as a Power Struggle\" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework — only the ones where that mechanism was clearest.",
     collect_lead:"Prefer to read offline?",collect_sub:"Every piece in one document, with a contents page.",collect_btn:"Collected writing",
@@ -3003,6 +3004,7 @@ const T = {
     ai_title:"Yapay zekâyla nasıl çalışıyorum",
     ai_text:"Bu saha notlarındaki deneyimler, vakalar ve fikirler topluluk moderasyonu ve Trust & Safety çalışmalarımdan gelir ve bana aittir. İngilizce ana dilim değil (yaklaşık B2), bu yüzden İngilizce metni taslaklamak ve düzenlemek için Claude'dan yardım alıyorum. Siteyi kurmak ve sürdürmek, ayrıca PDF'leri üretmek için Claude Code'u kullandım. Yayından önce her olgusal iddiayı kontrol ediyorum. Rusça ve Azerice sürümler Claude'un çevirisidir; ana dili konuşan biri tarafından gözden geçirilmedi.",
     ai_line:"Kendi iş deneyimime dayanır. İngilizce ana dilim değil; taslak ve düzenleme için Claude'dan yardım alıyorum.",
+    aria_close:"Kapat",aria_menu:"Menü",aria_lang:"Dil",
     reader_bio:"Güven ve güvenlik, topluluk operasyonları ve platform yönetişimi üzerine yazıyor; birden fazla dil topluluğunda doğrudan moderasyon ve teknik destek deneyiminden yola çıkarak.",reader_connect:"İletişime geç",
     method_label:"Kaynaklar üzerine not",method_text:"Bu yazılar doğrudan operasyonel deneyime dayanır. İşveren ve ürün adı bir gizlilik anlaşması gereği paylaşılmamaktadır; operasyonel rakamlar, standart istatistiksel ifşa pratiğine uygun olarak kesin sayılar yerine yuvarlanmış aralıklar hâlinde verilir. Burada hiçbir kullanıcı, meslektaş veya iç sistem adıyla tanımlanmamaktadır.",method_text_geo:"A2/AD, TikTok yasağı ve \"Kimin Kuralları? Bir Güç Mücadelesi Olarak AI Yönetişimi\" başlıklı yazı neorealist bir çerçeve kullanır, çünkü her birinde asıl soru bir devletin ya da devlete yakın bir aktörün göreli güç dengesindeki değişime nasıl tepki verdiğidir — bir kurumun ya da normun kendi başına ne kadar iyi işlediği değil. Bölgedeki her vakayı ya da rakip çerçeveyi taramaz; yalnızca bu mekanizmanın en net göründüğü örnekleri izler.",
     collect_lead:"Çevrimdışı okumayı mı tercih edersiniz?",collect_sub:"Bütün yazılar tek belgede, içindekiler sayfasıyla.",collect_btn:"Toplu yazılar",
@@ -3056,6 +3058,7 @@ const T = {
     ai_title:"Как я работаю с ИИ",
     ai_text:"Опыт, случаи и идеи в этих полевых заметках мои собственные: они взяты из моей работы в модерации сообществ и в сфере Trust & Safety. Английский для меня не родной язык (уровень примерно B2), поэтому я использую Claude, чтобы составлять черновики английского текста и редактировать его. С помощью Claude Code я также сделал этот сайт, поддерживаю его и генерирую PDF-файлы. Перед публикацией я проверяю каждое фактическое утверждение. Русскую и азербайджанскую версии перевёл Claude; носитель языка их не проверял.",
     ai_line:"Основано на моём собственном опыте работы. Английский для меня не родной язык; черновик и редактуру я делаю с помощью Claude.",
+    aria_close:"Закрыть",aria_menu:"Меню",aria_lang:"Язык",
     reader_bio:"Пишет о доверии и безопасности, операциях сообществ и управлении платформами, опираясь на прямой опыт модерации и техподдержки в нескольких языковых сообществах.",reader_connect:"Связаться",
     method_label:"О источниках",method_text:"Эти тексты основаны на непосредственном операционном опыте. Работодатель и продукт не называются в соответствии с соглашением о конфиденциальности, а операционные показатели приводятся округлёнными диапазонами, а не точными значениями, согласно стандартной практике статистического раскрытия. Ни один пользователь, коллега или внутренняя система здесь не названы.",method_text_geo:"Материалы об A2/AD, запрете TikTok и «Чьи правила? Управление ИИ как борьба за власть» используют неореалистическую оптику, потому что в каждом случае ключевой вопрос — как государство или связанный с государством актор реагирует на сдвиг в соотношении сил, а не насколько хорошо тот или иной институт или норма работают сами по себе. Здесь не рассматриваются все случаи региона или конкурирующие подходы — только те, где этот механизм был наиболее очевиден.",
     collect_lead:"Предпочитаете читать офлайн?",collect_sub:"Все тексты в одном документе с оглавлением.",collect_btn:"Собрание текстов",
@@ -3109,6 +3112,7 @@ const T = {
     ai_title:"Süni intellektlə necə işləyirəm",
     ai_text:"Bu sahə qeydlərindəki təcrübələr, hadisələr və fikirlər icma moderasiyası və Trust & Safety sahəsindəki işimdən gəlir və mənə məxsusdur. İngilis dili ana dilim deyil (səviyyəm təxminən B2), ona görə də ingiliscə mətnin qaralamasını hazırlamaq və onu redaktə etmək üçün Claude-dan kömək alıram. Saytı qurmaq və işlək saxlamaq, həmçinin PDF-ləri yaratmaq üçün Claude Code-dan istifadə etmişəm. Dərc etməzdən əvvəl hər bir faktiki iddianı yoxlayıram. Rus və Azərbaycan dillərindəki versiyalar Claude-un tərcüməsidir; onları ana dili bu dillər olan şəxs yoxlamayıb.",
     ai_line:"Öz iş təcrübəmə əsaslanır. İngilis dili ana dilim deyil; qaralama və redaktə üçün Claude-dan kömək alıram.",
+    aria_close:"Bağla",aria_menu:"Menyu",aria_lang:"Dil",
     reader_bio:"Etibar və təhlükəsizlik, icma əməliyyatları və platforma idarəçiliyi haqqında yazır; bir neçə dil icmasında birbaşa moderasiya və texniki dəstək təcrübəsinə əsaslanaraq.",reader_connect:"Əlaqə saxla",
     method_label:"Mənbələr haqqında qeyd",method_text:"Bu yazılar birbaşa əməliyyat təcrübəsinə əsaslanır. İşəgötürən və məhsul adı məxfilik razılaşmasına görə açıqlanmır; əməliyyat rəqəmləri standart statistik açıqlama praktikasına uyğun olaraq dəqiq saylar əvəzinə yuvarlaqlaşdırılmış aralıqlarla verilir. Burada heç bir istifadəçi, həmkar və ya daxili sistem adı ilə göstərilmir.",method_text_geo:"A2/AD, TikTok qadağası və \"Kimin Qaydaları? Hakimiyyət Mübarizəsi Kimi Süni İntellekt İdarəçiliyi\" adlı yazı neorealist optikadan istifadə edir, çünki hər birində əsas sual dövlətin və ya dövlətə yaxın aktorun nisbi güc balansındakı dəyişikliyə necə reaksiya verdiyidir — hər hansı bir institutun və ya normanın öz-özlüyündə nə qədər yaxşı işlədiyi deyil. Bölgədəki bütün halları və ya rəqib çərçivələri əhatə etmir — yalnız bu mexanizmin ən aydın göründüyü nümunələri izləyir.",
     collect_lead:"Oflayn oxumağa üstünlük verirsiniz?",collect_sub:"Bütün yazılar bir sənəddə, mündəricat səhifəsi ilə.",collect_btn:"Toplu yazılar",
@@ -3168,6 +3172,8 @@ function applyStatic(){
   $$("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(T[lang][k]!=null)el.textContent=T[lang][k];});
   $$("[data-i18n-html]").forEach(el=>{const k=el.dataset.i18nHtml;if(T[lang][k]!=null)el.innerHTML=T[lang][k];});
   $$("[data-i18n-ph]").forEach(el=>{const k=el.dataset.i18nPh;if(T[lang][k]!=null)el.placeholder=T[lang][k];});
+  $$("[data-i18n-aria]").forEach(el=>{const k=el.dataset.i18nAria;if(T[lang][k]!=null)el.setAttribute("aria-label",T[lang][k]);});
+  const lb=$("#langBtn"); if(lb&&T[lang].aria_lang)lb.setAttribute("aria-label",T[lang].aria_lang+": "+LANG_META[lang].code);
   document.documentElement.lang=lang;
   formatHeroKicker();
 }
@@ -4186,7 +4192,6 @@ function cycleTheme(){
 function setLang(l){
   lang=l;
   try{ localStorage.setItem("site-lang", l); }catch(e){}
-  $("#curFlag").textContent=LANG_META[l].flag;
   $("#curCode").textContent=LANG_META[l].code;
   $$(".lang-opt").forEach(o=>o.classList.toggle("active",o.dataset.lang===l));
   applyStatic();buildFilters();renderFeatured();renderFeed();renderBooks();renderPractice();renderNow();renderTimeline();renderCaps();
@@ -5348,6 +5353,7 @@ $("#readerClose").onclick=closeReader;
 $("#readerOverlay").onclick=(e)=>{if(e.target===$("#readerOverlay"))closeReader();};
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){
+    if($("#langMenu").classList.contains("open")){setLangMenu(false,true);return;}
     if($("#leaveOverlay").classList.contains("open")){closeLeave();return;}
     if($("#readerOverlay").classList.contains("open")){closeReader();return;}
     if($("#adminOverlay").classList.contains("open")){
@@ -5360,7 +5366,9 @@ document.addEventListener("keydown",e=>{
 
 /* NAV */
 /* dil seçimi — hover'da açılır, tıklamayla da çalışır (mobil/dokunmatik için) */
-$("#langBtn").onclick=(e)=>{e.stopPropagation();$("#langMenu").classList.toggle("open");};
+/* menunun acik/kapali durumu aria-expanded ile duyurulur; Escape kapatir ve odagi dugmeye dondurur */
+function setLangMenu(open,focusBtn){ const m=$("#langMenu"),b=$("#langBtn"); m.classList.toggle("open",open); b.setAttribute("aria-expanded",open?"true":"false"); if(!open&&focusBtn)b.focus(); }
+$("#langBtn").onclick=(e)=>{e.stopPropagation();setLangMenu(!$("#langMenu").classList.contains("open"));};
 $$(".lang-opt").forEach(o=>o.onclick=()=>{Sound.soft();setLang(o.dataset.lang);});
 /* sessiz kalan ana butonlara tık sesi — kendi sesini çalan öğeler hariç tutuldu (çift ses olmaz) */
 document.addEventListener("click",e=>{
@@ -5372,9 +5380,9 @@ document.addEventListener("click",e=>{
   // sadece ana gezinme/eylem öğeleri
   if(el.matches(".nav-links a,.btn,.foot-link")) Sound.tick();
 });
-document.addEventListener("click",e=>{if(!$("#langSwitch").contains(e.target))$("#langMenu").classList.remove("open");});
-$(".nav-toggle").onclick=()=>$("#navlinks").classList.toggle("open");
-$$("#navlinks a").forEach(a=>a.onclick=()=>$("#navlinks").classList.remove("open"));
+document.addEventListener("click",e=>{if(!$("#langSwitch").contains(e.target)&&$("#langMenu").classList.contains("open"))setLangMenu(false);});
+$(".nav-toggle").onclick=()=>{ const o=$("#navlinks").classList.toggle("open"); $(".nav-toggle").setAttribute("aria-expanded",o?"true":"false"); };
+$$("#navlinks a").forEach(a=>a.onclick=()=>{ $("#navlinks").classList.remove("open"); $(".nav-toggle").setAttribute("aria-expanded","false"); });
 $("#footyr").textContent=new Date().getFullYear();
 
 /* analiz arama */

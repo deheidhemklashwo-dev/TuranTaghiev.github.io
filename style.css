@@ -176,10 +176,12 @@ html[data-theme-pref="system"] .theme-toggle .ti-system{display:block}
 .lang-opt:hover{background:var(--accent-dim);color:var(--accent-soft)}
 .lang-opt.active{color:var(--accent)}
 .lang-opt.active::after{content:"●";margin-left:auto;font-size:8px;color:var(--accent)}
-.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;position:relative}
+/* dokunma alani 44x44; gorunen simge ayni kalir */
+.nav-toggle::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
 
 /* HERO */
-.hero{padding:128px 0 100px;border-bottom:1px solid var(--line-strong)}
+.hero{padding-top:128px;padding-bottom:100px;border-bottom:1px solid var(--line-strong)}
 .kicker{font-family:var(--mono);font-size:var(--fs-11);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:32px;display:flex;align-items:baseline;gap:30px;flex-wrap:wrap;row-gap:var(--sp-9)}
 
 
@@ -310,7 +312,7 @@ section{padding:88px 0;border-bottom:1px solid var(--line-strong)}
 .now-item .ntext{font-size:.98rem;color:var(--text-soft);line-height:1.5}
 
 /* READER OVERLAY (tam analiz) */
-.reader-overlay{display:none;position:fixed;inset:0;z-index:150;background:var(--overlay-scrim);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow-y:auto;opacity:0;transition:opacity .35s ease}
+.reader-overlay{display:none;position:fixed;inset:0;z-index:150;background:var(--bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow-y:auto;opacity:0;transition:opacity .35s ease}
 .reader-overlay.open{display:block}
 .reader-overlay.veiled{opacity:1}
 
@@ -507,6 +509,8 @@ footer{padding:40px 0}
 .foot-right{display:flex;gap:var(--sp-16);align-items:center}
 .foot-link{font-family:var(--mono);font-size:var(--fs-10);letter-spacing:.1em;text-transform:uppercase;color:var(--text-mute);transition:color .2s;}
 .foot-link:hover{color:var(--accent)}
+/* ses kontrolu artik gercek bir dugme; tarayicinin dugme varsayilanlari sifirlanir, gorunum span ile ayni kalir */
+button.foot-link{background:none;border:0;padding:0;margin:0;cursor:pointer;line-height:inherit;font-weight:inherit}
 
 /* ADMIN PANEL */
 .admin-overlay{display:none;position:fixed;inset:0;z-index:200;background:var(--overlay-scrim);backdrop-filter:blur(6px);overflow-y:auto;overscroll-behavior:contain;}
@@ -608,7 +612,7 @@ footer{padding:40px 0}
   .split{grid-template-columns:1fr;gap:40px}
   .reading-grid{grid-template-columns:1fr}
   .practice-grid{grid-template-columns:1fr}
-  .hero{padding:80px 0 64px}
+  .hero{padding-top:80px;padding-bottom:64px}
 }
 
 /* ===== KAPSAMLI MOBİL / TABLET KATMANI ===== */
@@ -671,7 +675,7 @@ footer{padding:40px 0}
 /* YATAY MOD (landscape telefon) — reader yüksekliği taşmasın */
 @media(max-height:480px) and (orientation:landscape){
   .reader-box{padding-top:40px}
-  .hero{padding:48px 0 40px}
+  .hero{padding-top:48px;padding-bottom:40px}
 }
 
 /* MOBİL PERFORMANS — telefon GPU'ları backdrop-blur ve noise'da zorlanır, kısarak kasmayı önle */
@@ -684,7 +688,7 @@ footer{padding:40px 0}
   header{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background:var(--header-bg-solid)}
   /* overlay backdrop-blur'ları düz koyu zemine çevir (mobilde blur çok pahalı) */
   .reader-overlay,.admin-overlay,.leave-overlay{backdrop-filter:none;-webkit-backdrop-filter:none}
-  .reader-overlay{background:var(--overlay-scrim-solid)}
+  .reader-overlay{background:var(--bg)}
   .admin-overlay{background:var(--overlay-scrim-solid)}
   .leave-overlay{background:var(--overlay-scrim-solid)}
   /* panel arka plan glow'larını kaldır (gereksiz GPU yükü) */
