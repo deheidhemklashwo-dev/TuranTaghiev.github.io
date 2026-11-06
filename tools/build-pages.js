@@ -25,6 +25,13 @@
   const SITE="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/";
   const OUT_DIR="writing";
   const OG_IMAGE=SITE+"og-image.png";
+  const OG_IMAGE_ALT="Turan Taghiev: field notes and analysis on content moderation and platform governance";
+  /* Yazıya özel paylaşım görseli (isteğe bağlı ogImage alanı): yalnızca assets/og/ altındaki bir dosya adı ya da
+     "assets/og/<dosya>" kabul edilir. Geçersizse ya da dosya yoksa genel og-image.png kullanılır.
+     Sayfa yalnızca yayındaki yazıya üretildiği için zamanlanmış yazının görseli hiçbir sayfada geçmez. */
+  const OG_DIR="assets/og/";
+  const OG_FILE_RE=/^(?:assets\/og\/)?([a-z0-9][a-z0-9._-]*\.(?:png|jpe?g))$/i;
+  function ogImagePath(a){ const m=OG_FILE_RE.exec((a&&a.ogImage)||""); return m?OG_DIR+m[1]:null; }
   const LINKEDIN="https://www.linkedin.com/in/turan-t-b75a02290";
   /* Yapay zekâ kullanımı notu: her sayfada gövdenin altında tek satır, ana sayfadaki #ai-note bölümüne bağlı.
      Metin index.html'deki T.en.ai_line ile aynıdır; birini değiştiren diğerini de değiştirir.
@@ -124,7 +131,7 @@
     return "../index.html#read/"+slugFor(b);
   }
 
-  function buildPage(A,idx,today,seeds){
+  function buildPage(A,idx,today,seeds,opts){
     const a=A[idx], slug=slugFor(a), url=pageUrl(a);
     const title=a.title.en, abstract=(a.abstract&&a.abstract.en)||"";
     const type=(a.type&&a.type.en)||"";
@@ -132,12 +139,14 @@
     const mins=readMins(a);
     const langs=["tr","ru","az"].filter(k=>a.body[k]&&a.body[k].trim());
     const rel=relatedFor(A,idx,today,seeds);
+    const ogPath=ogImagePath(a), ogOk=!!ogPath&&(!opts||!opts.imageExists||opts.imageExists(ogPath));
+    const image=ogOk?SITE+ogPath:OG_IMAGE, imageAlt=ogOk?title:OG_IMAGE_ALT;
     const ld={
       "@context":"https://schema.org","@type":"Article",
       headline:title, description:abstract, datePublished:a.added||a.date, inLanguage:"en",
       author:{"@type":"Person",name:"Turan Taghiev",url:SITE,sameAs:[LINKEDIN]},
       url:url, mainEntityOfPage:{"@type":"WebPage","@id":url},
-      image:OG_IMAGE, keywords:topics.join(", ")
+      image:image, keywords:topics.join(", ")
     };
     if(topics[0])ld.articleSection=topics[0];
     const L=[];
@@ -155,8 +164,8 @@
     L.push('<meta property="og:title" content="'+esc(title)+'" />');
     L.push('<meta property="og:description" content="'+esc(abstract)+'" />');
     L.push('<meta property="og:url" content="'+esc(url)+'" />');
-    L.push('<meta property="og:image" content="'+OG_IMAGE+'" />');
-    L.push('<meta property="og:image:alt" content="Turan Taghiev: field notes and analysis on content moderation and platform governance" />');
+    L.push('<meta property="og:image" content="'+esc(image)+'" />');
+    L.push('<meta property="og:image:alt" content="'+esc(imageAlt)+'" />');
     L.push('<meta property="og:image:width" content="1200" />');
     L.push('<meta property="og:image:height" content="630" />');
     if(a.added)L.push('<meta property="article:published_time" content="'+esc(a.added)+'" />');
@@ -165,7 +174,7 @@
     L.push('<meta name="twitter:card" content="summary_large_image" />');
     L.push('<meta name="twitter:title" content="'+esc(title)+'" />');
     L.push('<meta name="twitter:description" content="'+esc(abstract)+'" />');
-    L.push('<meta name="twitter:image" content="'+OG_IMAGE+'" />');
+    L.push('<meta name="twitter:image" content="'+esc(image)+'" />');
     L.push('<script type="application/ld+json">');
     L.push(jsonLd(ld));
     L.push('</script>');
@@ -293,8 +302,8 @@
     return L.join("\n")+"\n";
   }
 
-  function buildAll(A,today,seeds){
-    const files={}, skipped=[], seen={};
+  function buildAll(A,today,seeds,opts){
+    const files={}, skipped=[], seen={}, warnings=[];
     A.forEach((a,idx)=>{
       const slug=slugFor(a);
       if(a.page){ skipped.push({slug,reason:"page: girişi (elle yazılmış sayfa)"}); return; }
@@ -307,10 +316,15 @@
       if(slug==="index")throw new Error("Ayrılmış slug: index (writing/index.html yönlendirme sayfasıdır)");
       if(seen[slug])throw new Error("Yinelenen slug: "+slug);
       seen[slug]=true;
-      files[pagePath(a)]=buildPage(A,idx,today,seeds);
+      if(a.ogImage){
+        const op=ogImagePath(a);
+        if(!op)warnings.push(slug+": ogImage geçersiz ("+a.ogImage+"), genel görsel kullanıldı");
+        else if(opts&&opts.imageExists&&!opts.imageExists(op))warnings.push(slug+": "+op+" bulunamadı, genel görsel kullanıldı");
+      }
+      files[pagePath(a)]=buildPage(A,idx,today,seeds,opts);
     });
     files[OUT_DIR+"/index.html"]=buildIndex();
-    return {files,skipped};
+    return {files,skipped,warnings};
   }
 
   /* ---- NDA: index.html'deki NDA_B64 listesi, qaScanEntry ile aynı eşleşme (küçük harfe çevrilmiş alt dize) ---- */
@@ -333,7 +347,7 @@
   }
 
   const feeds=(typeof module!=="undefined"&&module.exports&&typeof require!=="undefined")?require("./build-feeds.js"):root.buildFeeds;
-  const api={buildAll,buildPage,AI_NOTE,AI_NOTE_HTML,relatedFor,relSeed,extractRelSeed,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
+  const api={buildAll,buildPage,ogImagePath,AI_NOTE,AI_NOTE_HTML,relatedFor,relSeed,extractRelSeed,scanNda,extractNdaTerms,esc,smartType,slugFor,isLive,hasPage,pagePath,pageUrl,OUT_DIR};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   else root.buildPages=api;
 
@@ -344,7 +358,8 @@
     const today=arg("date")||process.env.PAGES_DATE||new Date().toISOString().slice(0,10);
     const html=fs.readFileSync(path.join(repo,"index.html"),"utf8");
     const A=feeds.extractAnalyses(html);
-    const out=buildAll(A,today,extractRelSeed(html));
+    const out=buildAll(A,today,extractRelSeed(html),{imageExists:p=>fs.existsSync(path.join(repo,p))});
+    out.warnings.forEach(w=>console.warn("UYARI: "+w));
     const bad=scanNda(out.files,extractNdaTerms(html));
     if(bad.length){
       console.error("NDA taraması BAŞARISIZ, hiçbir dosya yazılmadı:");

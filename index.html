@@ -4966,6 +4966,7 @@ function serializeEntry(a){
   L.push(`    link: ${J(a.link||"")}`);
   if(a.page)L.push(`    page: ${J(a.page)}`);
   L.push(`    pdf: ${J(a.pdf||"")}`);
+  if(a.ogImage)L.push(`    ogImage: ${J(a.ogImage)}`);
   L.push(`    flourish: ${J(a.flourish||"")}`);
   if(a.body){
     const langs=["en","tr","ru","az"].filter(k=>a.body[k]);
@@ -5364,7 +5365,9 @@ function generateEntryInner(){
      üretilmez (dokunulmamış davranış). */
   const seriesBlock=(orig&&orig.seriesId!=null&&orig.seriesOrder!=null)
     ?`,\n    seriesId: ${JSON.stringify(orig.seriesId)},\n    seriesOrder: ${orig.seriesOrder}`:"";
-  const entry=`  {\n    date: "${d}",\n    type: { en:"${ten}", tr:"${ttr}"${ruazType} },\n    topics: [${topics.map(t=>`"${t}"`).join(",")}]${seriesBlock},\n    title: {\n      en:"${ten_t}",\n      tr:"${ttr_t}"${ruaz("title")}\n    },\n    abstract: {\n      en:"${ten_a}",\n      tr:"${ttr_a}"${ruaz("abstract")}\n    },\n    link:"${link}",\n    pdf:"${pdfv}",\n    flourish:"${fl}"${bodyBlock}${draftBlock}${featuredBlock}${publishBlock}${addedLine}\n  },`;
+  /* ogImage (yazıya özel paylaşım görseli) da panelde düzenlenmez; seri alanları gibi orijinalden korunur. */
+  const ogBlock=(orig&&orig.ogImage)?`,\n    ogImage: ${JSON.stringify(orig.ogImage)}`:"";
+  const entry=`  {\n    date: "${d}",\n    type: { en:"${ten}", tr:"${ttr}"${ruazType} },\n    topics: [${topics.map(t=>`"${t}"`).join(",")}]${seriesBlock}${ogBlock},\n    title: {\n      en:"${ten_t}",\n      tr:"${ttr_t}"${ruaz("title")}\n    },\n    abstract: {\n      en:"${ten_a}",\n      tr:"${ttr_a}"${ruaz("abstract")}\n    },\n    link:"${link}",\n    pdf:"${pdfv}",\n    flourish:"${fl}"${bodyBlock}${draftBlock}${featuredBlock}${publishBlock}${addedLine}\n  },`;
   $("#aoutText").value=entry;
   $("#aout").style.display="block";
   $("#copyNotice").classList.remove("show");
