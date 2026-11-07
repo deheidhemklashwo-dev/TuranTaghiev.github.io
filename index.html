@@ -559,7 +559,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
         <dl class="glossary-list">
           <div class="g-item"><dt>Platform Governance</dt><dd>The rules, enforcement systems, and legitimacy structures platforms use to manage speech, safety, and power at scale.</dd></div>
           <div class="g-item"><dt>Trust &amp; Safety</dt><dd>The operational discipline of detecting, evaluating, and responding to abuse, fraud, and harm on a platform.</dd></div>
-          <div class="g-item"><dt>Human-in-the-Loop</dt><dd>A system design where automated detection routes decisions to a person rather than acting alone &mdash; a capacity constraint, not a guarantee.</dd></div>
+          <div class="g-item"><dt>Human-in-the-Loop</dt><dd>A system design where automated detection routes decisions to a person rather than acting alone. It is a capacity constraint, not a guarantee.</dd></div>
           <div class="g-item"><dt>Behavioral Risk</dt><dd>Assessing accounts by pattern over time (escalation, coordination) rather than by any single message in isolation.</dd></div>
           <div class="g-item"><dt>Multilingual Moderation</dt><dd>Enforcing one written policy across communities where the same rule carries different social cost and different perceived fairness.</dd></div>
         </dl>
@@ -600,7 +600,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
       <div class="method-note reveal">
         <span class="mn-label" data-i18n="method_label">Note on sources</span>
         <p class="mn-text" data-i18n="method_text">These pieces draw on direct operational experience. The employer and product are withheld under a confidentiality agreement, and operational figures appear as rounded bands rather than exact counts, following standard statistical disclosure practice. Nothing here identifies a user, a colleague, or an internal system by name.</p>
-        <p class="mn-text" data-i18n="method_text_geo">The pieces on A2/AD, the TikTok ban, and "Whose Rules? AI Governance as a Power Struggle" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework — only the ones where that mechanism was clearest.</p>
+        <p class="mn-text" data-i18n="method_text_geo">The pieces on A2/AD, the TikTok ban, and "Whose Rules? AI Governance as a Power Struggle" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework, only the ones where that mechanism was clearest.</p>
       </div>
       <div class="collect reveal" id="collectRow">
         <div class="collect-txt">
@@ -2988,10 +2988,10 @@ const NET_MSG = {
     az:{t:"Yenidən onlayn",m:"Bağlantı bərpa olundu."}
   },
   loadfail:{
-    en:{t:"Couldn't load that",m:"This content failed to load — likely a slow or dropped connection.",retry:"Retry"},
-    tr:{t:"Yüklenemedi",m:"Bu içerik yüklenemedi — büyük ihtimalle yavaş ya da kopmuş bağlantı.",retry:"Tekrar dene"},
+    en:{t:"Couldn't load that",m:"This content failed to load: likely a slow or dropped connection.",retry:"Retry"},
+    tr:{t:"Yüklenemedi",m:"Bu içerik yüklenemedi: büyük ihtimalle yavaş ya da kopmuş bağlantı.",retry:"Tekrar dene"},
     ru:{t:"Не удалось загрузить",m:"Этот контент не загрузился — вероятно, медленное или прерванное соединение.",retry:"Повторить"},
-    az:{t:"Yüklənmədi",m:"Bu məzmun yüklənmədi — çox güman ki, yavaş və ya kəsilmiş bağlantı.",retry:"Yenidən cəhd et"}
+    az:{t:"Yüklənmədi",m:"Bu məzmun yüklənmədi: çox güman ki, yavaş və ya kəsilmiş bağlantı.",retry:"Yenidən cəhd et"}
   }
 };
 
@@ -3030,7 +3030,7 @@ const T = {
     ai_line:"Based on my own work experience. English is not my first language; I use Claude to help draft and edit.",
     aria_close:"Close",aria_menu:"Menu",aria_lang:"Language",
     reader_bio:"Writes on trust & safety, community operations, and platform governance, drawing on direct moderation and technical-support experience across multiple language communities.",reader_connect:"Get in touch",
-    method_label:"Note on sources",method_text:"These pieces draw on direct operational experience. The employer and product are withheld under a confidentiality agreement, and operational figures appear as rounded bands rather than exact counts, following standard statistical disclosure practice. Nothing here identifies a user, a colleague, or an internal system by name.",method_text_geo:"The pieces on A2/AD, the TikTok ban, and \"Whose Rules? AI Governance as a Power Struggle\" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework — only the ones where that mechanism was clearest.",
+    method_label:"Note on sources",method_text:"These pieces draw on direct operational experience. The employer and product are withheld under a confidentiality agreement, and operational figures appear as rounded bands rather than exact counts, following standard statistical disclosure practice. Nothing here identifies a user, a colleague, or an internal system by name.",method_text_geo:"The pieces on A2/AD, the TikTok ban, and \"Whose Rules? AI Governance as a Power Struggle\" use a neorealist lens because in each case the operative question is how a state or state-adjacent actor responds to a shift in relative power, not how well a given institution or norm performs on its own terms. They don't survey every regional case or competing framework, only the ones where that mechanism was clearest.",
     collect_lead:"Prefer to read offline?",collect_sub:"Every piece in one document, with a contents page.",collect_btn:"Collected writing",
     draft_restored:"Unsaved draft restored",draft_discard:"Discard",
     af_publish:"Publish on (optional)",st_sched:"Scheduled",wiz_past:"Publish date is today or past: entry goes live immediately",
@@ -3084,7 +3084,7 @@ const T = {
     ai_line:"Kendi iş deneyimime dayanır. İngilizce ana dilim değil; taslak ve düzenleme için Claude'dan yardım alıyorum.",
     aria_close:"Kapat",aria_menu:"Menü",aria_lang:"Dil",
     reader_bio:"Güven ve güvenlik, topluluk operasyonları ve platform yönetişimi üzerine yazıyor; birden fazla dil topluluğunda doğrudan moderasyon ve teknik destek deneyiminden yola çıkarak.",reader_connect:"İletişime geç",
-    method_label:"Kaynaklar üzerine not",method_text:"Bu yazılar doğrudan operasyonel deneyime dayanır. İşveren ve ürün adı bir gizlilik anlaşması gereği paylaşılmamaktadır; operasyonel rakamlar, standart istatistiksel ifşa pratiğine uygun olarak kesin sayılar yerine yuvarlanmış aralıklar hâlinde verilir. Burada hiçbir kullanıcı, meslektaş veya iç sistem adıyla tanımlanmamaktadır.",method_text_geo:"A2/AD, TikTok yasağı ve \"Kimin Kuralları? Bir Güç Mücadelesi Olarak AI Yönetişimi\" başlıklı yazı neorealist bir çerçeve kullanır, çünkü her birinde asıl soru bir devletin ya da devlete yakın bir aktörün göreli güç dengesindeki değişime nasıl tepki verdiğidir — bir kurumun ya da normun kendi başına ne kadar iyi işlediği değil. Bölgedeki her vakayı ya da rakip çerçeveyi taramaz; yalnızca bu mekanizmanın en net göründüğü örnekleri izler.",
+    method_label:"Kaynaklar üzerine not",method_text:"Bu yazılar doğrudan operasyonel deneyime dayanır. İşveren ve ürün adı bir gizlilik anlaşması gereği paylaşılmamaktadır; operasyonel rakamlar, standart istatistiksel ifşa pratiğine uygun olarak kesin sayılar yerine yuvarlanmış aralıklar hâlinde verilir. Burada hiçbir kullanıcı, meslektaş veya iç sistem adıyla tanımlanmamaktadır.",method_text_geo:"A2/AD, TikTok yasağı ve \"Kimin Kuralları? Bir Güç Mücadelesi Olarak AI Yönetişimi\" başlıklı yazı neorealist bir çerçeve kullanır, çünkü her birinde asıl soru bir devletin ya da devlete yakın bir aktörün göreli güç dengesindeki değişime nasıl tepki verdiğidir, bir kurumun ya da normun kendi başına ne kadar iyi işlediği değil. Bölgedeki her vakayı ya da rakip çerçeveyi taramaz; yalnızca bu mekanizmanın en net göründüğü örnekleri izler.",
     collect_lead:"Çevrimdışı okumayı mı tercih edersiniz?",collect_sub:"Bütün yazılar tek belgede, içindekiler sayfasıyla.",collect_btn:"Toplu yazılar",
     draft_restored:"Kaydedilmemiş taslak geri yüklendi",draft_discard:"At",
     af_publish:"Yayın tarihi (isteğe bağlı)",st_sched:"Zamanlanmış",wiz_past:"Yayın tarihi bugün veya geçmiş: giriş hemen yayınlanır",
@@ -3109,7 +3109,7 @@ const T = {
     area4_t:"Dijital Jeopolitik",area4_d:"Aynı soruların devlet ölçeğinde hali: ekonomik rekabet olarak platform düzenlemesi, Güney Çin Denizi'nde erişim engelleme stratejisi, ve meşruiyet mücadelesi olarak yapay zeka yönetişimi.",
     writing_title:"Seçilmiş Yazılar",
     reading_title:"Okuma Listesi",
-    practice_title:"Pratik",practice_intro:"Küresel bir çok oyunculu oyun platformu için güven, güvenlik ve platform yönetişimi alanında operasyonel çalışma — yukarıdaki analitik çerçevelerin çalışan sistemlere dönüştüğü yer.",
+    practice_title:"Pratik",practice_intro:"Küresel bir çok oyunculu oyun platformu için güven, güvenlik ve platform yönetişimi alanında operasyonel çalışma: yukarıdaki analitik çerçevelerin çalışan sistemlere dönüştüğü yer.",
     about_title:"Yaklaşım",
     about_p1:"Aynı sorunun iki ucunda çalışıyorum. Araştırmacı olarak, devletlerin kapasiteyi nasıl güce çevirdiğini neorealist bir bakışla ele alıyorum ve bunun kurmaya çalıştıkları düzen hakkında ne söylediğini soruyorum. Pratikte ise çevrimiçi alanları düzen içinde tutan sistemlerde çalışıyorum; güven, güvenlik ve platform yönetişimi tarafında. İki taraf birbirini besliyor.",
     about_p2:"Niteliksel ve vaka odaklı çalışıyorum. Politikayı, düzenlemeleri ve şirketlerin davranışını yakından okuyor, argümanı netleştirdiği yerde veriyi devreye sokuyorum. İngilizce ve Türkçe yazıyorum; işimin çoğu Doğu Asya ve geniş Hint-Pasifik bölgesine odaklı.",
@@ -3192,7 +3192,7 @@ const T = {
     ai_line:"Öz iş təcrübəmə əsaslanır. İngilis dili ana dilim deyil; qaralama və redaktə üçün Claude-dan kömək alıram.",
     aria_close:"Bağla",aria_menu:"Menyu",aria_lang:"Dil",
     reader_bio:"Etibar və təhlükəsizlik, icma əməliyyatları və platforma idarəçiliyi haqqında yazır; bir neçə dil icmasında birbaşa moderasiya və texniki dəstək təcrübəsinə əsaslanaraq.",reader_connect:"Əlaqə saxla",
-    method_label:"Mənbələr haqqında qeyd",method_text:"Bu yazılar birbaşa əməliyyat təcrübəsinə əsaslanır. İşəgötürən və məhsul adı məxfilik razılaşmasına görə açıqlanmır; əməliyyat rəqəmləri standart statistik açıqlama praktikasına uyğun olaraq dəqiq saylar əvəzinə yuvarlaqlaşdırılmış aralıqlarla verilir. Burada heç bir istifadəçi, həmkar və ya daxili sistem adı ilə göstərilmir.",method_text_geo:"A2/AD, TikTok qadağası və \"Kimin Qaydaları? Hakimiyyət Mübarizəsi Kimi Süni İntellekt İdarəçiliyi\" adlı yazı neorealist optikadan istifadə edir, çünki hər birində əsas sual dövlətin və ya dövlətə yaxın aktorun nisbi güc balansındakı dəyişikliyə necə reaksiya verdiyidir — hər hansı bir institutun və ya normanın öz-özlüyündə nə qədər yaxşı işlədiyi deyil. Bölgədəki bütün halları və ya rəqib çərçivələri əhatə etmir — yalnız bu mexanizmin ən aydın göründüyü nümunələri izləyir.",
+    method_label:"Mənbələr haqqında qeyd",method_text:"Bu yazılar birbaşa əməliyyat təcrübəsinə əsaslanır. İşəgötürən və məhsul adı məxfilik razılaşmasına görə açıqlanmır; əməliyyat rəqəmləri standart statistik açıqlama praktikasına uyğun olaraq dəqiq saylar əvəzinə yuvarlaqlaşdırılmış aralıqlarla verilir. Burada heç bir istifadəçi, həmkar və ya daxili sistem adı ilə göstərilmir.",method_text_geo:"A2/AD, TikTok qadağası və \"Kimin Qaydaları? Hakimiyyət Mübarizəsi Kimi Süni İntellekt İdarəçiliyi\" adlı yazı neorealist optikadan istifadə edir, çünki hər birində əsas sual dövlətin və ya dövlətə yaxın aktorun nisbi güc balansındakı dəyişikliyə necə reaksiya verdiyidir, hər hansı bir institutun və ya normanın öz-özlüyündə nə qədər yaxşı işlədiyi deyil. Bölgədəki bütün halları və ya rəqib çərçivələri əhatə etmir, yalnız bu mexanizmin ən aydın göründüyü nümunələri izləyir.",
     collect_lead:"Oflayn oxumağa üstünlük verirsiniz?",collect_sub:"Bütün yazılar bir sənəddə, mündəricat səhifəsi ilə.",collect_btn:"Toplu yazılar",
     draft_restored:"Yadda saxlanmamış qaralama bərpa edildi",draft_discard:"Sil",
     af_publish:"Dərc tarixi (istəyə bağlı)",st_sched:"Planlanmış",wiz_past:"Tarix bugün və ya keçmişdir: giriş dərhal dərc olunur",
@@ -3217,9 +3217,9 @@ const T = {
     area4_t:"Rəqəmsal geosiyasət",area4_d:"Eyni sualların dövlət səviyyəsində hali: iqtisadi rəqabət kimi platforma tənzimlənməsi, Cənubi Çin dənizində giriş məhdudlaşdırma strategiyası və legitimlik mübarizəsi kimi Sİ idarəçiliyi.",
     writing_title:"Seçilmiş Yazılar",
     reading_title:"Oxuma Siyahısı",
-    practice_title:"Praktika",practice_intro:"Qlobal çoxoyunçulu oyun platforması üçün etibar, təhlükəsizlik və platforma idarəçiliyi sahəsində əməliyyat işi — yuxarıdakı analitik çərçivələrin işləyən sistemlərə çevrildiyi yer.",
+    practice_title:"Praktika",practice_intro:"Qlobal çoxoyunçulu oyun platforması üçün etibar, təhlükəsizlik və platforma idarəçiliyi sahəsində əməliyyat işi: yuxarıdakı analitik çərçivələrin işləyən sistemlərə çevrildiyi yer.",
     about_title:"Yanaşma",
-    about_p1:"Eyni sualın iki tərəfində işləyirəm. Tədqiqatçı olaraq, dövlətlərin potensialı necə gücə çevirdiyinə neorealist baxışla yanaşıram və bunun qurmaq istədikləri nizam haqqında nə dediyini soruşuram. Praktikada isə onlayn məkanları nizamda saxlayan sistemlərin işində iştirak edirəm — etibar, təhlükəsizlik və platforma idarəçiliyi sahəsində. Hər iki tərəf bir-birini qidalandırır.",
+    about_p1:"Eyni sualın iki tərəfində işləyirəm. Tədqiqatçı olaraq, dövlətlərin potensialı necə gücə çevirdiyinə neorealist baxışla yanaşıram və bunun qurmaq istədikləri nizam haqqında nə dediyini soruşuram. Praktikada isə onlayn məkanları nizamda saxlayan sistemlərin işində iştirak edirəm: etibar, təhlükəsizlik və platforma idarəçiliyi sahəsində. Hər iki tərəf bir-birini qidalandırır.",
     about_p2:"Keyfiyyət əsaslı və konkret hadisələrə söykənən bir üsulla işləyirəm. Siyasəti, tənzimləməni və şirkətlərin davranışını diqqətlə oxuyuram, məlumatı isə arqumenti aydınlaşdırdığı yerdə cəlb edirəm. İngilis və türk dillərində yazıram; işimin böyük hissəsi Şərqi Asiya və daha geniş Hind-Sakit Okean regionuna həsr olunub.",
     fact1_l:"Fokus",fact1_v:"ABŞ–Çin rəqabəti · Rəqəmsal nizam",
     fact2_l:"Çərçivə",fact2_v:"Neorealizm · İdarəetmənin tənqidi nəzəriyyəsi",
