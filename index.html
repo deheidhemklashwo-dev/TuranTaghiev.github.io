@@ -4107,8 +4107,16 @@ document.addEventListener("keydown",e=>{
 /* =========================================================
    NOW — şu an ne üzerinde çalışıyorum (kolay güncellenir)
    ========================================================= */
-/* Now bölümü son güncelleme — yeni içerik ekledikçe bu tarihi elle güncelle */
-const NOW_UPDATED = "July 2026";
+/* Now bölümü son güncelleme. Güncellemek için yalnızca year ve month (1-12) değerini değiştir;
+   ay adı aktif dile göre NOW_MONTHS tablosundan yazılır. */
+const NOW_UPDATED = { year:2026, month:11 };
+const NOW_MONTHS = {
+  en:["January","February","March","April","May","June","July","August","September","October","November","December"],
+  tr:["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],
+  ru:["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"],
+  az:["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"]
+};
+function nowUpdatedText(){ return (NOW_MONTHS[lang]||NOW_MONTHS.en)[NOW_UPDATED.month-1]+" "+NOW_UPDATED.year; }
 const NOW = [
   {
     cat:{ en:"Writing", tr:"Yazı", ru:"Тексты", az:"Yazı" },
@@ -4122,10 +4130,10 @@ const NOW = [
   {
     cat:{ en:"Research", tr:"Araştırma", ru:"Исследование", az:"Tədqiqat" },
     text:{
-      en:"An academic article on China's A2/AD strategy in the South China Sea is drafted and being revised for journal submission. A condensed version is published here.",
-      tr:"Çin'in Güney Çin Denizi'ndeki A2/AD stratejisi üzerine akademik makale taslak halinde; dergi başvurusu için revize ediliyor. Damıtılmış hali bu sitede yayında.",
-      ru:"Академическая статья о стратегии A2/AD Китая в Южно-Китайском море написана и дорабатывается для подачи в журнал. Сжатая версия опубликована здесь.",
-      az:"Çinin Cənubi Çin dənizindəki A2/AD strategiyası üzərinə akademik məqalə qaralama halındadır və jurnala təqdim üçün işlənir. Qısaldılmış versiyası burada dərc olunub."
+      en:"An academic article on China's A2/AD strategy in the South China Sea is drafted; the English-language revision is still ahead before any journal submission. A condensed version is published here.",
+      tr:"Çin'in Güney Çin Denizi'ndeki A2/AD stratejisi üzerine akademik makale taslak halinde; herhangi bir dergi başvurusundan önce İngilizce revizyon aşaması henüz bekliyor. Damıtılmış hali bu sitede yayında.",
+      ru:"Академическая статья о стратегии A2/AD Китая в Южно-Китайском море написана; до подачи в какой-либо журнал ещё предстоит доработка англоязычной версии. Сжатая версия опубликована здесь.",
+      az:"Çinin Cənubi Çin dənizindəki A2/AD strategiyası üzərinə akademik məqalə qaralama halındadır; hər hansı jurnala təqdimdən əvvəl ingilis dilində redaktəsi hələ qarşıdadır. Qısaldılmış versiyası burada dərc olunub."
     }
   },
   {
@@ -4182,7 +4190,7 @@ function renderNow(){
     g.appendChild(d);
   });
   const up=$("#nowUpdated");
-  if(up) up.textContent=(T[lang].now_updated||"Last updated")+": "+NOW_UPDATED;
+  if(up) up.textContent=(T[lang].now_updated||"Last updated")+": "+nowUpdatedText();
 }
 
 function renderPractice(){
