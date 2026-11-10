@@ -4107,8 +4107,16 @@ document.addEventListener("keydown",e=>{
 /* =========================================================
    NOW — şu an ne üzerinde çalışıyorum (kolay güncellenir)
    ========================================================= */
-/* Now bölümü son güncelleme — yeni içerik ekledikçe bu tarihi elle güncelle */
-const NOW_UPDATED = "November 2026";
+/* Now bölümü son güncelleme. Güncellemek için yalnızca year ve month (1-12) değerini değiştir;
+   ay adı aktif dile göre NOW_MONTHS tablosundan yazılır. */
+const NOW_UPDATED = { year:2026, month:11 };
+const NOW_MONTHS = {
+  en:["January","February","March","April","May","June","July","August","September","October","November","December"],
+  tr:["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],
+  ru:["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"],
+  az:["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"]
+};
+function nowUpdatedText(){ return (NOW_MONTHS[lang]||NOW_MONTHS.en)[NOW_UPDATED.month-1]+" "+NOW_UPDATED.year; }
 const NOW = [
   {
     cat:{ en:"Writing", tr:"Yazı", ru:"Тексты", az:"Yazı" },
@@ -4182,7 +4190,7 @@ function renderNow(){
     g.appendChild(d);
   });
   const up=$("#nowUpdated");
-  if(up) up.textContent=(T[lang].now_updated||"Last updated")+": "+NOW_UPDATED;
+  if(up) up.textContent=(T[lang].now_updated||"Last updated")+": "+nowUpdatedText();
 }
 
 function renderPractice(){
