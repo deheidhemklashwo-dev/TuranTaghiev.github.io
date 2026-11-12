@@ -511,6 +511,9 @@ footer{padding:40px 0}
 .foot-link:hover{color:var(--accent)}
 /* ses kontrolu artik gercek bir dugme; tarayicinin dugme varsayilanlari sifirlanir, gorunum span ile ayni kalir */
 button.foot-link{background:none;border:0;padding:0;margin:0;cursor:pointer;line-height:inherit;font-weight:inherit}
+/* footer bağlantıları: görünüm aynı, dokunma alanı dikeyde 44px */
+.foot-right .foot-link{position:relative}
+.foot-right .foot-link::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:44px;transform:translateY(-50%)}
 
 /* ADMIN PANEL */
 .admin-overlay{display:none;position:fixed;inset:0;z-index:200;background:var(--overlay-scrim);backdrop-filter:blur(6px);overflow-y:auto;overscroll-behavior:contain;}
@@ -596,6 +599,13 @@ button.foot-link{background:none;border:0;padding:0;margin:0;cursor:pointer;line
 .reveal{opacity:0;transform:translateY(18px);filter:blur(3px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease-out;will-change:opacity,transform}
 .reveal.in{opacity:1;transform:none;filter:blur(0);will-change:auto}
 .hero .reveal{transition-delay:calc(var(--d,0)*110ms)}
+/* Giriş bölümü JS beklemeden görünür. Sayfa ~690 KB ve betik en sonda olduğu için .reveal'ı JS açana kadar
+   telefonda ana içerik saniyelerce boş kalıyordu. Aynı giriş hareketi artık salt CSS; .in sonradan eklenince görünüm değişmez.
+   Kayıtlı dil EN değilse (html.lang-pending) eski davranış sürer: metin doğru dilde yazılınca JS açar. */
+.hero .reveal{animation:heroIn .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0)*110ms)}
+@keyframes heroIn{from{opacity:0;transform:translateY(18px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+html.lang-pending .hero .reveal{animation:none}
+@media(prefers-reduced-motion:reduce){.hero .reveal{animation:none}}
 
 /* RESPONSIVE */
 @media(max-width:860px){
