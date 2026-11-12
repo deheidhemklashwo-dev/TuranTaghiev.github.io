@@ -41,6 +41,8 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 <meta name="author" content="Turan Taghiev" />
 <meta name="theme-color" content="#111315" />
 <meta name="color-scheme" content="dark light" />
+<!-- Kayıtlı dil İngilizce değilse giriş bölümü, JS doğru dili yazana kadar gizli kalır (style.css: html.lang-pending) -->
+<script>(function(){try{var l=localStorage.getItem("site-lang");if(l&&l!=="en")document.documentElement.classList.add("lang-pending");}catch(e){}})();</script>
 <!-- FOUC koruması: CSS yüklenmeden tema uygulanır, sayfa yanıp sönmez -->
 <script>(function(){try{var p=localStorage.getItem("site-theme")||"dark";var m=p;if(p==="system"){m=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",m);document.documentElement.setAttribute("data-theme-pref",p);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
 <link rel="canonical" href="https://deheidhemklashwo-dev.github.io/TuranTaghiev.github.io/" />
@@ -488,17 +490,14 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
 
   <!-- 00 HERO -->
   <div class="hero wrap">
-    <div class="kicker reveal" style="--d:0" data-i18n="hero_kicker">Community Operations · Trust & Safety · Digital Geopolitics</div>
-    <h1 class="reveal" style="--d:1" data-i18n-html="hero_title">Power, platforms, and the <em>contest</em> over digital order.</h1>
-    <p class="thesis reveal" style="--d:2" data-i18n="hero_thesis">I research how states use technology to get an edge over their rivals, with a focus on US–China competition, the politics of platform regulation, and the growing role of AI in state power.</p>
+    <div class="kicker reveal" style="--d:0" data-i18n="hero_kicker"><span>Community Operations</span><span>Trust &amp; Safety</span><span>Digital Geopolitics</span></div>
+    <h1 class="reveal" style="--d:1" data-i18n-html="hero_title">What governance looks like when it <em>meets</em> the queue.</h1>
+    <p class="thesis reveal" style="--d:2" data-i18n="hero_thesis">I write about content moderation and platform governance from inside the work: what rules do when they meet real volume, how enforcement systems hold or fail under pressure, and where the same questions surface in the geopolitics of technology.</p>
     <div class="actions reveal" style="--d:3">
       <a href="#writing" class="btn btn-primary" data-i18n="hero_cta1">Read the work</a>
       <a href="#contact" class="btn btn-ghost" data-i18n="hero_cta2">Get in touch</a>
       <!-- CV butonu: cv.pdf dosyası repoda index.html ile aynı klasörde olmalı -->
-      <a href="cv.pdf" class="btn btn-ghost" download data-i18n="hero_cv">
-        <svg viewBox="0 0 16 16"><path d="M8 12l-4-4 1.4-1.4L7 8.2V2h2v6.2l1.6-1.6L12 8l-4 4zM2 14h12v-2H2v2z"/></svg>
-        CV
-      </a>
+      <a href="cv.pdf" class="btn btn-ghost" download data-i18n="hero_cv">Download CV</a>
     </div>
   </div>
 
@@ -637,7 +636,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
       </div>
       <div class="split">
         <div class="prose reveal">
-          <p data-i18n="about_p1">I work within a neorealist frame, but treat theory as a tool for strategy rather than an end in itself. The question is always practical: how does a given actor convert capability into leverage, and what does that reveal about the order being built?</p>
+          <p data-i18n="about_p1">I work on two sides of the same question. As a researcher, I use a neorealist lens to ask how states turn capability into leverage, and what that says about the order they are building. In practice, I help run the systems that keep online spaces in check, through work in trust and safety and platform governance. Each side feeds the other.</p>
           <p data-i18n="about_p2">My approach is qualitative and built around cases. I read policy, regulation and the way companies behave closely, and bring in data when it makes the argument clearer. I write in English and Turkish, and most of my work centres on East Asia and the wider Indo-Pacific.</p>
         </div>
         <div class="facts reveal">
@@ -700,7 +699,7 @@ if(location.hash.indexOf("#read/")===0||/[?&]read=/.test(location.search))docume
   <section id="contact" class="contact-sec">
     <div class="wrap">
       <div class="kicker reveal" data-i18n="contact_kicker">Contact</div>
-      <h2 class="reveal" data-i18n="contact_title">Open to research collaboration and conversation.</h2>
+      <h2 class="reveal" data-i18n="contact_title">I'd be glad to hear from you.</h2>
       <p class="sub reveal" data-i18n="contact_sub">IR · Digital geopolitics · Platform governance</p>
       <div class="actions reveal">
         <a href="https://www.linkedin.com/in/turan-t-b75a02290" target="_blank" rel="noopener noreferrer" class="btn btn-primary">LinkedIn</a>

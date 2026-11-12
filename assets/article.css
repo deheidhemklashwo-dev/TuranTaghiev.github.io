@@ -45,6 +45,9 @@ header{position:sticky;top:0;z-index:15;backdrop-filter:blur(14px);-webkit-backd
 .nav-right{display:flex;align-items:center;gap:10px}
 .back{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mute);display:inline-flex;align-items:center;gap:7px;transition:color .2s;white-space:nowrap}
 .back:hover{color:var(--accent)}
+/* dar ekranda yalnızca ok kalıyor (7px); görünüm aynı, dokunma alanı 44x44 */
+.back{position:relative}
+.back::before{content:"";position:absolute;left:50%;top:50%;min-width:44px;width:100%;height:44px;transform:translate(-50%,-50%)}
 .theme-toggle{font-family:var(--mono);border:1px solid var(--line-strong);background:transparent;color:var(--text-soft);width:32px;height:29px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
 .theme-toggle .ti{display:none}
